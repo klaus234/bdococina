@@ -1,0 +1,805 @@
+{
+    "recetas": {
+        "platillodevalenos": {
+            "vinopalmera": "2",
+            "payhigo": "2",
+            "couscous": "1",
+            "hambleon": "1",
+            "sandwitchteff": "1"
+        },
+        "escorpionasado": {
+            "carneescorpion": "3",
+            "mantequilla": "2",
+            "nuezm": "3",
+            "chile": "3"
+        },
+        "sandwitchteff": {
+            "panteff": "1",
+            "escorpionasado": "1",
+            "estofadovivora": "1",
+            "salsaroja": "3"
+        },
+        "estofadovivora": {
+            "anis": "2",
+            "carnevibora": "3",
+            "freekeh": "6",
+            "aguac": "5"
+        },
+        "couscous": {
+            "estofadovivora": "1",
+            "masateff": "6",
+            "nuezm": "3",
+            "vegetales": "4"
+        },
+        "panteff": {
+            "sal": "2",
+            "aguac": "3",
+            "harinateff": "5",
+            "fermentacion": "2"
+        },
+        "hambleon": {
+            "carneleon": "4",
+            "panteff": "4",
+            "verdurase": "2",
+            "nuezm": "3"
+        },
+        "vinopalmera": {
+            "palmeradatilera": "5",
+            "esencialicor": "2",
+            "azucar": "1",
+            "fermentacion": "4"
+        },
+        "payhigo": {
+            "aceiteoliva": "2",
+            "azucar": "3",
+            "masa": "3",
+            "higo": "5"
+        },
+        "paycarne": {
+            "carne1": "4",
+            "masa": "6",
+            "azucar": "2",
+            "aceiteoliva": "2"
+        },
+        "bistec": {
+            "salsaroja": "2",
+            "ajo": "2",
+            "sal": "2",
+            "carne1": "8"
+        },
+        "payfruta": {
+            "masa": "6",
+            "frutas": "6",
+            "crema": "3",
+            "azucar": "4"
+        },
+        "racioncab": {
+            "sandwichj": "1",
+            "croquetadecarne": "1",
+            "vinofruta": "2",
+            "pudinoscuro": "1"
+        },
+        "sandwichj": {
+            "vegetales": "5",
+            "salchichaasada": "2",
+            "pansuave": "2",
+            "huevo": "4"
+        },
+        "pudinoscuro": {
+            "sangre2": "7",
+            "carneave": "5",
+            "verdurase": "1",
+            "avena": "1"
+        },
+        "asadoave": {
+            "sal": "1",
+            "vinoc": "2",
+            "carneave": "2",
+            "aceitefreir": "6"
+        },
+        "verdurase": {
+            "vegetales": "8",
+            "azucar": "2",
+            "fermentacion": "2",
+            "vinagre": "4"
+        },
+        "esencialicor": {
+            "harina": "1",
+            "frutas": "1",
+            "fermentacion": "1"
+        },
+        "vinogranoexotico": {
+            "aguac": "5",
+            "masa": "3",
+            "esencialicor": "1",
+            "fermentacion": "2"
+        },
+        "vinagre": {
+            "azucar": "1",
+            "fermentacion": "1",
+            "frutas": "1",
+            "cereales": "1"
+        },
+        "ensaladafrutaverdura": {
+            "vinagre": "1",
+            "vegetales": "4",
+            "frutas": "4",
+            "vinoc": "2"
+        },
+        "vinofruta": {
+            "frutas": "5",
+            "esencialicor": "3",
+            "aguac": "2",
+            "vinogranoexotico": "1"
+        },
+        "langostamantequilla": {
+            "mantequilla": "4",
+            "ajo": "3",
+            "aceiteoliva": "5",
+            "sal": "5",
+            "langosta": "1"
+        },
+        "tortaostra": {
+            "harina": "5",
+            "vinagre": "2",
+            "ostra": "3",
+            "aceiteoliva": "3",
+            "huevo": "2"
+        },
+        "langostinohervido": {
+            "aguac": "4",
+            "vinoc": "3",
+            "chile": "2",
+            "camaron": "4",
+            "paprika": "3"
+        },
+        "ensaladalangostino": {
+            "sal": "2",
+            "aceiteoliva": "3",
+            "huevo": "3",
+            "ensaladafrutaverdura": "2",
+            "camaron": "2"
+        },
+        "platoespecialmagoria": {
+            "langostinohervido": "1",
+            "tortaostra": "1",
+            "langostamantequilla": "1",
+            "vinofruta": "2",
+            "ensaladalangostino": "1"
+        },
+        "platillomcron": {
+            "platillobalenos": "3",
+            "especiaacron": "1",
+            "platoespecialmagoria": "1",
+            "platillocalpheon": "3"
+        },
+        "cerveza": {
+            "cereales": "5",
+            "azucar": "1",
+            "fermentacion": "2",
+            "aguac": "6"
+        },
+        "avena": {
+            "miel": "2",
+            "cebolla": "3",
+            "harina": "9",
+            "leche": "3"
+        },
+        "teolor": {
+            "frutas": "4",
+            "aguac": "7",
+            "miel": "3",
+            "plantas": "4"
+        },
+        "tesute": {
+            "sal": "1",
+            "leche": "3",
+            "mantequilla": "2",
+            "teolor": "2"
+        },
+        "teleche": {
+            "teolor": "2",
+            "harina": "2",
+            "leche": "3",
+            "miel": "3"
+        },
+        "salsaroja": {
+            "aguac": "3",
+            "carne1": "1",
+            "azucar": "2",
+            "salsabase": "1"
+        },
+        "salchichaasada": {
+            "cebolla": "1",
+            "pimienta": "2",
+            "sal": "2",
+            "carne1": "6"
+        },
+        "gratinadoqueso": {
+            "salsaroja": "3",
+            "queso": "3",
+            "vegetales": "4",
+            "masa": "5",
+            "salchichaasada": "1"
+        },
+        "croquetadecarne": {
+            "carne1": "8",
+            "harina": "5",
+            "huevo": "2",
+            "queso": "2",
+            "aceitefreir": "4"
+        },
+        "bistecpescadoahumado": {
+            "aceiteoliva": "1",
+            "pescado": "1",
+            "sal": "2"
+        },
+        "verdurasrevueltassofritas": {
+            "sal": "1",
+            "vegetales": "5",
+            "chile": "2",
+            "aceiteoliva": "2"
+        },
+        "arrozsofritopistacho": {
+            "sal": "2",
+            "canela": "2",
+            "pistacho": "4",
+            "teff": "6"
+        },
+        "pansuave": {
+            "leche": "3",
+            "fermentacion": "2",
+            "masa": "6",
+            "huevo": "2"
+        },
+        "ensaladafiletepescado": {
+            "queso": "2",
+            "cebolla": "3",
+            "aderezo": "2",
+            "pescado": "1"
+        },
+        "aderezo": {
+            "aceiteoliva": "1",
+            "aguac": "1",
+            "huevo": "1",
+            "sal": "2"
+        },
+        "pastacarne": {
+            "ajo": "2",
+            "pimienta": "3",
+            "masa": "4",
+            "carne1": "5"
+        },
+        "payqueso": {
+            "huevo": "3",
+            "mantequilla": "3",
+            "queso": "7",
+            "masa": "2"
+        },
+        "platillocalpheon": {
+            "pansuave": "2",
+            "teleche": "1",
+            "ensaladafiletepescado": "1",
+            "payqueso": "1",
+            "pastacarne": "1"
+        },
+        "platillobalenos": {
+            "cerveza": "2",
+            "verdurasrevueltassofritas": "2",
+            "bistecpescadoahumado": "1",
+            "gratinadoqueso": "1",
+            "croquetadecarne": "1"
+        },
+        "adobadoostra": {
+            "esencialicor": "3",
+            "aceiteoliva": "5",
+            "chile": "2",
+            "ajo": "4",
+            "mariscos": "2"
+        }
+    },
+    "datos": {
+        "platillodevalenos": {
+            "titulo": "Platillo de Valencia",
+            "peso": "1",
+            "plata": "29000",
+            "imperiales": "18"
+        },
+        "carneescorpion": {
+            "titulo": "Carne de Escorpi\u00f3n",
+            "peso": "0.1",
+            "plata": "9900"
+        },
+        "escorpionasado": {
+            "titulo": "Escorpi\u00f3n Asado",
+            "peso": "0.1",
+            "plata": "27000",
+            "imperiales": "15"
+        },
+        "sandwitchteff": {
+            "titulo": "S\u00e1ndwitch de Teff",
+            "peso": "0.1",
+            "plata": "0",
+            "nomejorable": true,
+            "imperiales": "18"
+        },
+        "freekeh": {
+            "titulo": "Freekeh",
+            "peso": "0.1",
+            "plata": "1800"
+        },
+        "carnevibora": {
+            "titulo": "Carne de Vibora",
+            "peso": "0.03",
+            "plata": "0"
+        },
+        "anis": {
+            "titulo": "An\u00eds Estrellado",
+            "peso": "0.1",
+            "plata": "1300"
+        },
+        "estofadovivora": {
+            "titulo": "Estofado de V\u00edbora Freekeh",
+            "peso": "0.1",
+            "plata": "22900",
+            "nomejorable": true
+        },
+        "masateff": {
+            "titulo": "Masa de Harina de Teff",
+            "peso": "0.1",
+            "plata": "2400"
+        },
+        "couscous": {
+            "titulo": "Couscous",
+            "peso": "0.1",
+            "plata": "23100",
+            "nomejorable": true
+        },
+        "harinateff": {
+            "titulo": "Harina de Teff",
+            "peso": "0.1",
+            "plata": "2850"
+        },
+        "nuezm": {
+            "titulo": "Nuez Moscada",
+            "peso": "0.1",
+            "plata": "4150"
+        },
+        "panteff": {
+            "titulo": "Pan de Teff",
+            "peso": "0.1",
+            "plata": "3750"
+        },
+        "hambleon": {
+            "titulo": "Hamburguesa de Le\u00f3n",
+            "peso": "0.1",
+            "plata": "40500",
+            "nomejorable": true,
+            "imperiales": "15"
+        },
+        "carneleon": {
+            "titulo": "Carne de Le\u00f3n",
+            "peso": "0.03",
+            "plata": "14600"
+        },
+        "palmeradatilera": {
+            "titulo": "Palmera Datilera",
+            "peso": "0.1",
+            "plata": "3190"
+        },
+        "vinopalmera": {
+            "titulo": "Vino de Palmera Datilera",
+            "peso": "0.1",
+            "plata": "0",
+            "nomejorable": true
+        },
+        "higo": {
+            "titulo": "Higo",
+            "peso": "0.1",
+            "plata": "3840"
+        },
+        "payhigo": {
+            "titulo": "Pay de Higo",
+            "peso": "0.1",
+            "plata": "9350"
+        },
+        "paycarne": {
+            "titulo": "Pay de Carne",
+            "peso": "0.1",
+            "plata": "14600"
+        },
+        "bistec": {
+            "titulo": "Bistec",
+            "peso": "0",
+            "plata": "0"
+        },
+        "crema": {
+            "titulo": "Crema",
+            "peso": "0",
+            "plata": "0"
+        },
+        "payfruta": {
+            "titulo": "Pay de Fruta",
+            "peso": "0",
+            "plata": "0"
+        },
+        "racioncab": {
+            "titulo": "Raci\u00f3n de Combate de la Caballer\u00eda",
+            "peso": "0",
+            "plata": "0"
+        },
+        "sandwichj": {
+            "titulo": "S\u00e1ndwich de Jam\u00f3n",
+            "peso": "0",
+            "plata": "0"
+        },
+        "sangre2": {
+            "titulo": "Sangre (Ciervo, Res, etc)",
+            "peso": "0.1",
+            "plata": "0"
+        },
+        "pudinoscuro": {
+            "titulo": "Pud\u00edn Oscuro",
+            "peso": "0",
+            "plata": "0",
+            "imperiales": "15"
+        },
+        "asadoave": {
+            "titulo": "Asado de Ave",
+            "peso": "0",
+            "plata": "0"
+        },
+        "carneave": {
+            "titulo": "Carne de Ave",
+            "peso": "0",
+            "plata": "0"
+        },
+        "verdurase": {
+            "titulo": "Verduras en Escabeche",
+            "peso": "0.1",
+            "plata": "4440",
+            "nomejorable": true,
+            "imperiales": "18"
+        },
+        "langosta": {
+            "titulo": "Langosta",
+            "peso": "0",
+            "plata": "0"
+        },
+        "ostra": {
+            "titulo": "Ostra",
+            "peso": "0",
+            "plata": "0"
+        },
+        "paprika": {
+            "titulo": "Paprika",
+            "peso": "0",
+            "plata": "850"
+        },
+        "esencialicor": {
+            "titulo": "Esencia de Licor",
+            "peso": "0.01",
+            "plata": "980"
+        },
+        "vinogranoexotico": {
+            "titulo": "Vino de grano exotico",
+            "peso": "0",
+            "plata": "0"
+        },
+        "vinoc": {
+            "titulo": "Vino para cocinar",
+            "peso": "0.01",
+            "plata": "20"
+        },
+        "vinagre": {
+            "titulo": "Vinagre",
+            "peso": "0.01",
+            "plata": "0"
+        },
+        "ensaladafrutaverdura": {
+            "titulo": "Ensalada de Fruta y Verdura",
+            "peso": "0",
+            "plata": "0"
+        },
+        "camaron": {
+            "titulo": "Camaron",
+            "peso": "0",
+            "plata": "0"
+        },
+        "vinofruta": {
+            "titulo": "Vino de fruta",
+            "peso": "0",
+            "plata": "0"
+        },
+        "langostamantequilla": {
+            "titulo": "Langosta a la Mantequilla",
+            "peso": "0",
+            "plata": "0"
+        },
+        "tortaostra": {
+            "titulo": "Torta de Ostra",
+            "peso": "0",
+            "plata": "0"
+        },
+        "langostinohervido": {
+            "titulo": "Langostino Hervido",
+            "peso": "0",
+            "plata": "0"
+        },
+        "ensaladalangostino": {
+            "titulo": "Ensalada de Langostino",
+            "peso": "0",
+            "plata": "0"
+        },
+        "platoespecialmagoria": {
+            "titulo": "Plato Especial de Marisco de Margoria",
+            "peso": "0",
+            "plata": "0"
+        },
+        "especiaacron": {
+            "titulo": "Especia Ancestral de Cron",
+            "peso": "0",
+            "plata": "0"
+        },
+        "platillomcron": {
+            "titulo": "Platillo de Mariscos de Cron",
+            "peso": "0",
+            "plata": "0"
+        },
+        "cerveza": {
+            "titulo": "Cerveza",
+            "peso": "0.1",
+            "plata": "0"
+        },
+        "cereales": {
+            "titulo": "Cereales",
+            "peso": "0.1",
+            "plata": "1500"
+        },
+        "aguac": {
+            "titulo": "Agua para cocinar",
+            "peso": "0.01",
+            "plata": "20"
+        },
+        "azucar": {
+            "titulo": "Azucar",
+            "peso": "0.01",
+            "plata": "20",
+            "nomejorable": true
+        },
+        "fermentacion": {
+            "titulo": "Agente de fermentaci\u00f3n",
+            "peso": "0.01",
+            "plata": "20",
+            "nomejorable": true
+        },
+        "cantidad": {
+            "titulo": "Cantidad",
+            "peso": "0",
+            "plata": "0"
+        },
+        "avena": {
+            "titulo": "Avena",
+            "peso": "0",
+            "plata": "0"
+        },
+        "harina": {
+            "titulo": "Harina",
+            "peso": "0.1",
+            "plata": "0"
+        },
+        "leche": {
+            "titulo": "Leche",
+            "peso": "0.01",
+            "plata": "0"
+        },
+        "cebolla": {
+            "titulo": "Cebolla",
+            "peso": "0",
+            "plata": "0"
+        },
+        "miel": {
+            "titulo": "Miel",
+            "peso": "0.1",
+            "plata": "0"
+        },
+        "teolor": {
+            "titulo": "T\u00e9 con olor fino",
+            "peso": "0.1",
+            "plata": "0"
+        },
+        "plantas": {
+            "titulo": "Plantas",
+            "peso": "0",
+            "plata": "0"
+        },
+        "frutas": {
+            "titulo": "Frutas",
+            "peso": "0.1",
+            "plata": "750"
+        },
+        "tesute": {
+            "titulo": "T\u00e9 Sute",
+            "peso": "0",
+            "plata": "0",
+            "imperiales": "18"
+        },
+        "mantequilla": {
+            "titulo": "Mantequilla",
+            "peso": "0",
+            "plata": "0"
+        },
+        "sal": {
+            "titulo": "Sal",
+            "peso": "0",
+            "plata": "0",
+            "nomejorable": true
+        },
+        "teleche": {
+            "titulo": "T\u00e9 con Leche",
+            "peso": "0",
+            "plata": "0",
+            "imperiales": "18"
+        },
+        "salsaroja": {
+            "titulo": "Salsa Roja",
+            "peso": "0.01",
+            "plata": "3810",
+            "nomejorable": true
+        },
+        "salsabase": {
+            "titulo": "Salsa Base",
+            "peso": "0",
+            "plata": "0"
+        },
+        "carne1": {
+            "titulo": "Carne (1)",
+            "peso": "0.1",
+            "plata": "0"
+        },
+        "salchichaasada": {
+            "titulo": "Salchicha Asada",
+            "peso": "0",
+            "plata": "0"
+        },
+        "pimienta": {
+            "titulo": "Pimienta",
+            "peso": "0",
+            "plata": "0"
+        },
+        "gratinadoqueso": {
+            "titulo": "Gratinado de queso",
+            "peso": "0",
+            "plata": "0",
+            "imperiales": "18"
+        },
+        "masa": {
+            "titulo": "Masa",
+            "peso": "0.1",
+            "plata": "2210",
+            "nomejorable": true
+        },
+        "vegetales": {
+            "titulo": "Vegetales",
+            "peso": "0.1",
+            "plata": "850"
+        },
+        "queso": {
+            "titulo": "Queso",
+            "peso": "0",
+            "plata": "0"
+        },
+        "croquetadecarne": {
+            "titulo": "Croqueta de Carne",
+            "peso": "0",
+            "plata": "0"
+        },
+        "huevo": {
+            "titulo": "Huevo",
+            "peso": "0",
+            "plata": "0"
+        },
+        "aceitefreir": {
+            "titulo": "Aceite de freir",
+            "peso": "0",
+            "plata": "0"
+        },
+        "bistecpescadoahumado": {
+            "titulo": "Bistec de pescado Ahumado",
+            "peso": "0",
+            "plata": "0"
+        },
+        "pescado": {
+            "titulo": "Pescado",
+            "peso": "0",
+            "plata": "0"
+        },
+        "aceiteoliva": {
+            "titulo": "Aceite de Oliva",
+            "peso": "0.01",
+            "plata": "40",
+            "nomejorable": true
+        },
+        "verdurasrevueltassofritas": {
+            "titulo": "Verduras Revueltas Sofritas",
+            "peso": "0",
+            "plata": "0"
+        },
+        "chile": {
+            "titulo": "Chile",
+            "peso": "0.1",
+            "plata": "0"
+        },
+        "arrozsofritopistacho": {
+            "titulo": "Arroz Sofrito de Pistacho",
+            "peso": "0",
+            "plata": "0"
+        },
+        "pistacho": {
+            "titulo": "Pistacho",
+            "peso": "0",
+            "plata": "0"
+        },
+        "teff": {
+            "titulo": "Teff",
+            "peso": "0",
+            "plata": "0"
+        },
+        "canela": {
+            "titulo": "Canela",
+            "peso": "0",
+            "plata": "0"
+        },
+        "pansuave": {
+            "titulo": "Pan Suave",
+            "peso": "0",
+            "plata": "0"
+        },
+        "ensaladafiletepescado": {
+            "titulo": "Ensalada de filete de Pescado",
+            "peso": "0",
+            "plata": "0"
+        },
+        "aderezo": {
+            "titulo": "Aderezo",
+            "peso": "0",
+            "plata": "0"
+        },
+        "pastacarne": {
+            "titulo": "Pasta de Carne",
+            "peso": "0",
+            "plata": "0"
+        },
+        "ajo": {
+            "titulo": "Ajo",
+            "peso": "0",
+            "plata": "0"
+        },
+        "payqueso": {
+            "titulo": "Pay de queso",
+            "peso": "0",
+            "plata": "0"
+        },
+        "platillocalpheon": {
+            "titulo": "Platillo de Calpheon",
+            "peso": "0",
+            "plata": "0"
+        },
+        "platillobalenos": {
+            "titulo": "Platillo de Balenos",
+            "peso": "0",
+            "plata": "0",
+            "imperiales": "24"
+        },
+        "mariscos": {
+            "titulo": "Mariscos 2",
+            "peso": "0",
+            "plata": "0"
+        },
+        "adobadoostra": {
+            "titulo": "Adobado de Ostra",
+            "peso": "0",
+            "plata": "0"
+        }
+    }
+}
