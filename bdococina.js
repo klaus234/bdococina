@@ -264,7 +264,7 @@ function setAndLoad() {
     const ilista = document.getElementById("ingredientes");
     ilista.innerHTML = "";
     if (secondLoad)
-        window.history.pushState(this.id, "Titulo", "cocina.html?id=" + this.id);
+        window.history.pushState(this.id, "Titulo", "?id=" + this.id);
     ingredientes = rdata["recetas"][this.id];
     currentingrediente = this.id;
     const otros = document.getElementById("otros");
