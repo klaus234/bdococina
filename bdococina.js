@@ -668,7 +668,7 @@ window.addEventListener("load", function () {
     lista_recetas_ul = document.getElementById("lista_recetas");
 
 
-    fetch("getjson.php")
+    fetch("datosv1.json")
         .then(function (rep) {
             return rep.json()
         })
