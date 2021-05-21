@@ -145,6 +145,7 @@ function modificarSegunCantidad() {
     total.value = Math.floor(this.value * document.getElementById("ratio").value);
     if(imperiales != undefined)
         imperiales.value = Math.floor(total.value / imperiales.multiplicador);
+    updatePeso();
         
     
 }
@@ -157,6 +158,7 @@ function modificarSegunTotal() {
     actualizarIngredientes(cantidadx.value);
     if(imperiales != undefined)
         imperiales.value = Math.floor(this.value / imperiales.multiplicador);
+    updatePeso();
 
 
 }
@@ -216,6 +218,41 @@ let secondLoad = false;
 
 let gastoIngCalculados = {};
 
+function updatePeso()
+{
+    const pmax = document.getElementById("pesomax").value;
+    const pmio = document.getElementById("mipeso").value;
+    
+
+    const bocupado = document.getElementById("bocupado"); 
+    const busado = document.getElementById("busado");
+
+    let pocupado = calcPrct(pmax, pmio);
+    let pusado = calcPrct(pmax, gpeso);
+    const resultado = Math.round(((parseFloat(pmio) + parseFloat(gpeso)) + Number.EPSILON) * 100) / 100;
+
+    const pocup = document.getElementById("pesoocu")
+    const pomax = document.getElementById("pesotot");
+    pocup.innerText = "" + resultado ;
+    pomax.innerText = "/ " + pmax + " LT";
+
+    if((pmax - resultado) < 50)
+        if((pmax - resultado) < 0)
+            pocup.style = "color: red;";
+        else
+            pocup.style = "color: orange";
+    else
+        pocup.style = "none";
+
+    bocupado.style = "width: " + pocupado + "%;";
+    if(pocupado + pusado > 100)
+    {
+        pusado = 100 - pocupado;
+        if(pusado < 0)
+            pusado = 0;
+    }
+    busado.style = "width: " + pusado + "%;";
+}
 function setAndLoad() {
     gastoIngCalculados = {};
     modoseleccion = false;
@@ -228,7 +265,7 @@ function setAndLoad() {
     const ilista = document.getElementById("ingredientes");
     ilista.innerHTML = "";
     if (secondLoad)
-        window.history.pushState(this.id, "Titulo", "index.html?id=" + this.id);
+        window.history.pushState(this.id, "Titulo", "cocina.html?id=" + this.id);
     ingredientes = rdata["recetas"][this.id];
     currentingrediente = this.id;
     const otros = document.getElementById("otros");
@@ -419,6 +456,7 @@ function setAndLoad() {
 
     pesomax.children[1].oninput = function(event)
     {
+        /*
         const pmax = this.value;
         const pmio = document.getElementById("mipeso").value;
         
@@ -428,7 +466,9 @@ function setAndLoad() {
 
         let pocupado = calcPrct(pmax, pmio);
         let pusado = calcPrct(pmax, gpeso);
-
+        const resultado = Math.round(((parseFloat(pmio) + parseFloat(gpeso)) + Number.EPSILON) * 100) / 100;
+        document.getElementById("pesoocu").innerText = "" + resultado ;
+        document.getElementById("pesotot").innerText = "/ " + pmax + " LT";
         bocupado.style = "width: " + pocupado + "%;";
         if(pocupado + pusado > 100)
         {
@@ -436,7 +476,8 @@ function setAndLoad() {
             if(pusado < 0)
                 pusado = 0;
         }
-        busado.style = "width: " + pusado + "%;";
+        busado.style = "width: " + pusado + "%;";*/
+        updatePeso();
         
     };
 
@@ -445,14 +486,20 @@ function setAndLoad() {
 
     mipeso.children[1].oninput = function()
     {
+        /*
         const pmax = document.getElementById("pesomax").value;
         const pmio = this.value
 
         const bocupado = document.getElementById("bocupado"); // es pmio
         const busado = document.getElementById("busado");
 
+        document.getElementById("pesotot").innerText = "/ " + pmax + " LT";
+        
         let pocupado = calcPrct(pmax, pmio);
         let pusado = calcPrct(pmax, gpeso);
+
+        const resultado = Math.round(((parseFloat(pmio) + parseFloat(gpeso)) + Number.EPSILON) * 100) / 100;
+        document.getElementById("pesoocu").innerText = "" + resultado ;
 
         bocupado.style = "width: " + pocupado + "%;";
         if(pocupado + pusado > 100)
@@ -461,17 +508,65 @@ function setAndLoad() {
             if(pusado < 0)
                 pusado = 0;
         }
-        busado.style = "width: " + pusado + "%;";
+        busado.style = "width: " + pusado + "%;";*/
+        updatePeso();
     }
-    let pbarras = document.createElement("div");
+    let pbarras = document.createElement("li");
     pbarras.innerHTML = "<span class=\"b_base b_contenedor\"><span id=\"bocupado\" class=\"b_base b_pocupado\" style=\"width: 0%;\"></span><span id=\"busado\" class=\"b_base b_usado\" style=\"width: 0%;\"></span></span>";
     dinputpeso.append(pbarras);
 
+    // inicio de peso
 
-    
+    let infopesox = document.createElement("div");
+    let spaninfpoc = document.createElement("span");
+    spaninfpoc.id = "pesoocu";
+    let spaninfpto = document.createElement("span");
+    spaninfpto.id = "pesotot";
+
+    spaninfpoc.innerText = "0.00";
+    spaninfpto.innerText = "/ 0.00";
+
+    let fbutton = document.createElement("span");
+    fbutton.className = "fillbtn";
+    fbutton.innerText = "LLENAR";
+
+    fbutton.onclick = function()
+    {
+        // calcular cantidad para llenar el peso actual.
+        let pmax = document.getElementById("pesomax").value;
+        let pmio = document.getElementById("mipeso").value;
+
+        if(pmax == "") pmax = 0;
+        if(pmio == "") pmio = 0;
+
+        const disponible = pmax - pmio;
+
+        let pesodata = 0;
+        for (let ingx of inglist) {
+
+            let inputcocic = document.getElementById(ingx + "_cant");
+            const ddato = 1 * Math.ceil(inputcocic.bdocant / calidad_ing[calidades[inputcocic.bdogrado]]); // Math.ceil(this.bdocant / calidad_ing[calidades[this.bdogrado]])
+            pesodata += parseFloat(rdata["datos"][ingx]["peso"]) * ddato;
+        
+        }
+        const resultado = Math.floor((disponible / pesodata) * 0.95);
+
+        const tinput = document.getElementById("cantidad");
+        tinput.value = resultado;
+        let e = new Event("input");
+        tinput.dispatchEvent(e);
+        // fin de calculo
+
+    }
+    infopesox.append(spaninfpoc);
+    infopesox.append(spaninfpto);
+    infopesox.append(fbutton);
+
+    // fin peso
     ppeso.children[1].innerText = "LT 0.00";
     otros.append(nli);
 
+    dinputpeso.append(infopesox);
     total.children[1].addEventListener("input", modificarSegunTotal);
     if (!secondLoad && totalget != null) {
         console.log("SETEAR " + totalget);
@@ -573,7 +668,7 @@ window.addEventListener("load", function () {
     lista_recetas_ul = document.getElementById("lista_recetas");
 
 
-    fetch("datosv1.json")
+    fetch("getjson.php")
         .then(function (rep) {
             return rep.json()
         })
