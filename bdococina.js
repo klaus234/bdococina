@@ -183,7 +183,6 @@ function crearCaja(cname, idname) {
 
 function calcPrct(total, usado)
 {
-    console.log("--> ", total, " | ", usado);
     if(total != 0 || total != undefined)
     {
         return (usado * 100) / total > 100 ? 100 : (usado * 100) / total;
@@ -569,7 +568,6 @@ function setAndLoad() {
     dinputpeso.append(infopesox);
     total.children[1].addEventListener("input", modificarSegunTotal);
     if (!secondLoad && totalget != null) {
-        console.log("SETEAR " + totalget);
         total.children[1].value = totalget;
         if(ratioget != undefined)
             ratio.children[1].value = ratioget;
