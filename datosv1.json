@@ -331,7 +331,7 @@
         "carnevibora": {
             "titulo": "Carne de Vibora",
             "peso": "0.03",
-            "plata": "0"
+            "plata": "11500"
         },
         "anis": {
             "titulo": "An\u00eds Estrellado",
@@ -410,49 +410,49 @@
         },
         "bistec": {
             "titulo": "Bistec",
-            "peso": "0",
-            "plata": "0"
+            "peso": "0.1",
+            "plata": "16100"
         },
         "crema": {
             "titulo": "Crema",
-            "peso": "0",
-            "plata": "0"
+            "peso": "0.01",
+            "plata": "6100"
         },
         "payfruta": {
             "titulo": "Pay de Fruta",
-            "peso": "0",
-            "plata": "0"
+            "peso": "0.1",
+            "plata": "4350"
         },
         "racioncab": {
             "titulo": "Raci\u00f3n de Combate de la Caballer\u00eda",
-            "peso": "0",
-            "plata": "0"
+            "peso": "0.10",
+            "plata": "35900"
         },
         "sandwichj": {
             "titulo": "S\u00e1ndwich de Jam\u00f3n",
-            "peso": "0",
-            "plata": "0"
+            "peso": "0.1",
+            "plata": "27100"
         },
         "sangre2": {
             "titulo": "Sangre (Ciervo, Res, etc)",
             "peso": "0.1",
-            "plata": "0"
+            "plata": "7950"
         },
         "pudinoscuro": {
             "titulo": "Pud\u00edn Oscuro",
-            "peso": "0",
-            "plata": "0",
+            "peso": "0.1",
+            "plata": "45200",
             "imperiales": "15"
         },
         "asadoave": {
             "titulo": "Asado de Ave",
-            "peso": "0",
-            "plata": "0"
+            "peso": "0.1",
+            "plata": "1700"
         },
         "carneave": {
             "titulo": "Carne de Ave",
-            "peso": "0",
-            "plata": "0"
+            "peso": "0.03",
+            "plata": "1980"
         },
         "verdurase": {
             "titulo": "Verduras en Escabeche",
@@ -463,17 +463,17 @@
         },
         "langosta": {
             "titulo": "Langosta",
-            "peso": "0",
-            "plata": "0"
+            "peso": "0.1",
+            "plata": "117000"
         },
         "ostra": {
             "titulo": "Ostra",
-            "peso": "0",
-            "plata": "0"
+            "peso": "0.1",
+            "plata": "18500"
         },
         "paprika": {
             "titulo": "Paprika",
-            "peso": "0",
+            "peso": "0.1",
             "plata": "850"
         },
         "esencialicor": {
@@ -631,8 +631,8 @@
         },
         "sal": {
             "titulo": "Sal",
-            "peso": "0",
-            "plata": "0",
+            "peso": "0.01",
+            "plata": "20",
             "nomejorable": true
         },
         "teleche": {
@@ -701,8 +701,8 @@
         },
         "aceitefreir": {
             "titulo": "Aceite de freir",
-            "peso": "0",
-            "plata": "0"
+            "peso": "0.01",
+            "plata": "40"
         },
         "bistecpescadoahumado": {
             "titulo": "Bistec de pescado Ahumado",
