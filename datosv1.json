@@ -783,7 +783,8 @@
         "platillocalpheon": {
             "titulo": "Platillo de Calpheon",
             "peso": "0",
-            "plata": "0"
+            "plata": "0",
+            "imperiales" : "18"
         },
         "platillobalenos": {
             "titulo": "Platillo de Balenos",
