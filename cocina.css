@@ -163,6 +163,11 @@ button
     color: black;
     font-weight: bold;
 }
+button:hover
+{
+    background-color: black;
+    color: rgb(255, 71, 71);
+}
 
 .valx
 {
