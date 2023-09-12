@@ -162,11 +162,14 @@ button
     cursor: pointer;
     color: black;
     font-weight: bold;
+    /* poner transicion */
+    transition-duration: 0.2s;
 }
 button:hover
 {
     background-color: black;
     color: rgb(255, 71, 71);
+    transition-duration: 0.2s;
 }
 
 .valx

@@ -1,13 +1,8 @@
 /*
     TODO: 
-    - Agregar porcentaje de barra de PESO.
-    - Completar código con comentarios.
-    - Refactor a todo jaja.
-    - Agregar más ingredientes y recetas.
-    - Poner una indicación de ingredientes procesados.
-    - Agregarle peso a todos los ingredientes y recetas.
-    - Agregarle precio default a todos los ingredientes y recetas.
-    - Versión OOP ?
+    - Agregar imperiales especiales.
+    - Agregar Mis max imperiales.
+    - Agregar días según max imperiales.
 
 */
 
@@ -97,6 +92,12 @@ function modificarSegunRatio() {
 
 }
 
+function modificarSegunRatioEspecial() {
+    let total_especiales = document.getElementById("total_especiales");
+    total_especiales.value = Math.floor(this.value * document.getElementById("cantidad").value);
+
+}
+
 function setPeso(p)
 {
     document.getElementById("peso").innerText = "LT " + p.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -130,8 +131,10 @@ function modificadorIngrediente(e) {
 
     const cantidadinp = document.getElementById("cantidad");
     const total = document.getElementById("total");
+    const total_especiales = document.getElementById("total_especiales");
     cantidadinp.value = cantidadr;
     total.value = Math.floor(cantidadr * document.getElementById("ratio").value);
+    total_especiales.value = Math.floor(cantidadr * document.getElementById("ratio_especial").value);
     const imperiales = document.getElementById("imperiales");
     if(imperiales != undefined)
         imperiales.value = Math.floor(total.value / imperiales.multiplicador);
@@ -140,9 +143,15 @@ function modificadorIngrediente(e) {
 function modificarSegunCantidad() {
     actualizarIngredientes(this.value);
     const total = document.getElementById("total");
+    const total_especiales = document.getElementById("total_especiales");
     const imperiales = document.getElementById("imperiales");
 
     total.value = Math.floor(this.value * document.getElementById("ratio").value);
+    if(!flagTotalEspecialesLoad)
+        total_especiales.value = Math.floor(this.value * document.getElementById("ratio_especial").value);
+    else
+        flagTotalEspecialesLoad = false;
+
     if(imperiales != undefined)
         imperiales.value = Math.floor(total.value / imperiales.multiplicador);
     updatePeso();
@@ -152,8 +161,11 @@ function modificarSegunCantidad() {
 
 function modificarSegunTotal() {
     const ratiox = document.getElementById("ratio").value;
+    const total_especiales = document.getElementById("total_especiales");
+
     const cantidadx = document.getElementById("cantidad");
     cantidadx.value = Math.floor(this.value / ratiox);
+    total_especiales.value = Math.floor(cantidadx.value * document.getElementById("ratio_especial").value);
     const imperiales = document.getElementById("imperiales");
     actualizarIngredientes(cantidadx.value);
     if(imperiales != undefined)
@@ -163,6 +175,17 @@ function modificarSegunTotal() {
 
 }
 
+let flagTotalEspecialesLoad = false;
+function modificarSegunTotalEspeciales()
+{
+    const total_especiales = document.getElementById("total_especiales");
+    const cantidadx = document.getElementById("cantidad");
+    const ratio_especial = document.getElementById("ratio_especial").value;
+    cantidadx.value = Math.floor(total_especiales.value / ratio_especial);
+    const e = new Event("input");
+    flagTotalEspecialesLoad = true;
+    cantidadx.dispatchEvent(e);
+}
 function modificarSegunImperiales()
 {
     const imperiales = document.getElementById("imperiales");
@@ -387,6 +410,7 @@ function setAndLoad() {
     }
     let cant = crearElementoLi(otros, "Cantidad cocinada: ", "cantidad");
     let ratio = crearElementoLi(otros, "Ratio: ", "ratio");
+    let ratio_especial = crearElementoLi(otros, "Ratio Especial: ", "ratio_especial");
     
 
     let nli = document.createElement("li");
@@ -398,7 +422,12 @@ function setAndLoad() {
     ratio.children[1].value = 2.4;
     ratio.children[1].step = 0.1;
     ratio.children[1].addEventListener("input", modificarSegunRatio)
+
+    ratio_especial.children[1].value = 0.5;
+    ratio_especial.children[1].step = 0.1;
+    ratio_especial.children[1].addEventListener("input", modificarSegunRatioEspecial)
     let total = crearElementoLi(otros, "Total obtenidos: ", "total");
+    let total_especiales = crearElementoLi(otros, "Total (especiales) obtenidos: ", "total_especiales");
     
     if(rdata["datos"][currentingrediente]["imperiales"] != undefined)
     {
@@ -567,6 +596,7 @@ function setAndLoad() {
 
     dinputpeso.append(infopesox);
     total.children[1].addEventListener("input", modificarSegunTotal);
+    total_especiales.children[1].addEventListener("input", modificarSegunTotalEspeciales);
     if (!secondLoad && totalget != null) {
         total.children[1].value = totalget;
         if(ratioget != undefined)
