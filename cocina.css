@@ -39,7 +39,7 @@ input[type="number"]
 {
     width: 15vw;
     max-width: 15vw;
-    margin-left: 37px;
+    margin-left: 48px;
     
 }
 #resultbox ul
@@ -309,4 +309,15 @@ button:hover
 .fillbtn:hover{
     background-color: white;
     color: black;
+}
+
+.especiales_txt
+{
+    color: #ff5e00;
+    font-weight: bold;
+}
+.totaldef_txt
+{
+    color: rgb(255, 71, 71);
+    font-weight: bold;
 }

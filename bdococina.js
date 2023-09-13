@@ -136,8 +136,12 @@ function modificadorIngrediente(e) {
     total.value = Math.floor(cantidadr * document.getElementById("ratio").value);
     total_especiales.value = Math.floor(cantidadr * document.getElementById("ratio_especial").value);
     const imperiales = document.getElementById("imperiales");
+    const imperiales_especiales = document.getElementById("imperiales_especiales");
+    const imperiales_total = document.getElementById("imperiales_total");
     if(imperiales != undefined)
         imperiales.value = Math.floor(total.value / imperiales.multiplicador);
+        imperiales_especiales.value = Math.floor(total_especiales.value / imperiales_especiales.multiplicador);
+        imperiales_total.value = Math.floor(parseInt(imperiales.value) + parseInt(imperiales_especiales.value));
 }
 
 function modificarSegunCantidad() {
@@ -145,7 +149,8 @@ function modificarSegunCantidad() {
     const total = document.getElementById("total");
     const total_especiales = document.getElementById("total_especiales");
     const imperiales = document.getElementById("imperiales");
-
+    const imperiales_especiales = document.getElementById("imperiales_especiales");
+    const imperiales_total = document.getElementById("imperiales_total");
     total.value = Math.floor(this.value * document.getElementById("ratio").value);
     if(!flagTotalEspecialesLoad)
         total_especiales.value = Math.floor(this.value * document.getElementById("ratio_especial").value);
@@ -154,6 +159,8 @@ function modificarSegunCantidad() {
 
     if(imperiales != undefined)
         imperiales.value = Math.floor(total.value / imperiales.multiplicador);
+        imperiales_especiales.value = Math.floor(total_especiales.value / imperiales_especiales.multiplicador);
+        imperiales_total.value = Math.floor(parseInt(imperiales.value) + parseInt(imperiales_especiales.value));
     updatePeso();
         
     
@@ -167,9 +174,13 @@ function modificarSegunTotal() {
     cantidadx.value = Math.floor(this.value / ratiox);
     total_especiales.value = Math.floor(cantidadx.value * document.getElementById("ratio_especial").value);
     const imperiales = document.getElementById("imperiales");
+    const imperiales_especiales = document.getElementById("imperiales_especiales");
+    const imperiales_total = document.getElementById("imperiales_total");
     actualizarIngredientes(cantidadx.value);
     if(imperiales != undefined)
         imperiales.value = Math.floor(this.value / imperiales.multiplicador);
+        imperiales_especiales.value = Math.floor(total_especiales.value / imperiales_especiales.multiplicador);
+        imperiales_total.value = Math.floor(parseInt(imperiales.value) + parseInt(imperiales_especiales.value));
     updatePeso();
 
 
@@ -195,7 +206,37 @@ function modificarSegunImperiales()
     total.dispatchEvent(e);
     
 }
+function modificarSegunImperialesEspeciales()
+{
+    const imperiales_especiales = document.getElementById("imperiales_especiales");
+    const total_especiales = document.getElementById("total_especiales");
+    total_especiales.value = imperiales_especiales.multiplicador * imperiales_especiales.value;
+    const e = new Event("input");
+    total_especiales.dispatchEvent(e);
+}
 
+function modificarSegunImperialesTotales()
+{
+    const ratio = document.getElementById("ratio").value;
+    const ratio_especial = document.getElementById("ratio_especial").value;
+    const imperiales_total = document.getElementById("imperiales_total").value;
+
+    const imperiales_especiales = document.getElementById("imperiales_especiales");
+    const imperiales = document.getElementById("imperiales");
+
+    const cantidadx = document.getElementById("cantidad");
+
+    const totalratio = (parseFloat(ratio) / parseFloat(imperiales.multiplicador)) + (parseFloat(ratio_especial) / parseFloat(imperiales_especiales.multiplicador));
+
+    let ecx = Math.ceil((parseFloat(imperiales_total) / totalratio));
+    if(imperiales_total == 1)
+        ecx += Math.ceil(ratio);
+
+    cantidadx.value = ecx;
+    console.log(cantidadx.value);
+    const e = new Event("input");
+    cantidadx.dispatchEvent(e);
+}
 function crearCaja(cname, idname) {
     const box = document.createElement("span");
     box.className = "cajita " + cname;
@@ -412,6 +453,7 @@ function setAndLoad() {
     let ratio = crearElementoLi(otros, "Ratio: ", "ratio");
     let ratio_especial = crearElementoLi(otros, "Ratio Especial: ", "ratio_especial");
     
+    ratio_especial.classList.add("especiales_txt")
 
     let nli = document.createElement("li");
     let boton = document.createElement("button");
@@ -428,11 +470,20 @@ function setAndLoad() {
     ratio_especial.children[1].addEventListener("input", modificarSegunRatioEspecial)
     let total = crearElementoLi(otros, "Total obtenidos: ", "total");
     let total_especiales = crearElementoLi(otros, "Total (especiales) obtenidos: ", "total_especiales");
-    
+    total_especiales.classList.add("especiales_txt");
     if(rdata["datos"][currentingrediente]["imperiales"] != undefined)
     {
         let imperiales = crearElementoLi(otros, "Imperiales: (x" + rdata["datos"][currentingrediente]["imperiales"] + "): ", "imperiales");
-    
+        let imperiales_especiales = crearElementoLi(otros, "Imperiales (especiales) : (x" + rdata["datos"][currentingrediente]["imperiales"] / 3 + "): ", "imperiales_especiales");
+        let imperiales_total = crearElementoLi(otros, "Imperiales total (±1):  ", "imperiales_total");
+
+        imperiales_total.classList.add("totaldef_txt");
+        imperiales_total.children[1].addEventListener("input", modificarSegunImperialesTotales);
+
+        imperiales_especiales.classList.add("especiales_txt");
+        imperiales_especiales.children[1].addEventListener("input", modificarSegunImperialesEspeciales);
+        imperiales_especiales.children[1].multiplicador = rdata["datos"][currentingrediente]["imperiales"] / 3;
+
         imperiales.children[1].addEventListener("input", modificarSegunImperiales);
         imperiales.children[1].multiplicador = rdata["datos"][currentingrediente]["imperiales"];
     }
@@ -473,8 +524,6 @@ function setAndLoad() {
 
     divpeso.append(dinputpeso);
 
-    // <span class="b_base b_contenedor"><span class="b_base b_pocupado"></span><span class="b_base b_usado"></span></span>
-   
 
     otros.append(divpeso);
     
@@ -484,27 +533,6 @@ function setAndLoad() {
 
     pesomax.children[1].oninput = function(event)
     {
-        /*
-        const pmax = this.value;
-        const pmio = document.getElementById("mipeso").value;
-        
-
-        const bocupado = document.getElementById("bocupado"); 
-        const busado = document.getElementById("busado");
-
-        let pocupado = calcPrct(pmax, pmio);
-        let pusado = calcPrct(pmax, gpeso);
-        const resultado = Math.round(((parseFloat(pmio) + parseFloat(gpeso)) + Number.EPSILON) * 100) / 100;
-        document.getElementById("pesoocu").innerText = "" + resultado ;
-        document.getElementById("pesotot").innerText = "/ " + pmax + " LT";
-        bocupado.style = "width: " + pocupado + "%;";
-        if(pocupado + pusado > 100)
-        {
-            pusado = 100 - pocupado;
-            if(pusado < 0)
-                pusado = 0;
-        }
-        busado.style = "width: " + pusado + "%;";*/
         updatePeso();
         
     };
@@ -514,29 +542,7 @@ function setAndLoad() {
 
     mipeso.children[1].oninput = function()
     {
-        /*
-        const pmax = document.getElementById("pesomax").value;
-        const pmio = this.value
-
-        const bocupado = document.getElementById("bocupado"); // es pmio
-        const busado = document.getElementById("busado");
-
-        document.getElementById("pesotot").innerText = "/ " + pmax + " LT";
-        
-        let pocupado = calcPrct(pmax, pmio);
-        let pusado = calcPrct(pmax, gpeso);
-
-        const resultado = Math.round(((parseFloat(pmio) + parseFloat(gpeso)) + Number.EPSILON) * 100) / 100;
-        document.getElementById("pesoocu").innerText = "" + resultado ;
-
-        bocupado.style = "width: " + pocupado + "%;";
-        if(pocupado + pusado > 100)
-        {
-            pusado = 100 - pocupado;
-            if(pusado < 0)
-                pusado = 0;
-        }
-        busado.style = "width: " + pusado + "%;";*/
+    
         updatePeso();
     }
     let pbarras = document.createElement("li");
