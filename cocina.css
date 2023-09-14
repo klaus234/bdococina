@@ -321,3 +321,22 @@ button:hover
     color: rgb(255, 71, 71);
     font-weight: bold;
 }
+.botonera
+{
+    display: flex;
+    justify-content: space-around;
+}
+.savebtn
+{
+    background-color: green;
+    color: white;
+}
+.savebtn:hover
+{
+    background-color: white;
+    color: green;
+}
+.maximperiales
+{
+    color: rgb(54, 54, 246) !important;
+}

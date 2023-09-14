@@ -1,8 +1,8 @@
 /*
     TODO: 
-    - Agregar imperiales especiales.
     - Agregar Mis max imperiales.
     - Agregar días según max imperiales.
+    - Agregar opción de guardar usando cookies.
 
 */
 
@@ -158,9 +158,19 @@ function modificarSegunCantidad() {
         flagTotalEspecialesLoad = false;
 
     if(imperiales != undefined)
+    {
         imperiales.value = Math.floor(total.value / imperiales.multiplicador);
         imperiales_especiales.value = Math.floor(total_especiales.value / imperiales_especiales.multiplicador);
-        imperiales_total.value = Math.floor(parseInt(imperiales.value) + parseInt(imperiales_especiales.value));
+        if(!flagImperialTotal)
+        {
+            imperiales_total.value = Math.floor(parseInt(imperiales.value) + parseInt(imperiales_especiales.value));
+            flagImperialTotal = true;
+        }else{
+            flagImperialTotal = false;
+        }
+    }
+       
+
     updatePeso();
         
     
@@ -178,15 +188,19 @@ function modificarSegunTotal() {
     const imperiales_total = document.getElementById("imperiales_total");
     actualizarIngredientes(cantidadx.value);
     if(imperiales != undefined)
+    {
         imperiales.value = Math.floor(this.value / imperiales.multiplicador);
         imperiales_especiales.value = Math.floor(total_especiales.value / imperiales_especiales.multiplicador);
         imperiales_total.value = Math.floor(parseInt(imperiales.value) + parseInt(imperiales_especiales.value));
+    }
+       
     updatePeso();
 
 
 }
 
 let flagTotalEspecialesLoad = false;
+
 function modificarSegunTotalEspeciales()
 {
     const total_especiales = document.getElementById("total_especiales");
@@ -214,7 +228,7 @@ function modificarSegunImperialesEspeciales()
     const e = new Event("input");
     total_especiales.dispatchEvent(e);
 }
-
+let flagImperialTotal = false;
 function modificarSegunImperialesTotales()
 {
     const ratio = document.getElementById("ratio").value;
@@ -232,10 +246,23 @@ function modificarSegunImperialesTotales()
     if(imperiales_total == 1)
         ecx += Math.ceil(ratio);
 
+    flagImperialTotal = true;
     cantidadx.value = ecx;
     console.log(cantidadx.value);
+    
     const e = new Event("input");
     cantidadx.dispatchEvent(e);
+}
+
+function modificarSegunDiasImperiales()
+{
+    const dias_imperiales = document.getElementById("dias_imperiales").value;
+    const imperiales_max = document.getElementById("imperiales_max").value;
+    const imperiales_total = document.getElementById("imperiales_total");
+
+    imperiales_total.value = dias_imperiales * imperiales_max;
+    const e = new Event("input");
+    imperiales_total.dispatchEvent(e);
 }
 function crearCaja(cname, idname) {
     const box = document.createElement("span");
@@ -315,6 +342,30 @@ function updatePeso()
             pusado = 0;
     }
     busado.style = "width: " + pusado + "%;";
+}
+function guardarPreferencias()
+{
+    const ratio = document.getElementById("ratio").value;
+    const ratio_especial = document.getElementById("ratio_especial").value;
+    const pesomax = document.getElementById("pesomax").value;
+    const mipeso = document.getElementById("mipeso").value;
+    const maximperiales = document.getElementById("imperiales_max").value;
+    this.disabled = true;
+    this.style = "opacity: 0.5;"
+    //  "Guardar preferencias"
+    //  "        Ok          "
+    this.innerText = "Guardando...";
+    const dictSave = 
+    {
+        "ratio": ratio,
+        "ratio_especial": ratio_especial,
+        "pesomax": pesomax,
+        "mipeso": mipeso,
+        "maximperiales": maximperiales
+    }
+    localStorage.setItem("preferencias", JSON.stringify(dictSave));
+    setTimeout(function(){this.disabled = false; this.style = ""; this.innerText = "Guardar preferencias"}.bind(this), 300);
+
 }
 function setAndLoad() {
     gastoIngCalculados = {};
@@ -456,10 +507,17 @@ function setAndLoad() {
     ratio_especial.classList.add("especiales_txt")
 
     let nli = document.createElement("li");
+    nli.classList.add("botonera");
     let boton = document.createElement("button");
+    let botonsave = document.createElement("button");
+    botonsave.innerText = "Guardar preferencias";
+    botonsave.classList.add("savebtn");
+    botonsave.onclick = guardarPreferencias;
+
     boton.innerText = "Calcular Ingredientes";
     boton.addEventListener("click", generarListaIngredientes);
     nli.append(boton);
+    nli.append(botonsave);
     cant.children[1].addEventListener("input", modificarSegunCantidad);
     ratio.children[1].value = 2.4;
     ratio.children[1].step = 0.1;
@@ -476,6 +534,15 @@ function setAndLoad() {
         let imperiales = crearElementoLi(otros, "Imperiales: (x" + rdata["datos"][currentingrediente]["imperiales"] + "): ", "imperiales");
         let imperiales_especiales = crearElementoLi(otros, "Imperiales (especiales) : (x" + rdata["datos"][currentingrediente]["imperiales"] / 3 + "): ", "imperiales_especiales");
         let imperiales_total = crearElementoLi(otros, "Imperiales total (±1):  ", "imperiales_total");
+        let imperiales_max = crearElementoLi(otros, "Máx imperiales", "imperiales_max");
+        imperiales_max.children[1].value = 186;
+        imperiales_max.classList.add("maximperiales");
+        imperiales_max.children[1].classList.add("maximperiales");
+
+        let dias_imperiales = crearElementoLi(otros, "Días imperiales", "dias_imperiales");
+        dias_imperiales.children[1].value = 0;
+
+        dias_imperiales.children[1].addEventListener("input", modificarSegunDiasImperiales);
 
         imperiales_total.classList.add("totaldef_txt");
         imperiales_total.children[1].addEventListener("input", modificarSegunImperialesTotales);
@@ -603,6 +670,21 @@ function setAndLoad() {
     dinputpeso.append(infopesox);
     total.children[1].addEventListener("input", modificarSegunTotal);
     total_especiales.children[1].addEventListener("input", modificarSegunTotalEspeciales);
+    
+
+    const preferencias = localStorage.getItem("preferencias");
+    if(preferencias != null && preferencias != "")
+    {
+        const dictPreferencias = JSON.parse(preferencias);
+        ratio.children[1].value = dictPreferencias["ratio"];
+        ratio_especial.children[1].value = dictPreferencias["ratio_especial"];
+        pesomax.children[1].value = dictPreferencias["pesomax"];
+        mipeso.children[1].value = dictPreferencias["mipeso"];
+        const isDefined = typeof imperiales_max;
+
+        if(isDefined == undefined)
+            imperiales_max.value = dictPreferencias["maximperiales"];
+    }
     if (!secondLoad && totalget != null) {
         total.children[1].value = totalget;
         if(ratioget != undefined)
