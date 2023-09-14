@@ -39,7 +39,7 @@ function generarListaIngredientes() {
     keysLista = keysLista.sort();
     for (let kl of keysLista) {
         let kli = document.createElement("li");
-        kli.innerHTML = "<span class=\"titing\">" + rdata["datos"][kl]["titulo"] + "</span>: <span class=\"cantcing\">" + ingredientesbase[kl] + "</span>";
+        kli.innerHTML = "<span class=\"titing\">" + rdata["datos"][kl]["titulo"] + "</span>: <span class=\"cantcing\">" + ingredientesbase[kl].toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."); + "</span>";
         ulingredientes.append(kli);
     }
 }
