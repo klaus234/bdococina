@@ -138,12 +138,15 @@ function modificadorIngrediente(e) {
     const imperiales = document.getElementById("imperiales");
     const imperiales_especiales = document.getElementById("imperiales_especiales");
     const imperiales_total = document.getElementById("imperiales_total");
+    const imperiales_max = document.getElementById("imperiales_max");
     if(imperiales != undefined)
         imperiales.value = Math.floor(total.value / imperiales.multiplicador);
         imperiales_especiales.value = Math.floor(total_especiales.value / imperiales_especiales.multiplicador);
         imperiales_total.value = Math.floor(parseInt(imperiales.value) + parseInt(imperiales_especiales.value));
+        const dias_imperiales = document.getElementById("dias_imperiales");
+        dias_imperiales.value = Math.floor(imperiales_total.value / imperiales_max.value);
 }
-
+let noModFlagDia = false;
 function modificarSegunCantidad() {
     actualizarIngredientes(this.value);
     const total = document.getElementById("total");
@@ -151,6 +154,7 @@ function modificarSegunCantidad() {
     const imperiales = document.getElementById("imperiales");
     const imperiales_especiales = document.getElementById("imperiales_especiales");
     const imperiales_total = document.getElementById("imperiales_total");
+    const imperiales_max = document.getElementById("imperiales_max");
     total.value = Math.floor(this.value * document.getElementById("ratio").value);
     if(!flagTotalEspecialesLoad)
         total_especiales.value = Math.floor(this.value * document.getElementById("ratio_especial").value);
@@ -168,6 +172,9 @@ function modificarSegunCantidad() {
         }else{
             flagImperialTotal = false;
         }
+        const dias_imperiales = document.getElementById("dias_imperiales");
+        dias_imperiales.value = Math.floor(imperiales_total.value / imperiales_max.value);
+        
     }
        
 
@@ -186,12 +193,16 @@ function modificarSegunTotal() {
     const imperiales = document.getElementById("imperiales");
     const imperiales_especiales = document.getElementById("imperiales_especiales");
     const imperiales_total = document.getElementById("imperiales_total");
+    const imperiales_max = document.getElementById("imperiales_max");
+
     actualizarIngredientes(cantidadx.value);
     if(imperiales != undefined)
     {
         imperiales.value = Math.floor(this.value / imperiales.multiplicador);
         imperiales_especiales.value = Math.floor(total_especiales.value / imperiales_especiales.multiplicador);
         imperiales_total.value = Math.floor(parseInt(imperiales.value) + parseInt(imperiales_especiales.value));
+        const dias_imperiales = document.getElementById("dias_imperiales");
+        dias_imperiales.value = Math.floor(imperiales_total.value / imperiales_max.value);
     }
        
     updatePeso();
@@ -261,6 +272,7 @@ function modificarSegunDiasImperiales()
     const imperiales_total = document.getElementById("imperiales_total");
 
     imperiales_total.value = dias_imperiales * imperiales_max;
+    noModFlagDia = true;
     const e = new Event("input");
     imperiales_total.dispatchEvent(e);
 }
