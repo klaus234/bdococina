@@ -28,20 +28,233 @@ let calidades = {
     "azul": 2
 }
 
+function filtrarIngredientesBase() {
+    const texto = document.getElementById("buscador_ingredientes").value.toLowerCase();
+    const items = document.querySelectorAll("#ingredientes_base .ingrediente_item");
+    
+    // First, reset all
+    items.forEach(item => {
+        item.style.display = "";
+        item.classList.remove("match_found");
+        item.classList.remove("child_of_match");
+    });
+    
+    if (texto.trim() === "") return;
+    
+    // Mark items that match directly
+    items.forEach(item => {
+        // Enforce checking only the direct title of this item, 
+        // which is inside the immediate .ing_contenedor so we don't accidentally match sub-items.
+        // Actually .titing is the class. We can use scoped query or just the first .titing
+        const spanTitulo = item.querySelector(".titing");
+        if (spanTitulo && spanTitulo.textContent.toLowerCase().includes(texto)) {
+            item.classList.add("match_found");
+        } else {
+            item.style.display = "none";
+        }
+    });
+
+    // Mark children of matched items so they are also visible
+    items.forEach(item => {
+        if (item.classList.contains("match_found")) {
+            const children = item.querySelectorAll(".ingrediente_item");
+            children.forEach(child => {
+                child.classList.add("child_of_match");
+            });
+        }
+    });
+    
+    // Unhide parents of matching items and children of matching items
+    items.forEach(item => {
+        if (item.classList.contains("match_found") || item.classList.contains("child_of_match")) {
+            item.style.display = "";
+            let parent = item.parentElement.closest(".ingrediente_item");
+            while (parent) {
+                parent.style.display = "";
+                // Expand parent if it has a button
+                const btn = parent.querySelector(":scope > .ing_wrapper > .ing_contenedor > .btn_expand") || 
+                            parent.querySelector(".ing_wrapper > .ing_contenedor > .btn_expand");
+                if (btn && btn.getAttribute("data-expanded") === "false") {
+                    btn.click();
+                }
+                parent = parent.parentElement.closest(".ingrediente_item");
+            }
+        }
+    });
+}
+
 function generarListaIngredientes() {
-
-    ingredientesbase = {};
-    rAgregarABase(currentingrediente, document.getElementById("cantidad").value);
-
-    let keysLista = Object.keys(ingredientesbase);
     const ulingredientes = document.getElementById("ingredientes_base");
     ulingredientes.innerHTML = "";
-    keysLista = keysLista.sort();
-    for (let kl of keysLista) {
-        let kli = document.createElement("li");
-        kli.innerHTML = "<span class=\"titing\">" + rdata["datos"][kl]["titulo"] + "</span>: <span class=\"cantcing\">" + ingredientesbase[kl] + "</span>";
-        ulingredientes.append(kli);
+    
+    const buscadorIngredientes = document.getElementById("buscador_ingredientes");
+    if (buscadorIngredientes) {
+        buscadorIngredientes.style.display = "";
+        buscadorIngredientes.removeEventListener("input", filtrarIngredientesBase);
+        buscadorIngredientes.addEventListener("input", filtrarIngredientesBase);
     }
+    
+    const cantidad = parseFloat(document.getElementById("cantidad").value) || 0;
+    const totalesGlobales = {};
+    acumularTotalesArbol(currentingrediente, cantidad, 0, totalesGlobales);
+    const ul = crearArbolIngredientes(currentingrediente, cantidad, 0, totalesGlobales);
+    ulingredientes.append(ul);
+    
+    if (buscadorIngredientes && buscadorIngredientes.value.trim() !== "") {
+        filtrarIngredientesBase();
+    }
+}
+
+function obtenerRatioSeguro() {
+    const ratioL = parseFloat(document.getElementById("ratio").value);
+    if (!isFinite(ratioL) || ratioL <= 0) {
+        return 1;
+    }
+    return ratioL;
+}
+
+function formatearMilesAR(numero) {
+    const valor = Math.floor(Number(numero) || 0);
+    return valor.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
+
+function crearSpanCantidad(cantidadLocal, cantidadTotalGlobal) {
+    const spanCant = document.createElement("span");
+    spanCant.className = "cantcing";
+
+    const spanLocal = document.createElement("span");
+    spanLocal.className = "cantcing_local";
+    spanLocal.textContent = "x" + formatearMilesAR(cantidadLocal);
+    spanCant.append(spanLocal);
+
+    if (cantidadTotalGlobal > cantidadLocal) {
+        const spanTotal = document.createElement("span");
+        spanTotal.className = "cantcing_total";
+        spanTotal.textContent = " (" + formatearMilesAR(cantidadTotalGlobal) + " total)";
+        spanCant.append(spanTotal);
+    }
+
+    return spanCant;
+}
+
+function acumularTotalesArbol(recetaId, cantidad, nivel, totalesGlobales) {
+    const ingredientes = rdata["recetas"][recetaId];
+    const keysLista = Object.keys(ingredientes).sort();
+
+    let cantidad_cocinadas;
+    if (nivel === 0) {
+        cantidad_cocinadas = cantidad;
+    } else {
+        const ratioL = obtenerRatioSeguro();
+        cantidad_cocinadas = Math.floor(cantidad / ratioL);
+    }
+
+    for (let ingId of keysLista) {
+        const cantidad_ing = Math.floor(cantidad_cocinadas * ingredientes[ingId]);
+        if (!totalesGlobales[ingId]) {
+            totalesGlobales[ingId] = 0;
+        }
+        totalesGlobales[ingId] += cantidad_ing;
+
+        if (ingId in rdata["recetas"]) {
+            acumularTotalesArbol(ingId, cantidad_ing, nivel + 1, totalesGlobales);
+        }
+    }
+}
+
+function crearArbolIngredientes(recetaId, cantidad, nivel, totalesGlobales) {
+    const ul = document.createElement("ul");
+    ul.className = "ingredientes_arbol nivel_" + nivel;
+    
+    const ingredientes = rdata["recetas"][recetaId];
+    const keysLista = Object.keys(ingredientes).sort();
+    
+    // 1. Calcular cuántas "cocinadas" necesitamos de esta receta
+    let cantidad_cocinadas;
+    if (nivel === 0) {
+        // En el primer nivel, la cantidad que ingresó el usuario son las cocinadas
+        cantidad_cocinadas = cantidad;
+    } else {
+        // En sub-niveles, 'cantidad' es el número de ÍTEMS que necesitamos.
+        // Lo dividimos por el ratio para saber cuántas veces hay que cocinar.
+        const ratioL = obtenerRatioSeguro();
+        cantidad_cocinadas = Math.floor(cantidad / ratioL);
+    }
+    
+    for (let ingId of keysLista) {
+        const li = document.createElement("li");
+        li.className = "ingrediente_item";
+        
+        const esReceta = ingId in rdata["recetas"];
+        
+        // 2. La cantidad total del ingrediente es simplemente:
+        // (Veces que cocino la receta padre) * (Lo que me pide la receta)
+        let cantidad_ing = Math.floor(cantidad_cocinadas * ingredientes[ingId]);
+        const cantidad_total_global = Math.floor(totalesGlobales[ingId] || 0);
+        
+        const span_contenedor = document.createElement("span");
+        span_contenedor.className = "ing_contenedor";
+        
+        if (esReceta) {
+            const btnExpand = document.createElement("button");
+            btnExpand.className = "btn_expand";
+            btnExpand.textContent = "▼";
+            btnExpand.setAttribute("data-expanded", "true");
+            
+            const divContenedor = document.createElement("div");
+            divContenedor.className = "ing_wrapper";
+            
+            const span_titulo = document.createElement("span");
+            span_titulo.className = "ing_titulo_receta";
+            span_titulo.innerHTML = `<span class="titing">${rdata["datos"][ingId]["titulo"]}</span>`;
+            
+            const span_cant = crearSpanCantidad(cantidad_ing, cantidad_total_global);
+            
+            btnExpand.addEventListener("click", function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const expanded = btnExpand.getAttribute("data-expanded") === "true";
+                const subArbol = divContenedor.querySelector(".ingredientes_arbol");
+                
+                if (expanded) {
+                    subArbol.classList.add("oculto");
+                    btnExpand.textContent = "▶";
+                    btnExpand.setAttribute("data-expanded", "false");
+                } else {
+                    subArbol.classList.remove("oculto");
+                    btnExpand.textContent = "▼";
+                    btnExpand.setAttribute("data-expanded", "true");
+                }
+            });
+            
+            span_contenedor.append(btnExpand);
+            span_contenedor.append(span_titulo);
+            span_contenedor.append(span_cant);
+            
+            // Aquí pasamos la cantidad_ing (que ahora representa correctamente 
+            // la cantidad de ÍTEMS que necesitamos de esta sub-receta)
+            const subArbol = crearArbolIngredientes(ingId, cantidad_ing, nivel + 1, totalesGlobales);
+            
+            divContenedor.append(span_contenedor);
+            divContenedor.append(subArbol);
+            
+            li.append(divContenedor);
+        } else {
+            const span_titulo = document.createElement("span");
+            span_titulo.className = "ing_titulo_ingrediente";
+            span_titulo.innerHTML = `<span class="titing">${rdata["datos"][ingId]["titulo"]}</span>`;
+            
+            const span_cant = crearSpanCantidad(cantidad_ing, cantidad_total_global);
+            
+            span_contenedor.append(span_titulo);
+            span_contenedor.append(span_cant);
+            li.append(span_contenedor);
+        }
+        
+        ul.append(li);
+    }
+    
+    return ul;
 }
 
 function rAgregarABase(cingrediente, cantidad) {
@@ -138,10 +351,12 @@ function modificadorIngrediente(e) {
     const imperiales = document.getElementById("imperiales");
     const imperiales_especiales = document.getElementById("imperiales_especiales");
     const imperiales_total = document.getElementById("imperiales_total");
-    if(imperiales != undefined)
+    if(imperiales != undefined) {
         imperiales.value = Math.floor(total.value / imperiales.multiplicador);
         imperiales_especiales.value = Math.floor(total_especiales.value / imperiales_especiales.multiplicador);
         imperiales_total.value = Math.floor(parseInt(imperiales.value) + parseInt(imperiales_especiales.value));
+        actualizarDiasUI();
+    }
 }
 
 function modificarSegunCantidad() {
@@ -164,6 +379,7 @@ function modificarSegunCantidad() {
         if(!flagImperialTotal)
         {
             imperiales_total.value = Math.floor(parseInt(imperiales.value) + parseInt(imperiales_especiales.value));
+            actualizarDiasUI();
             flagImperialTotal = true;
         }else{
             flagImperialTotal = false;
@@ -192,6 +408,7 @@ function modificarSegunTotal() {
         imperiales.value = Math.floor(this.value / imperiales.multiplicador);
         imperiales_especiales.value = Math.floor(total_especiales.value / imperiales_especiales.multiplicador);
         imperiales_total.value = Math.floor(parseInt(imperiales.value) + parseInt(imperiales_especiales.value));
+        actualizarDiasUI();
     }
        
     updatePeso();
@@ -217,6 +434,7 @@ function modificarSegunImperiales()
     const total = document.getElementById("total");
     total.value = imperiales.multiplicador * imperiales.value;
     const e = new Event("input");
+    actualizarDiasUI();
     total.dispatchEvent(e);
     
 }
@@ -252,6 +470,15 @@ function modificarSegunImperialesTotales()
     
     const e = new Event("input");
     cantidadx.dispatchEvent(e);
+}
+
+function actualizarDiasUI() {
+    const imperiales_total = document.getElementById("imperiales_total");
+    const dias_imperiales = document.getElementById("dias_imperiales");
+    const imperiales_max = document.getElementById("imperiales_max");
+    if (imperiales_total && dias_imperiales && imperiales_max && imperiales_max.value > 0) {
+        dias_imperiales.value = Math.round(parseFloat((imperiales_total.value / imperiales_max.value).toFixed(2)));
+    }
 }
 
 function modificarSegunDiasImperiales()
@@ -538,6 +765,7 @@ function setAndLoad() {
         imperiales_max.children[1].value = 186;
         imperiales_max.classList.add("maximperiales");
         imperiales_max.children[1].classList.add("maximperiales");
+        imperiales_max.children[1].addEventListener("input", actualizarDiasUI);
 
         let dias_imperiales = crearElementoLi(otros, "Días imperiales", "dias_imperiales");
         dias_imperiales.children[1].value = 0;
@@ -571,11 +799,11 @@ function setAndLoad() {
    
         if(!d.mostrar)
         {
-            this.children[1].innerText = "Mostrar opciones peso";
+            this.children[1].innerText = " Mostrar opciones peso";
             this.children[0].innerText = "+";
             d.style = "display: none;";
         }else{
-            this.children[1].innerText = "Ocultar opciones peso";
+            this.children[1].innerText = " Ocultar opciones peso";
             this.children[0].innerText = "-";
             d.style = "display: block;";
         }
