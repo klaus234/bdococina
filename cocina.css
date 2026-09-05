@@ -189,7 +189,7 @@ input[type="number"]:focus {
     margin-left: auto;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 10px;
 }
 
 .titulo {
@@ -279,6 +279,58 @@ input[type="number"] {
     font-size: 14px;
     min-height: 38px;
     width: 7.4em;
+}
+
+input.numero_con_selectores {
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+input.numero_con_selectores::-webkit-inner-spin-button,
+input.numero_con_selectores::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.selectores_numero {
+    display: inline-flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+    gap: 3px;
+    margin: 0;
+    vertical-align: middle;
+}
+
+.selectores_numero button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 22px;
+    padding: 0;
+    border: 1px solid rgba(255, 111, 60, 0.55);
+    border-radius: 7px;
+    background: rgba(255, 111, 60, 0.15);
+    color: var(--accent);
+    font-size: 12px;
+    line-height: 1;
+    box-shadow: none;
+}
+
+.selectores_numero button:hover {
+    background: rgba(255, 111, 60, 0.3);
+    transform: none;
+}
+
+.selectores_numero button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+#otros li.fila_numero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    gap: 10px;
 }
 
 #otros input {
@@ -1017,7 +1069,7 @@ button:active {
 .tengo_wrap {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 10px;
     flex: 0 0 auto;
 }
 

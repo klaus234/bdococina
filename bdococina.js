@@ -9,6 +9,32 @@
 */
 
 console.log("v 1.0.0");
+
+function crearSelectoresNumero(input, etiqueta) {
+    input.classList.add("numero_con_selectores");
+    const controles = document.createElement("span");
+    controles.className = "selectores_numero";
+    const nombre = input.getAttribute("aria-label") || etiqueta || "cantidad";
+    if (!input.hasAttribute("aria-label")) input.setAttribute("aria-label", nombre);
+    [1, -1].forEach(function (direccion) {
+        const boton = document.createElement("button");
+        boton.type = "button";
+        boton.textContent = direccion > 0 ? "▲" : "▼";
+        boton.setAttribute("aria-label", (direccion > 0 ? "Aumentar " : "Disminuir ") + nombre);
+        boton.addEventListener("click", function () {
+            if (input.disabled || input.readOnly) return;
+            const anterior = input.value;
+            if (direccion > 0) input.stepUp();
+            else input.stepDown();
+            if (input.value !== anterior) {
+                input.dispatchEvent(new Event("input", { bubbles: true }));
+                input.dispatchEvent(new Event("change", { bubbles: true }));
+            }
+        });
+        controles.append(boton);
+    });
+    return controles;
+}
 let rdata;
 let inglist = [];
 
@@ -557,6 +583,7 @@ function crearListaPuros(totalesGlobales, usosGlobales) {
         nec.innerText = "/ " + formatearMilesAR(necesario);
 
         tengoWrap.append(inpTengo);
+        tengoWrap.append(crearSelectoresNumero(inpTengo));
         tengoWrap.append(nec);
         li.append(tengoWrap);
         li.append(crearObtencion(k));
@@ -1498,7 +1525,8 @@ function setAndLoad() {
         cabeza.append(contMarca);
         lix.append(cabeza);
 
-        spansector.append(inputcant)
+        spansector.append(inputcant);
+        spansector.append(crearSelectoresNumero(inputcant, "Cantidad de " + rdata["datos"][ird].titulo));
 		if(rdata["datos"][ird]["nomejorable"] == undefined)
 		{
 			spansector.append(crearCaja("normal", ird));
@@ -1784,6 +1812,10 @@ function crearElementoLi(donde, texto, id, sininput) {
     inputcant.type = "number";
     lix.append(spantitle);
     lix.append(inputcant);
+    if (sininput == undefined) {
+        lix.classList.add("fila_numero");
+        lix.append(crearSelectoresNumero(inputcant, texto));
+    }
     donde.append(lix);
     return lix;
 }
