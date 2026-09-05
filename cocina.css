@@ -722,3 +722,656 @@ button:active {
         transform: translateY(0);
     }
 }
+
+/* ---------------------------------------------------------------
+   Pestañas de la lista de ingredientes:
+   "Árbol de ingredientes" (anidado) e "Ingredientes puros" (plano)
+   --------------------------------------------------------------- */
+
+#ingredientes_puros {
+    grid-column: 1 / -1;
+    list-style: none;
+    margin: 2px 0 0;
+    padding: 14px;
+    background: linear-gradient(180deg, rgba(12, 21, 30, 0.9), rgba(18, 29, 42, 0.92));
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+}
+
+#tabs_base {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+/* pisa el gradiente del button global */
+#tabs_base .tab_btn {
+    background: rgba(21, 35, 49, 0.55);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 8px 16px;
+    font-size: 13.5px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    color: var(--text-1);
+    box-shadow: none;
+    width: auto;
+}
+
+#tabs_base .tab_btn:hover {
+    color: var(--text-0);
+    border-color: rgba(255, 111, 60, 0.5);
+    filter: none;
+}
+
+#tabs_base .tab_btn.activo {
+    background: linear-gradient(135deg, var(--accent), #ffa477);
+    border-color: transparent;
+    color: #2b1105;
+    box-shadow: 0 8px 18px rgba(255, 111, 60, 0.24);
+}
+
+.lista_puros {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr));
+    gap: 12px;
+}
+
+.ingrediente_puro {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    align-content: start;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: rgba(12, 20, 29, 0.4);
+    animation: itemEnter 340ms ease both;
+}
+
+.ingrediente_puro .ing_contenedor {
+    flex: 1 1 0;
+    flex-basis: calc(100% - 30px);
+    min-width: 0;
+    justify-content: space-between;
+    border-left-color: var(--accent-2);
+}
+
+.ingrediente_puro .tengo_wrap {
+    margin-left: auto;
+}
+
+@media (max-width: 620px) {
+    #tabs_base .tab_btn {
+        flex: 1 1 100%;
+    }
+}
+
+/* ---------------------------------------------------------------
+   Grupos de materiales: la marca ↻ despliega los sustitutos
+   --------------------------------------------------------------- */
+
+/* Título + marca juntos: con flex-wrap el navegador decide el salto de
+   línea antes de encoger, así que sin este contenedor un título largo
+   manda las cajas de calidad a un renglón aparte. */
+.ing_cabeza {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 10px;
+}
+
+@media (max-width: 980px) {
+    /* acá las cajas ya bajan solas a su propia línea */
+    .ing_cabeza {
+        flex: 1 1 auto;
+        flex-wrap: wrap;
+    }
+}
+
+.cont_marca {
+    display: inline-flex;
+    align-items: center;
+}
+
+.cont_marca:empty {
+    display: none;
+}
+
+/* marca ↻ = sustituible por su grupo */
+.marca_grupo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border-radius: 5px;
+    font-size: 11px;
+    font-weight: 800;
+    cursor: help;
+    background: rgba(10, 210, 200, 0.16);
+    border: 1px solid rgba(10, 210, 200, 0.5);
+    color: #7ff0ea;
+}
+
+.marca_grupo.desplegable {
+    cursor: pointer;
+    transition: transform 120ms ease, background-color 120ms ease;
+}
+
+.marca_grupo.desplegable:hover {
+    background: rgba(10, 210, 200, 0.3);
+    transform: translateY(-1px);
+}
+
+.marca_grupo.abierta {
+    background: var(--accent-2);
+    border-color: var(--accent-2);
+    color: #06302e;
+}
+
+.panel_grupo {
+    flex-basis: 100%;
+    width: 100%;
+    margin-top: 6px;
+    padding: 8px 10px;
+    border-radius: 10px;
+    background: rgba(8, 30, 33, 0.55);
+    border: 1px solid rgba(10, 210, 200, 0.28);
+    animation: itemEnter 220ms ease both;
+}
+
+.panel_grupo_tit {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+    color: #7ff0ea;
+    margin-bottom: 6px;
+}
+
+/* los grupos grandes (carnes, mariscos, vegetales) no pueden empujar
+   media pantalla hacia abajo */
+.panel_grupo ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 2px 14px;
+    max-height: 260px;
+    overflow-y: auto;
+}
+
+/* pisa el layout de fila que #ingredientes le da a sus li */
+#ingredientes .panel_grupo li,
+.panel_grupo li {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 3px 6px;
+    margin: 0;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    animation: none;
+    font-size: 13.5px;
+}
+
+/* el selector con #ingredientes de arriba le gana por especificidad,
+   así que la variante resaltada también lo necesita */
+#ingredientes .panel_grupo li.propio,
+.panel_grupo li.propio {
+    background: rgba(10, 210, 200, 0.12);
+}
+
+.panel_grupo li.propio .mg_nombre::after {
+    content: " (el de la receta)";
+    font-size: 11px;
+    color: var(--muted);
+}
+
+.mg_nombre {
+    color: var(--text-1);
+}
+
+.panel_grupo li.propio .mg_nombre {
+    color: #c4fbf7;
+    font-weight: 700;
+}
+
+.mg_cant {
+    font-weight: 800;
+    color: var(--accent-3);
+    white-space: nowrap;
+}
+
+.panel_grupo_nota {
+    margin-top: 7px;
+    padding-top: 6px;
+    border-top: 1px dashed rgba(10, 210, 200, 0.22);
+    font-size: 11px;
+    line-height: 1.4;
+    color: var(--muted);
+}
+
+/* ---------------------------------------------------------------
+   Avance: cuánto llevás juntado de cada ingrediente puro
+   --------------------------------------------------------------- */
+
+.chk_puro {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 19px;
+    height: 19px;
+    min-width: 19px;
+    margin: 0;
+    border-radius: 6px;
+    border: 1px solid rgba(166, 200, 232, 0.45);
+    background: rgba(12, 20, 29, 0.8);
+    cursor: pointer;
+    position: relative;
+    transition: background-color 130ms ease, border-color 130ms ease;
+}
+
+.chk_puro:hover {
+    border-color: var(--accent-2);
+}
+
+.chk_puro:checked {
+    background: var(--accent-2);
+    border-color: var(--accent-2);
+}
+
+.chk_puro:checked::after {
+    content: "✓";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 900;
+    color: #06302e;
+}
+
+.ingrediente_puro.completado .ing_contenedor {
+    opacity: 0.45;
+    border-left-color: var(--accent-2);
+}
+
+.ingrediente_puro.completado .titing {
+    text-decoration: line-through;
+}
+
+.tengo_wrap {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: 0 0 auto;
+}
+
+/* más angosto que los inputs de la calculadora: acá va un contador */
+input[type="number"].inp_tengo {
+    width: 5.2em;
+    min-height: 32px;
+    padding: 5px 8px;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: right;
+    color: var(--accent-3);
+}
+
+.inp_tengo:focus {
+    border-color: rgba(10, 210, 200, 0.6);
+    box-shadow: 0 0 0 3px rgba(10, 210, 200, 0.15);
+}
+
+.nec_txt {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--muted);
+    white-space: nowrap;
+    min-width: 3.2em;
+}
+
+/* a medio juntar: se distingue de lo que no arrancó y de lo ya completo */
+.ingrediente_puro.parcial .ing_contenedor {
+    border-left-color: var(--accent-3);
+}
+
+.ingrediente_puro.parcial .inp_tengo {
+    border-color: rgba(255, 209, 102, 0.5);
+}
+
+.ingrediente_puro.completado .inp_tengo {
+    color: var(--accent-2);
+    border-color: rgba(10, 210, 200, 0.45);
+    opacity: 0.7;
+}
+
+.ingrediente_puro.completado .nec_txt {
+    opacity: 0.5;
+}
+
+.progreso_puros {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed rgba(166, 200, 232, 0.2);
+}
+
+.progreso_puros_txt {
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--text-1);
+    min-width: 150px;
+}
+
+.progreso_puros_cont {
+    width: 220px;
+    max-width: 100%;
+}
+
+.btn_limpiar_tildes {
+    background: rgba(21, 35, 49, 0.55);
+    border: 1px solid var(--line);
+    color: var(--text-1);
+    border-radius: 999px;
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    box-shadow: none;
+    margin-left: auto;
+    width: auto;
+}
+
+.btn_limpiar_tildes:hover {
+    color: var(--text-0);
+    border-color: rgba(255, 111, 60, 0.5);
+    filter: none;
+}
+
+/* recalcular la receta a partir de lo que tenés de un ingrediente */
+button.cantidad_puro_editable {
+    width: auto;
+    min-width: 32px;
+    padding: 3px 4px;
+    background: transparent;
+    color: var(--accent-3);
+    font: inherit;
+    font-weight: 700;
+    box-shadow: none;
+    border-radius: 5px;
+    cursor: text;
+    touch-action: manipulation;
+}
+
+button.cantidad_puro_editable:hover {
+    background: rgba(255, 209, 102, 0.12);
+    transform: none;
+}
+
+button.cantidad_puro_editable:focus-visible {
+    outline: 2px solid var(--accent-3);
+}
+
+button.cantidad_puro_editable[hidden] {
+    display: none;
+}
+
+input.editar_cantidad_puro {
+    width: 7em;
+    max-width: 100%;
+    padding: 5px;
+    border: 1px solid var(--accent-3);
+    border-radius: 5px;
+    background: var(--bg-0);
+    color: var(--accent-3);
+    font: inherit;
+    text-align: right;
+}
+
+.aviso_recalculo_puro {
+    color: var(--accent-3);
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.aviso_recalculo_puro:empty {
+    margin: 0;
+}
+
+.ayuda_obtencion {
+    color: var(--text-1);
+    font-size: 12px;
+    margin-bottom: 14px;
+}
+
+/* ---------------------------------------------------------------
+   De dónde sale cada ingrediente puro
+   --------------------------------------------------------------- */
+
+.obtencion {
+    flex: 1 1 100%;
+    min-width: 0;
+    font-size: 12px;
+    color: var(--text-1);
+}
+
+.obtencion summary {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    cursor: pointer;
+    list-style: none;
+    border-radius: 5px;
+}
+
+.obtencion summary::-webkit-details-marker {
+    display: none;
+}
+
+.obtencion summary::after {
+    content: "▾";
+    color: var(--muted);
+    margin-left: 3px;
+}
+
+.obtencion[open] summary::after {
+    content: "▴";
+}
+
+.obtencion summary:focus-visible,
+#ajustes_generales summary:focus-visible {
+    outline: 2px solid var(--accent-2);
+    outline-offset: 4px;
+}
+
+.obtencion p {
+    margin: 10px 0;
+    line-height: 1.5;
+}
+
+.obtencion a {
+    display: inline-block;
+    color: var(--accent-2);
+    margin: 0 10px 5px 0;
+}
+
+.badge_obtencion {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 6px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    font-size: 11px;
+    line-height: 1.4;
+    background: rgba(179, 198, 217, 0.06);
+}
+
+.badge_obtencion > span {
+    font-size: 14px;
+}
+
+.obtencion_recoleccion,
+.obtencion_cultivo {
+    color: #a8e9bc;
+}
+
+.obtencion_npc {
+    color: #ffdf8f;
+}
+
+.obtencion_nodos,
+.obtencion_mercado {
+    color: #accfff;
+}
+
+.obtencion_botin,
+.obtencion_caza {
+    color: #ffb5ac;
+}
+
+.obtencion_pesca {
+    color: #8fe6ff;
+}
+
+.obtencion_procesamiento,
+.obtencion_cocina {
+    color: #ffc39a;
+}
+
+/* ---------------------------------------------------------------
+   Preferencias generales y avance de una receta
+   --------------------------------------------------------------- */
+
+#otros li.fila_ajustes {
+    display: block;
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+}
+
+#ajustes_generales > summary {
+    cursor: pointer;
+    color: var(--text-1);
+    font-weight: 700;
+    padding: 6px 0;
+}
+
+#ajustes_generales ul {
+    list-style: none;
+    padding: 0;
+}
+
+#ajustes_generales .savebtn {
+    margin-top: 12px;
+}
+
+.ayuda_guardado {
+    margin: 5px 0 10px;
+    font-size: 13px;
+    color: var(--text-1);
+}
+
+#acciones_estado {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 18px;
+    border: 1px solid rgba(111, 178, 255, 0.3);
+    border-radius: var(--radius-md);
+    background: rgba(47, 125, 224, 0.08);
+}
+
+#acciones_estado .ayuda_guardado {
+    margin-bottom: 0;
+}
+
+#acciones_estado .estadobtn {
+    flex-shrink: 0;
+    width: auto;
+}
+
+.estadobtn {
+    background: linear-gradient(135deg, #2f7de0, #6fb2ff);
+    color: #08203b;
+    box-shadow: 0 10px 22px rgba(47, 125, 224, 0.24);
+}
+
+.estadobtn:hover {
+    color: #08203b;
+}
+
+.aviso_estado {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    padding: 8px 14px;
+    border-radius: var(--radius-md);
+    background: rgba(47, 125, 224, 0.14);
+    border: 1px solid rgba(111, 178, 255, 0.4);
+    color: #bcdcff;
+    font-size: 13px;
+    font-weight: 600;
+    animation: itemEnter 300ms ease both;
+}
+
+.btn_descartar {
+    background: transparent;
+    border: 1px solid rgba(255, 138, 120, 0.55);
+    color: #ff9f8f;
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    box-shadow: none;
+    margin-left: auto;
+    width: auto;
+}
+
+.btn_descartar:hover {
+    background: rgba(255, 90, 103, 0.18);
+    color: #ffd0c8;
+    filter: none;
+}
+
+@media (max-width: 980px) {
+    #ingredientes_puros,
+    #tabs_base,
+    #acciones_estado {
+        grid-column: 1;
+    }
+}
+
+@media (max-width: 620px) {
+    #acciones_estado {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #acciones_estado .estadobtn {
+        width: 100%;
+    }
+}

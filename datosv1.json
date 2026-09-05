@@ -1,226 +1,174 @@
 {
     "recetas": {
-        "platillodevalenos": {
-            "vinopalmera": "2",
-            "payhigo": "2",
-            "couscous": "1",
-            "hambleon": "1",
-            "sandwitchteff": "1"
+        "platillomcron": {
+            "platillobalenos": "3",
+            "platillocalpheon": "3",
+            "platoespecialmagoria": "1",
+            "especiaacron": "1"
         },
-        "escorpionasado": {
-            "carneescorpion": "3",
-            "mantequilla": "2",
-            "nuezm": "3",
+        "platillosencillodecron": {
+            "racioncab": "1",
+            "platillodemediah": "3",
+            "platillodevalenos": "3",
+            "especiaacron": "1"
+        },
+        "platillodecronespectacular": {
+            "platillodeserendia": "3",
+            "platoespecialdearehaza": "1",
+            "platillodekamasilvia": "3",
+            "especiaacron": "1"
+        },
+        "platillodecronllenadevital": {
+            "platoespecialdedrieghan": "1",
+            "platillodeserendia": "3",
+            "platillodemediah": "3",
+            "especiaacron": "1"
+        },
+        "platillodecronmaravilloso": {
+            "bistecsabroso": "1",
+            "platillobalenos": "3",
+            "tesute": "3",
+            "especiaacron": "1"
+        },
+        "aderezo": {
+            "aceiteoliva": "1",
+            "aguac": "1",
+            "huevo": "1",
+            "sal": "2"
+        },
+        "adobadoostra": {
+            "mariscosecos": "2",
+            "esencialicor": "3",
+            "ajo": "4",
+            "chile": "2",
+            "aceiteoliva": "5"
+        },
+        "alimentoparaanimaldecalida": {
+            "carne1": "6",
+            "pescado": "1",
+            "aguac": "3",
+            "harina": "4"
+        },
+        "alimentoparaanimalorganico": {
+            "avena": "2",
+            "carne1": "5",
+            "carneave": "4",
+            "pescado": "1"
+        },
+        "arrozsofritopistacho": {
+            "pistacho": "4",
+            "teff": "6",
+            "canela": "2",
+            "sal": "2"
+        },
+        "asadoave": {
+            "carneave": "2",
+            "aceitefreir": "6",
+            "sal": "1",
+            "vinoc": "2"
+        },
+        "avena": {
+            "harina": "9",
+            "leche": "3",
+            "cebolla": "3",
+            "miel": "2"
+        },
+        "bistec": {
+            "carne1": "8",
+            "sal": "2",
+            "ajo": "2",
+            "salsaroja": "2"
+        },
+        "bistecsabroso": {
+            "carneleon": "4",
+            "higo": "5",
+            "vinoc": "2",
+            "pimienta": "3"
+        },
+        "bocadillosurtido": {
+            "carnedeavefrita": "1",
+            "mariscos": "1",
+            "queso": "3",
+            "frutas": "5"
+        },
+        "borts": {
+            "carnesecaconolorfuerte": "7",
+            "leche": "3",
+            "canela": "1",
+            "aguac": "2"
+        },
+        "brochetadellamaconqueso": {
+            "carnedellama": "5",
+            "queso": "4",
+            "chile": "3",
+            "pimienta": "1",
+            "salsablanca": "1"
+        },
+        "caldodepescado": {
+            "mariscosecos": "1",
+            "pimienta": "2",
+            "carne1": "2",
+            "leche": "1",
+            "panteff": "1"
+        },
+        "carnedeavealvapor": {
+            "carneave": "5",
+            "vegetales": "3",
+            "vinagre": "2",
+            "esencialicor": "2",
+            "sal": "2"
+        },
+        "carnedeavefrita": {
+            "carneave": "7",
+            "harina": "4",
+            "huevo": "2",
+            "pimienta": "3"
+        },
+        "carnedeballenahervida": {
+            "carnedeballenaazul": "1",
+            "vinodemiel": "1",
+            "ajo": "4",
+            "sal": "2",
+            "aguac": "6"
+        },
+        "carnesofrita": {
+            "carne1": "7",
+            "salsabase": "2",
+            "cebolla": "2",
             "chile": "3"
         },
-        "sandwitchteff": {
-            "panteff": "1",
-            "escorpionasado": "1",
-            "estofadovivora": "1",
-            "salsaroja": "3"
+        "cerveza": {
+            "cereales": "5",
+            "aguac": "6",
+            "azucar": "1",
+            "fermentacion": "2"
         },
-        "estofadovivora": {
-            "anis": "2",
-            "carnevibora": "3",
-            "freekeh": "6",
+        "champinonesarcoirisasadosc": {
+            "champinonarcoiris": "1",
+            "carne1": "2",
+            "queso": "2",
+            "sal": "3",
+            "aceiteoliva": "4"
+        },
+        "cocteldecoco": {
+            "coco": "2",
+            "vinogranoexotico": "1",
+            "esencialicor": "2",
+            "frutas": "1",
             "aguac": "5"
+        },
+        "confitdezanahoria": {
+            "zanahoriadealtacalidad": "2",
+            "aguapurificada": "3",
+            "granodeazucarmorena": "3",
+            "sal": "2",
+            "canela": "4"
         },
         "couscous": {
             "estofadovivora": "1",
             "masateff": "6",
             "nuezm": "3",
             "vegetales": "4"
-        },
-        "panteff": {
-            "sal": "2",
-            "aguac": "3",
-            "harinateff": "5",
-            "fermentacion": "2"
-        },
-        "hambleon": {
-            "carneleon": "4",
-            "panteff": "4",
-            "verdurase": "2",
-            "nuezm": "3"
-        },
-        "vinopalmera": {
-            "palmeradatilera": "5",
-            "esencialicor": "2",
-            "azucar": "1",
-            "fermentacion": "4"
-        },
-        "payhigo": {
-            "aceiteoliva": "2",
-            "azucar": "3",
-            "masa": "3",
-            "higo": "5"
-        },
-        "paycarne": {
-            "carne1": "4",
-            "masa": "6",
-            "azucar": "2",
-            "aceiteoliva": "2"
-        },
-        "bistec": {
-            "salsaroja": "2",
-            "ajo": "2",
-            "sal": "2",
-            "carne1": "8"
-        },
-        "payfruta": {
-            "masa": "6",
-            "frutas": "6",
-            "crema": "3",
-            "azucar": "4"
-        },
-        "racioncab": {
-            "sandwichj": "1",
-            "croquetadecarne": "1",
-            "vinofruta": "2",
-            "pudinoscuro": "1"
-        },
-        "sandwichj": {
-            "vegetales": "5",
-            "salchichaasada": "2",
-            "pansuave": "2",
-            "huevo": "4"
-        },
-        "pudinoscuro": {
-            "sangre2": "7",
-            "carneave": "5",
-            "verdurase": "1",
-            "avena": "1"
-        },
-        "asadoave": {
-            "sal": "1",
-            "vinoc": "2",
-            "carneave": "2",
-            "aceitefreir": "6"
-        },
-        "verdurase": {
-            "vegetales": "8",
-            "azucar": "2",
-            "fermentacion": "2",
-            "vinagre": "4"
-        },
-        "esencialicor": {
-            "harina": "1",
-            "frutas": "1",
-            "fermentacion": "1"
-        },
-        "vinogranoexotico": {
-            "aguac": "5",
-            "masa": "3",
-            "esencialicor": "1",
-            "fermentacion": "2"
-        },
-        "vinagre": {
-            "azucar": "1",
-            "fermentacion": "1",
-            "frutas": "1",
-            "cereales": "1"
-        },
-        "ensaladafrutaverdura": {
-            "vinagre": "1",
-            "vegetales": "4",
-            "frutas": "4",
-            "vinoc": "2"
-        },
-        "vinofruta": {
-            "frutas": "5",
-            "esencialicor": "3",
-            "aguac": "2",
-            "vinogranoexotico": "1"
-        },
-        "langostamantequilla": {
-            "mantequilla": "4",
-            "ajo": "3",
-            "aceiteoliva": "5",
-            "sal": "5",
-            "langosta": "1"
-        },
-        "tortaostra": {
-            "harina": "5",
-            "vinagre": "2",
-            "ostra": "3",
-            "aceiteoliva": "3",
-            "huevo": "2"
-        },
-        "langostinohervido": {
-            "aguac": "4",
-            "vinoc": "3",
-            "chile": "2",
-            "camaron": "4",
-            "paprika": "3"
-        },
-        "ensaladalangostino": {
-            "sal": "2",
-            "aceiteoliva": "3",
-            "huevo": "3",
-            "ensaladafrutaverdura": "2",
-            "camaron": "2"
-        },
-        "platoespecialmagoria": {
-            "langostinohervido": "1",
-            "tortaostra": "1",
-            "langostamantequilla": "1",
-            "vinofruta": "2",
-            "ensaladalangostino": "1"
-        },
-        "platillomcron": {
-            "platillobalenos": "3",
-            "especiaacron": "1",
-            "platoespecialmagoria": "1",
-            "platillocalpheon": "3"
-        },
-        "cerveza": {
-            "cereales": "5",
-            "azucar": "1",
-            "fermentacion": "2",
-            "aguac": "6"
-        },
-        "avena": {
-            "miel": "2",
-            "cebolla": "3",
-            "harina": "9",
-            "leche": "3"
-        },
-        "teolor": {
-            "frutas": "4",
-            "aguac": "7",
-            "miel": "3",
-            "plantas": "4"
-        },
-        "tesute": {
-            "sal": "1",
-            "leche": "3",
-            "mantequilla": "2",
-            "teolor": "2"
-        },
-        "teleche": {
-            "teolor": "2",
-            "harina": "2",
-            "leche": "3",
-            "miel": "3"
-        },
-        "salsaroja": {
-            "aguac": "3",
-            "carne1": "1",
-            "azucar": "2",
-            "salsabase": "1"
-        },
-        "salchichaasada": {
-            "cebolla": "1",
-            "pimienta": "2",
-            "sal": "2",
-            "carne1": "6"
-        },
-        "gratinadoqueso": {
-            "salsaroja": "3",
-            "queso": "3",
-            "vegetales": "4",
-            "masa": "5",
-            "salchichaasada": "1"
         },
         "croquetadecarne": {
             "carne1": "8",
@@ -229,52 +177,307 @@
             "queso": "2",
             "aceitefreir": "4"
         },
-        "bistecpescadoahumado": {
-            "aceiteoliva": "1",
-            "pescado": "1",
-            "sal": "2"
-        },
-        "verdurasrevueltassofritas": {
-            "sal": "1",
-            "vegetales": "5",
-            "chile": "2",
+        "dumplingdeldesierto": {
+            "carnedelagartija": "6",
+            "masa": "6",
+            "canela": "1",
             "aceiteoliva": "2"
         },
-        "arrozsofritopistacho": {
-            "sal": "2",
-            "canela": "2",
-            "pistacho": "4",
-            "teff": "6"
+        "ensaladaconpechugadepollo": {
+            "carneave": "5",
+            "frutas": "5",
+            "vegetales": "5",
+            "vinagre": "1",
+            "vinoc": "2"
         },
-        "pansuave": {
-            "leche": "3",
-            "fermentacion": "2",
-            "masa": "6",
-            "huevo": "2"
+        "ensaladadecarnedeballena": {
+            "carnedeballenaazul": "1",
+            "vegetales": "6",
+            "aderezo": "2",
+            "huevo": "3",
+            "pimienta": "4"
+        },
+        "ensaladadecarnemagra": {
+            "carne1": "8",
+            "vinagre": "2",
+            "pimienta": "3",
+            "aderezo": "4"
+        },
+        "ensaladadecazador": {
+            "carnedeballenasuave": "1",
+            "vinagre": "2",
+            "aderezo": "2",
+            "ajo": "5"
         },
         "ensaladafiletepescado": {
-            "queso": "2",
-            "cebolla": "3",
+            "pescado": "1",
             "aderezo": "2",
-            "pescado": "1"
+            "cebolla": "3",
+            "queso": "2"
         },
-        "aderezo": {
+        "ensaladafrutaverdura": {
+            "frutas": "4",
+            "vegetales": "4",
+            "vinagre": "1",
+            "vinoc": "2"
+        },
+        "ensaladalangostino": {
+            "camaron": "2",
+            "aceiteoliva": "3",
+            "sal": "2",
+            "huevo": "3",
+            "ensaladafrutaverdura": "2"
+        },
+        "ensaladademariscosconhongo": {
+            "mariscos": "1",
+            "hongoadivino": "1",
+            "aderezo": "2"
+        },
+        "escorpionasado": {
+            "carneescorpion": "3",
+            "mantequilla": "2",
+            "nuezm": "3",
+            "chile": "3"
+        },
+        "esencialicor": {
+            "harina": "1",
+            "frutas": "1",
+            "fermentacion": "1"
+        },
+        "estofadodecarne": {
+            "carne1": "5",
+            "harina": "2",
+            "vinoc": "2",
+            "aguac": "3"
+        },
+        "estofadovivora": {
+            "aguac": "5",
+            "freekeh": "6",
+            "carnevibora": "3",
+            "anis": "2"
+        },
+        "bistecpescadoahumado": {
+            "pescado": "1",
             "aceiteoliva": "1",
-            "aguac": "1",
-            "huevo": "1",
             "sal": "2"
         },
-        "pastacarne": {
-            "ajo": "2",
-            "pimienta": "3",
+        "filetedepescadoconpatatas": {
+            "pescado": "2",
+            "salsablanca": "3",
+            "harina": "7",
+            "sal": "2"
+        },
+        "galletadealoe": {
+            "aloe": "5",
+            "masa": "7",
+            "miel": "3",
+            "azucar": "4"
+        },
+        "galletadepanaldeabeja": {
             "masa": "4",
-            "carne1": "5"
+            "miel": "6",
+            "huevo": "2",
+            "leche": "4"
+        },
+        "ghormehsabzi": {
+            "carnedeyak": "5",
+            "cereales": "2",
+            "ajo": "5",
+            "sal": "2",
+            "leche": "1"
+        },
+        "gratinadoqueso": {
+            "salchichaasada": "1",
+            "masa": "5",
+            "vegetales": "4",
+            "queso": "3",
+            "salsaroja": "3"
+        },
+        "hambleon": {
+            "carneleon": "4",
+            "panteff": "4",
+            "verdurase": "2",
+            "nuezm": "3"
+        },
+        "helechosofrito": {
+            "helecho": "8",
+            "ajo": "5",
+            "sal": "2",
+            "aguac": "5",
+            "aceiteoliva": "2"
+        },
+        "huevodepajarohervido": {
+            "huevo": "3",
+            "aguac": "6",
+            "vinoc": "1",
+            "sal": "1"
+        },
+        "jugodedelotia": {
+            "delotia": "4",
+            "frutas": "5",
+            "azucar": "3",
+            "aguapurificada": "3"
+        },
+        "jugodefruta": {
+            "frutas": "4",
+            "azucar": "3",
+            "aguac": "5",
+            "sal": "1"
+        },
+        "jugodezanahoriadealtacalid": {
+            "zanahoriadealtacalidad": "1",
+            "harina": "3",
+            "azucar": "3",
+            "aguac": "4"
+        },
+        "jugodezanahoriadecalidad": {
+            "zanahoriadecalidad": "1",
+            "harina": "3",
+            "azucar": "3",
+            "aguac": "4"
+        },
+        "kebabdelagartija": {
+            "carnedelagartija": "6",
+            "salsaroja": "2",
+            "cebolla": "3",
+            "cereales": "7"
+        },
+        "langostamantequilla": {
+            "langosta": "1",
+            "mantequilla": "4",
+            "sal": "5",
+            "aceiteoliva": "5",
+            "ajo": "3"
+        },
+        "langostinohervido": {
+            "camaron": "4",
+            "vegetales": "3",
+            "chile": "2",
+            "vinoc": "3",
+            "aguac": "4"
+        },
+        "vinogranoexotico": {
+            "masa": "3",
+            "esencialicor": "1",
+            "aguac": "5",
+            "fermentacion": "2"
+        },
+        "mariscoconmantequillaasado": {
+            "mariscos": "1",
+            "mantequilla": "3",
+            "sal": "2",
+            "aceiteoliva": "1"
+        },
+        "mariscosalvapor": {
+            "mariscos": "1",
+            "chile": "3",
+            "aguac": "6",
+            "sal": "2"
+        },
+        "mariscossofritos": {
+            "mariscos": "1",
+            "vegetales": "4",
+            "salsablanca": "2",
+            "chile": "2"
+        },
+        "marmotaalaparrilla": {
+            "carnedemarmota": "5",
+            "chile": "3",
+            "sal": "2",
+            "salsaroja": "1",
+            "vinoc": "3"
+        },
+        "omelet": {
+            "cereales": "5",
+            "aceiteoliva": "2",
+            "huevo": "5",
+            "sal": "2"
+        },
+        "panteff": {
+            "harinateff": "5",
+            "aguac": "3",
+            "sal": "2",
+            "fermentacion": "2"
+        },
+        "pansuave": {
+            "masa": "6",
+            "fermentacion": "2",
+            "huevo": "2",
+            "leche": "3"
+        },
+        "pastacarne": {
+            "carne1": "5",
+            "masa": "4",
+            "pimienta": "3",
+            "ajo": "2"
+        },
+        "pastadecoco": {
+            "coco": "2",
+            "cebolla": "2",
+            "masa": "5",
+            "ajo": "4",
+            "salsablanca": "1"
+        },
+        "pastademariscos": {
+            "mariscos": "1",
+            "masa": "5",
+            "vinoc": "3",
+            "ajo": "3"
+        },
+        "paycarne": {
+            "carne1": "4",
+            "masa": "6",
+            "azucar": "2",
+            "aceiteoliva": "2"
+        },
+        "payfruta": {
+            "masa": "6",
+            "frutas": "6",
+            "crema": "3",
+            "azucar": "4"
+        },
+        "payhigo": {
+            "higo": "5",
+            "masa": "3",
+            "azucar": "3",
+            "aceiteoliva": "2"
         },
         "payqueso": {
-            "huevo": "3",
-            "mantequilla": "3",
+            "masa": "4",
             "queso": "7",
-            "masa": "2"
+            "mantequilla": "3",
+            "huevo": "3"
+        },
+        "pescadoalvapor": {
+            "pescado": "2",
+            "ajo": "2",
+            "sal": "2",
+            "aguac": "3"
+        },
+        "pescadocurtido": {
+            "pescado": "1",
+            "vinagre": "2",
+            "sal": "4",
+            "fermentacion": "2"
+        },
+        "pescadofrito": {
+            "pescado": "1",
+            "harina": "3",
+            "aceitefreir": "2"
+        },
+        "pescadofritoconcoco": {
+            "coco": "3",
+            "pescado": "1",
+            "huevo": "2",
+            "masa": "3",
+            "aceitefreir": "4"
+        },
+        "platillobalenos": {
+            "gratinadoqueso": "1",
+            "croquetadecarne": "1",
+            "bistecpescadoahumado": "1",
+            "verdurasrevueltassofritas": "2",
+            "cerveza": "2"
         },
         "platillocalpheon": {
             "pansuave": "2",
@@ -283,32 +486,483 @@
             "payqueso": "1",
             "pastacarne": "1"
         },
-        "platillobalenos": {
-            "cerveza": "2",
-            "verdurasrevueltassofritas": "2",
-            "bistecpescadoahumado": "1",
-            "gratinadoqueso": "1",
-            "croquetadecarne": "1"
+        "platillodekamasilvia": {
+            "sandwichdechampinonesarcoi": "1",
+            "pastadecoco": "1",
+            "payhigo": "1",
+            "vinofruta": "2",
+            "champinonesarcoirisasadosc": "1"
         },
-        "adobadoostra": {
-            "esencialicor": "3",
-            "aceiteoliva": "5",
+        "platillodemediah": {
+            "pudinoscuro": "1",
+            "avena": "1",
+            "salchichaasada": "2",
+            "ensaladadecarnemagra": "1",
+            "vinogranoexotico": "2"
+        },
+        "platillodeodyllita": {
+            "pudindedelotia": "1",
+            "sofritodehelechoconcarne": "1",
+            "jugodedelotia": "2",
+            "ensaladaconpechugadepollo": "2",
+            "sofritodeave": "2"
+        },
+        "platillodeserendia": {
+            "sandwichj": "1",
+            "paycarne": "1",
+            "galletadepanaldeabeja": "1",
+            "huevodepajarohervido": "2",
+            "vinofruta": "2"
+        },
+        "platillodevalenos": {
+            "sandwitchteff": "1",
+            "hambleon": "1",
+            "couscous": "1",
+            "payhigo": "2",
+            "vinopalmera": "2"
+        },
+        "platoespecialdearehaza": {
+            "cocteldecoco": "2",
+            "pastadecoco": "1",
+            "pescadofritoconcoco": "1",
+            "estofadodecarne": "1",
+            "bistec": "1"
+        },
+        "platoespecialdedrieghan": {
+            "brochetadellamaconqueso": "1",
+            "helechosofrito": "1",
+            "marmotaalaparrilla": "1",
+            "ghormehsabzi": "1",
+            "vinodemiel": "2"
+        },
+        "platoespecialmagoria": {
+            "ensaladalangostino": "1",
+            "langostinohervido": "1",
+            "tortaostra": "1",
+            "langostamantequilla": "1",
+            "vinofruta": "2"
+        },
+        "pudindedelotia": {
+            "delotia": "5",
+            "sangredelobo": "7",
+            "vinodemiel": "2",
+            "avena": "1",
+            "aguapurificada": "3"
+        },
+        "pudindefruta": {
+            "frutas": "5",
+            "crema": "1",
+            "leche": "3",
+            "azucar": "2"
+        },
+        "pudinoscuro": {
+            "avena": "1",
+            "verdurase": "1",
+            "carneave": "5",
+            "sangre2": "7"
+        },
+        "puredepollodecincocereales": {
+            "carnedeavemolida": "2",
+            "aguac": "2",
+            "cereales": "3"
+        },
+        "racioncab": {
+            "pudinoscuro": "1",
+            "sandwichj": "1",
+            "croquetadecarne": "1",
+            "vinofruta": "1"
+        },
+        "salchichaasada": {
+            "carne1": "6",
+            "cebolla": "1",
+            "pimienta": "2",
+            "sal": "2"
+        },
+        "salsablanca": {
+            "salsabase": "1",
+            "leche": "1",
+            "frutas": "1",
+            "vinoc": "2"
+        },
+        "salsaroja": {
+            "salsabase": "1",
+            "azucar": "2",
+            "carne1": "1",
+            "aguac": "2"
+        },
+        "sandwichdecarne": {
+            "pansuave": "1",
+            "carne1": "7",
+            "vegetales": "6",
+            "queso": "3"
+        },
+        "sandwichdechampinonesarcoi": {
+            "champinonarcoiris": "1",
+            "pansuave": "1",
+            "crema": "2",
+            "cebolla": "2",
+            "aceiteoliva": "4"
+        },
+        "sandwichdefrank": {
+            "salchichaasada": "2",
+            "pansuave": "1",
+            "vegetales": "2",
+            "salsaroja": "1"
+        },
+        "sandwichj": {
+            "pansuave": "2",
+            "salchichaasada": "2",
+            "vegetales": "5",
+            "huevo": "4"
+        },
+        "sandwitchteff": {
+            "panteff": "1",
+            "escorpionasado": "1",
+            "estofadovivora": "1",
+            "salsaroja": "3"
+        },
+        "sofritodeave": {
+            "carneave": "5",
+            "cereales": "5",
+            "cebolla": "3",
+            "aceitefreir": "2"
+        },
+        "sofritodehelechoconcarne": {
+            "helecho": "3",
+            "carne1": "6",
+            "ajo": "3",
+            "aceiteoliva": "2",
+            "aguac": "5"
+        },
+        "verdurasrevueltassofritas": {
+            "vegetales": "5",
             "chile": "2",
-            "ajo": "4",
-            "mariscos": "2"
+            "aceiteoliva": "2",
+            "sal": "1"
+        },
+        "sopadecarne": {
+            "carne1": "5",
+            "pimienta": "1",
+            "crema": "2",
+            "aguac": "4"
+        },
+        "sopadegranos": {
+            "cereales": "6",
+            "aguapurificada": "1",
+            "vinoc": "3",
+            "sal": "1"
+        },
+        "sopadepescado": {
+            "pescado": "1",
+            "harina": "3",
+            "crema": "2",
+            "aguac": "6"
+        },
+        "tartadedelotia": {
+            "delotia": "3",
+            "leche": "2",
+            "harina": "5",
+            "huevo": "1",
+            "aguapurificada": "3"
+        },
+        "teolor": {
+            "plantas": "4",
+            "frutas": "4",
+            "aguac": "7",
+            "miel": "3"
+        },
+        "teleche": {
+            "teolor": "2",
+            "harina": "2",
+            "leche": "3",
+            "miel": "3"
+        },
+        "tedelechededelotia": {
+            "delotia": "4",
+            "leche": "3",
+            "miel": "3",
+            "aguapurificada": "3"
+        },
+        "tesute": {
+            "teolor": "2",
+            "mantequilla": "2",
+            "leche": "3",
+            "sal": "1"
+        },
+        "tortaostra": {
+            "ostra": "3",
+            "huevo": "2",
+            "harina": "5",
+            "vinagre": "2",
+            "aceiteoliva": "3"
+        },
+        "verdurase": {
+            "vegetales": "8",
+            "vinagre": "4",
+            "fermentacion": "2",
+            "azucar": "2"
+        },
+        "verdurasfritas": {
+            "vegetales": "4",
+            "masa": "3",
+            "huevo": "2",
+            "aceitefreir": "6"
+        },
+        "vinagre": {
+            "cereales": "1",
+            "frutas": "1",
+            "fermentacion": "1",
+            "azucar": "1"
+        },
+        "vinopalmera": {
+            "palmeradatilera": "5",
+            "esencialicor": "2",
+            "azucar": "1",
+            "fermentacion": "4"
+        },
+        "vinofruta": {
+            "vinogranoexotico": "1",
+            "frutas": "5",
+            "esencialicor": "3",
+            "aguac": "2"
+        },
+        "vinodemiel": {
+            "miel": "3",
+            "esencialicor": "2",
+            "azucar": "2",
+            "aguac": "6"
+        },
+        "vinodemieldulce": {
+            "mieldecalidadsuperiordecoc": "2",
+            "makgeollibienfermentado": "4",
+            "azucar": "10",
+            "frutas": "2"
+        },
+        "vinofermentadodekhalk": {
+            "cuernodelkhalkfugitivo": "1",
+            "vinodemiel": "5",
+            "palmeradatilera": "6",
+            "fermentacion": "6",
+            "azucar": "6"
+        },
+        "yogurtdealoe": {
+            "aloe": "5",
+            "leche": "2",
+            "azucar": "3",
+            "fermentacion": "3"
         }
     },
     "datos": {
-        "platillodevalenos": {
-            "titulo": "Platillo de Valencia",
-            "peso": "1",
-            "plata": "29000",
+        "platillomcron": {
+            "titulo": "Platillo de Mariscos de Cron",
+            "peso": "0.1",
+            "plata": "0"
+        },
+        "platillosencillodecron": {
+            "titulo": "Platillo Sencillo de Cron",
+            "peso": "0.1",
+            "plata": "0"
+        },
+        "platillodecronespectacular": {
+            "titulo": "Platillo de Cron Espectacular",
+            "peso": "0.1",
+            "plata": "0"
+        },
+        "platillodecronllenadevital": {
+            "titulo": "Platillo de Cron Llena de Vitalidad",
+            "peso": "0.1",
+            "plata": "0"
+        },
+        "platillodecronmaravilloso": {
+            "titulo": "Platillo de Cron Maravilloso",
+            "peso": "0.1",
+            "plata": "0"
+        },
+        "aderezo": {
+            "titulo": "Aderezo",
+            "peso": "0.01",
+            "plata": "0"
+        },
+        "adobadoostra": {
+            "titulo": "Adobado de Ostra",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "12"
+        },
+        "alimentoparaanimaldecalida": {
+            "titulo": "Alimento para Animal de Calidad",
+            "peso": "0.1",
+            "plata": "0"
+        },
+        "alimentoparaanimalorganico": {
+            "titulo": "Alimento para Animal Org\u00e1nico",
+            "peso": "0.1",
+            "plata": "0"
+        },
+        "arrozsofritopistacho": {
+            "titulo": "Arroz Sofrito de Pistacho",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "36"
+        },
+        "asadoave": {
+            "titulo": "Asado de Ave",
+            "peso": "0.1",
+            "plata": "1700",
+            "imperiales": "90"
+        },
+        "avena": {
+            "titulo": "Avena",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "15"
+        },
+        "bistec": {
+            "titulo": "Bistec",
+            "peso": "0.1",
+            "plata": "16100",
+            "imperiales": "15"
+        },
+        "bistecsabroso": {
+            "titulo": "Bistec Sabroso",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "15"
+        },
+        "bocadillosurtido": {
+            "titulo": "Bocadillo Surtido",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "27"
+        },
+        "borts": {
+            "titulo": "Borts",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "15"
+        },
+        "brochetadellamaconqueso": {
+            "titulo": "Brocheta de Llama con Queso",
+            "peso": "0.1",
+            "plata": "0",
             "imperiales": "18"
         },
-        "carneescorpion": {
-            "titulo": "Carne de Escorpi\u00f3n",
+        "caldodepescado": {
+            "titulo": "Caldo de Pescado",
             "peso": "0.1",
-            "plata": "9900"
+            "plata": "0"
+        },
+        "carnedeavealvapor": {
+            "titulo": "Carne de Ave al Vapor",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "18"
+        },
+        "carnedeavefrita": {
+            "titulo": "Carne de Ave Frita",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "24"
+        },
+        "carnedeballenahervida": {
+            "titulo": "Carne de Ballena Hervida",
+            "peso": "0.1",
+            "plata": "0"
+        },
+        "carnesofrita": {
+            "titulo": "Carne Sofrita",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "18"
+        },
+        "cerveza": {
+            "titulo": "Cerveza",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "60"
+        },
+        "champinonesarcoirisasadosc": {
+            "titulo": "Champi\u00f1ones Arco\u00edris Asados con Queso",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "21"
+        },
+        "cocteldecoco": {
+            "titulo": "C\u00f3ctel de Coco",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "54"
+        },
+        "confitdezanahoria": {
+            "titulo": "Confit de Zanahoria",
+            "peso": "0.1",
+            "plata": "0"
+        },
+        "couscous": {
+            "titulo": "Couscous",
+            "peso": "0.1",
+            "plata": "23100",
+            "imperiales": "18",
+            "nomejorable": true
+        },
+        "croquetadecarne": {
+            "titulo": "Croqueta de Carne",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "18"
+        },
+        "dumplingdeldesierto": {
+            "titulo": "Dumpling del Desierto",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "18"
+        },
+        "ensaladaconpechugadepollo": {
+            "titulo": "Ensalada con Pechuga de Pollo",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "24"
+        },
+        "ensaladadecarnedeballena": {
+            "titulo": "Ensalada de Carne de Ballena",
+            "peso": "0.1",
+            "plata": "0"
+        },
+        "ensaladadecarnemagra": {
+            "titulo": "Ensalada de Carne Magra",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "18"
+        },
+        "ensaladadecazador": {
+            "titulo": "Ensalada de Cazador",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "18"
+        },
+        "ensaladafiletepescado": {
+            "titulo": "Ensalada de Filete de Pescado",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "24"
+        },
+        "ensaladafrutaverdura": {
+            "titulo": "Ensalada de Fruta y Verdura",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "21"
+        },
+        "ensaladalangostino": {
+            "titulo": "Ensalada de Langostino",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "18"
+        },
+        "ensaladademariscosconhongo": {
+            "titulo": "Ensalada de Mariscos con Hongos",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "30"
         },
         "escorpionasado": {
             "titulo": "Escorpi\u00f3n Asado",
@@ -316,127 +970,306 @@
             "plata": "27000",
             "imperiales": "15"
         },
-        "sandwitchteff": {
-            "titulo": "S\u00e1ndwitch de Teff",
+        "esencialicor": {
+            "titulo": "Esencia de Licor",
+            "peso": "0.01",
+            "plata": "980"
+        },
+        "estofadodecarne": {
+            "titulo": "Estofado de Carne",
             "peso": "0.1",
             "plata": "0",
-            "nomejorable": true,
             "imperiales": "18"
         },
-        "freekeh": {
-            "titulo": "Freekeh",
-            "peso": "0.1",
-            "plata": "1800"
-        },
-        "carnevibora": {
-            "titulo": "Carne de Vibora",
-            "peso": "0.03",
-            "plata": "11500"
-        },
-        "anis": {
-            "titulo": "An\u00eds Estrellado",
-            "peso": "0.1",
-            "plata": "1300"
-        },
         "estofadovivora": {
-            "titulo": "Estofado de V\u00edbora Freekeh",
+            "titulo": "Estofado de V\u00edbora Frike",
             "peso": "0.1",
             "plata": "22900",
+            "imperiales": "15",
             "nomejorable": true
         },
-        "masateff": {
-            "titulo": "Masa de Harina de Teff",
+        "bistecpescadoahumado": {
+            "titulo": "Filete de Pescado Ahumado",
             "peso": "0.1",
-            "plata": "2400"
+            "plata": "0",
+            "imperiales": "180"
         },
-        "couscous": {
-            "titulo": "Couscous",
+        "filetedepescadoconpatatas": {
+            "titulo": "Filete de Pescado con Patatas",
             "peso": "0.1",
-            "plata": "23100",
-            "nomejorable": true
+            "plata": "0",
+            "imperiales": "75"
         },
-        "harinateff": {
-            "titulo": "Harina de Teff",
+        "galletadealoe": {
+            "titulo": "Galleta de Aloe",
             "peso": "0.1",
-            "plata": "2850"
+            "plata": "0",
+            "imperiales": "21"
         },
-        "nuezm": {
-            "titulo": "Nuez Moscada",
+        "galletadepanaldeabeja": {
+            "titulo": "Galleta de Panal de Abeja",
             "peso": "0.1",
-            "plata": "4150"
+            "plata": "0",
+            "imperiales": "18"
         },
-        "panteff": {
-            "titulo": "Pan de Teff",
+        "ghormehsabzi": {
+            "titulo": "Ghormeh Sabzi",
             "peso": "0.1",
-            "plata": "3750"
+            "plata": "0",
+            "imperiales": "15"
+        },
+        "gratinadoqueso": {
+            "titulo": "Gratinado de Queso",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "18"
         },
         "hambleon": {
             "titulo": "Hamburguesa de Le\u00f3n",
             "peso": "0.1",
             "plata": "40500",
-            "nomejorable": true,
-            "imperiales": "15"
-        },
-        "carneleon": {
-            "titulo": "Carne de Le\u00f3n",
-            "peso": "0.03",
-            "plata": "14600"
-        },
-        "palmeradatilera": {
-            "titulo": "Palmera Datilera",
-            "peso": "0.1",
-            "plata": "3190"
-        },
-        "vinopalmera": {
-            "titulo": "Vino de Palmera Datilera",
-            "peso": "0.1",
-            "plata": "0",
+            "imperiales": "15",
             "nomejorable": true
         },
-        "higo": {
-            "titulo": "Higo",
+        "helechosofrito": {
+            "titulo": "Helecho Sofrito",
             "peso": "0.1",
-            "plata": "3840"
+            "plata": "0",
+            "imperiales": "18"
         },
-        "payhigo": {
-            "titulo": "Pay de Higo",
+        "huevodepajarohervido": {
+            "titulo": "Huevo de P\u00e1jaro Hervido",
             "peso": "0.1",
-            "plata": "9350"
+            "plata": "0",
+            "imperiales": "30"
+        },
+        "jugodedelotia": {
+            "titulo": "Jugo de Delotia",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "24"
+        },
+        "jugodefruta": {
+            "titulo": "Jugo de Fruta",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "60"
+        },
+        "jugodezanahoriadealtacalid": {
+            "titulo": "Jugo de Zanahoria de Alta Calidad",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "180"
+        },
+        "jugodezanahoriadecalidad": {
+            "titulo": "Jugo de Zanahoria de Calidad",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "360"
+        },
+        "kebabdelagartija": {
+            "titulo": "Kebab de Lagartija",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "15"
+        },
+        "langostamantequilla": {
+            "titulo": "Langosta a la Mantequilla",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "21"
+        },
+        "langostinohervido": {
+            "titulo": "Langostino al vapor",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "24"
+        },
+        "vinogranoexotico": {
+            "titulo": "Makgeolli",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "180"
+        },
+        "mariscoconmantequillaasado": {
+            "titulo": "Marisco con Mantequilla Asado",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "36"
+        },
+        "mariscosalvapor": {
+            "titulo": "Mariscos al Vapor",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "30"
+        },
+        "mariscossofritos": {
+            "titulo": "Mariscos Sofritos",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "21"
+        },
+        "marmotaalaparrilla": {
+            "titulo": "Marmota a la Parrilla",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "18"
+        },
+        "omelet": {
+            "titulo": "Omelet",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "18"
+        },
+        "panteff": {
+            "titulo": "Pan de Teff",
+            "peso": "0.1",
+            "plata": "3750",
+            "imperiales": "390"
+        },
+        "pansuave": {
+            "titulo": "Pan Suave",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "15"
+        },
+        "pastacarne": {
+            "titulo": "Pasta de Carne",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "15"
+        },
+        "pastadecoco": {
+            "titulo": "Pasta de Coco",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "21"
+        },
+        "pastademariscos": {
+            "titulo": "Pasta de Mariscos",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "18"
         },
         "paycarne": {
             "titulo": "Pay de Carne",
             "peso": "0.1",
-            "plata": "14600"
-        },
-        "bistec": {
-            "titulo": "Bistec",
-            "peso": "0.1",
-            "plata": "16100"
-        },
-        "crema": {
-            "titulo": "Crema",
-            "peso": "0.01",
-            "plata": "6100"
+            "plata": "14600",
+            "imperiales": "21"
         },
         "payfruta": {
             "titulo": "Pay de Fruta",
             "peso": "0.1",
-            "plata": "4350"
+            "plata": "4350",
+            "imperiales": "24"
         },
-        "racioncab": {
-            "titulo": "Raci\u00f3n de Combate de la Caballer\u00eda",
-            "peso": "0.10",
-            "plata": "35900"
-        },
-        "sandwichj": {
-            "titulo": "S\u00e1ndwich de Jam\u00f3n",
+        "payhigo": {
+            "titulo": "Pay de Higo",
             "peso": "0.1",
-            "plata": "27100"
+            "plata": "9350",
+            "imperiales": "60"
         },
-        "sangre2": {
-            "titulo": "Sangre (Ciervo, Res, etc)",
+        "payqueso": {
+            "titulo": "Pay de Queso",
             "peso": "0.1",
-            "plata": "7950"
+            "plata": "0",
+            "imperiales": "15"
+        },
+        "pescadoalvapor": {
+            "titulo": "Pescado al vapor",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "30"
+        },
+        "pescadocurtido": {
+            "titulo": "Pescado Curtido",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "120"
+        },
+        "pescadofrito": {
+            "titulo": "Pescado Frito",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "90"
+        },
+        "pescadofritoconcoco": {
+            "titulo": "Pescado frito con coco",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "36"
+        },
+        "platillobalenos": {
+            "titulo": "Platillo de Balenos",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "24"
+        },
+        "platillocalpheon": {
+            "titulo": "Platillo de Calpheon",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "18"
+        },
+        "platillodekamasilvia": {
+            "titulo": "Platillo de Kamasilvia",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "33"
+        },
+        "platillodemediah": {
+            "titulo": "Platillo de Mediah",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "15"
+        },
+        "platillodeodyllita": {
+            "titulo": "Platillo de O'dyllita",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "15"
+        },
+        "platillodeserendia": {
+            "titulo": "Platillo de Serendia",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "21"
+        },
+        "platillodevalenos": {
+            "titulo": "Platillo de Valencia",
+            "peso": "0.1",
+            "plata": "29000",
+            "imperiales": "18"
+        },
+        "platoespecialdearehaza": {
+            "titulo": "Plato Especial de Arehaza",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "18"
+        },
+        "platoespecialdedrieghan": {
+            "titulo": "Plato Especial de Drieghan",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "18"
+        },
+        "platoespecialmagoria": {
+            "titulo": "Plato Especial de Marisco de Margoria",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "21"
+        },
+        "pudindedelotia": {
+            "titulo": "Pud\u00edn de Delotia",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "18"
+        },
+        "pudindefruta": {
+            "titulo": "Pud\u00edn de Fruta",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "15"
         },
         "pudinoscuro": {
             "titulo": "Pud\u00edn Oscuro",
@@ -444,202 +1277,28 @@
             "plata": "45200",
             "imperiales": "15"
         },
-        "asadoave": {
-            "titulo": "Asado de Ave",
+        "puredepollodecincocereales": {
+            "titulo": "Pur\u00e9 de Pollo de Cinco Cereales",
             "peso": "0.1",
-            "plata": "1700"
-        },
-        "carneave": {
-            "titulo": "Carne de Ave",
-            "peso": "0.03",
-            "plata": "1980"
-        },
-        "verdurase": {
-            "titulo": "Verduras en Escabeche",
-            "peso": "0.1",
-            "plata": "4440",
-            "nomejorable": true,
-            "imperiales": "18"
-        },
-        "langosta": {
-            "titulo": "Langosta",
-            "peso": "0.1",
-            "plata": "117000"
-        },
-        "ostra": {
-            "titulo": "Ostra",
-            "peso": "0.1",
-            "plata": "18500"
-        },
-        "paprika": {
-            "titulo": "Paprika",
-            "peso": "0.1",
-            "plata": "850"
-        },
-        "esencialicor": {
-            "titulo": "Esencia de Licor",
-            "peso": "0.01",
-            "plata": "980"
-        },
-        "vinogranoexotico": {
-            "titulo": "Vino de grano exotico",
-            "peso": "0",
-            "plata": "0"
-        },
-        "vinoc": {
-            "titulo": "Vino para cocinar",
-            "peso": "0.01",
-            "plata": "20"
-        },
-        "vinagre": {
-            "titulo": "Vinagre",
-            "peso": "0.01",
-            "plata": "0"
-        },
-        "ensaladafrutaverdura": {
-            "titulo": "Ensalada de Fruta y Verdura",
-            "peso": "0",
-            "plata": "0"
-        },
-        "camaron": {
-            "titulo": "Camaron",
-            "peso": "0",
-            "plata": "0"
-        },
-        "vinofruta": {
-            "titulo": "Vino de fruta",
-            "peso": "0",
-            "plata": "0"
-        },
-        "langostamantequilla": {
-            "titulo": "Langosta a la Mantequilla",
-            "peso": "0",
-            "plata": "0"
-        },
-        "tortaostra": {
-            "titulo": "Torta de Ostra",
-            "peso": "0",
-            "plata": "0"
-        },
-        "langostinohervido": {
-            "titulo": "Langostino Hervido",
-            "peso": "0",
-            "plata": "0"
-        },
-        "ensaladalangostino": {
-            "titulo": "Ensalada de Langostino",
-            "peso": "0",
-            "plata": "0"
-        },
-        "platoespecialmagoria": {
-            "titulo": "Plato Especial de Marisco de Margoria",
-            "peso": "0",
-            "plata": "0"
-        },
-        "especiaacron": {
-            "titulo": "Especia Ancestral de Cron",
-            "peso": "0",
-            "plata": "0"
-        },
-        "platillomcron": {
-            "titulo": "Platillo de Mariscos de Cron",
-            "peso": "0",
-            "plata": "0"
-        },
-        "cerveza": {
-            "titulo": "Cerveza",
-            "peso": "0.1",
-            "plata": "0"
-        },
-        "cereales": {
-            "titulo": "Cereales",
-            "peso": "0.1",
-            "plata": "1500"
-        },
-        "aguac": {
-            "titulo": "Agua para cocinar",
-            "peso": "0.01",
-            "plata": "20"
-        },
-        "azucar": {
-            "titulo": "Azucar",
-            "peso": "0.01",
-            "plata": "20",
-            "nomejorable": true
-        },
-        "fermentacion": {
-            "titulo": "Agente de fermentaci\u00f3n",
-            "peso": "0.01",
-            "plata": "20",
-            "nomejorable": true
-        },
-        "cantidad": {
-            "titulo": "Cantidad",
-            "peso": "0",
-            "plata": "0"
-        },
-        "avena": {
-            "titulo": "Avena",
-            "peso": "0",
-            "plata": "0"
-        },
-        "harina": {
-            "titulo": "Harina",
-            "peso": "0.1",
-            "plata": "0"
-        },
-        "leche": {
-            "titulo": "Leche",
-            "peso": "0.01",
-            "plata": "0"
-        },
-        "cebolla": {
-            "titulo": "Cebolla",
-            "peso": "0",
-            "plata": "0"
-        },
-        "miel": {
-            "titulo": "Miel",
-            "peso": "0.1",
-            "plata": "0"
-        },
-        "teolor": {
-            "titulo": "T\u00e9 con olor fino",
-            "peso": "0.1",
-            "plata": "0"
-        },
-        "plantas": {
-            "titulo": "Plantas",
-            "peso": "0",
-            "plata": "0"
-        },
-        "frutas": {
-            "titulo": "Frutas",
-            "peso": "0.1",
-            "plata": "750"
-        },
-        "tesute": {
-            "titulo": "T\u00e9 Sute",
-            "peso": "0",
             "plata": "0",
+            "imperiales": "30"
+        },
+        "racioncab": {
+            "titulo": "Raci\u00f3n de Combate de la Caballer\u00eda",
+            "peso": "0.1",
+            "plata": "35900",
             "imperiales": "18"
         },
-        "mantequilla": {
-            "titulo": "Mantequilla",
-            "peso": "0",
-            "plata": "0"
-        },
-        "sal": {
-            "titulo": "Sal",
-            "peso": "0.01",
-            "plata": "20",
-            "nomejorable": true
-        },
-        "teleche": {
-            "titulo": "T\u00e9 con Leche",
-            "peso": "0",
+        "salchichaasada": {
+            "titulo": "Salchicha Asada",
+            "peso": "0.1",
             "plata": "0",
-            "imperiales": "18"
+            "imperiales": "15"
+        },
+        "salsablanca": {
+            "titulo": "Salsa blanca",
+            "peso": "0.01",
+            "plata": "0"
         },
         "salsaroja": {
             "titulo": "Salsa Roja",
@@ -647,158 +1306,2158 @@
             "plata": "3810",
             "nomejorable": true
         },
-        "salsabase": {
-            "titulo": "Salsa Base",
-            "peso": "0",
-            "plata": "0"
-        },
-        "carne1": {
-            "titulo": "Carne (1)",
+        "sandwichdecarne": {
+            "titulo": "S\u00e1ndwich de Carne",
             "peso": "0.1",
-            "plata": "0"
+            "plata": "0",
+            "imperiales": "15"
         },
-        "salchichaasada": {
-            "titulo": "Salchicha Asada",
-            "peso": "0",
-            "plata": "0"
-        },
-        "pimienta": {
-            "titulo": "Pimienta",
-            "peso": "0",
-            "plata": "0"
-        },
-        "gratinadoqueso": {
-            "titulo": "Gratinado de queso",
-            "peso": "0",
+        "sandwichdechampinonesarcoi": {
+            "titulo": "S\u00e1ndwich de Champi\u00f1ones Arco\u00edris",
+            "peso": "0.1",
             "plata": "0",
             "imperiales": "18"
         },
-        "masa": {
-            "titulo": "Masa",
+        "sandwichdefrank": {
+            "titulo": "Sandwich de Frank",
             "peso": "0.1",
-            "plata": "2210",
+            "plata": "0",
+            "imperiales": "21"
+        },
+        "sandwichj": {
+            "titulo": "S\u00e1ndwich de Jam\u00f3n",
+            "peso": "0.1",
+            "plata": "27100",
+            "imperiales": "15"
+        },
+        "sandwitchteff": {
+            "titulo": "S\u00e1ndwich de Teff",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "18",
             "nomejorable": true
         },
-        "vegetales": {
-            "titulo": "Vegetales",
+        "sofritodeave": {
+            "titulo": "Sofrito de Ave",
             "peso": "0.1",
-            "plata": "850"
+            "plata": "0",
+            "imperiales": "24"
         },
-        "queso": {
-            "titulo": "Queso",
-            "peso": "0",
-            "plata": "0"
+        "sofritodehelechoconcarne": {
+            "titulo": "Sofrito de Helecho con Carne",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "18"
         },
-        "croquetadecarne": {
-            "titulo": "Croqueta de Carne",
-            "peso": "0",
-            "plata": "0"
+        "verdurasrevueltassofritas": {
+            "titulo": "Sofrito de Verduras",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "18"
         },
-        "huevo": {
-            "titulo": "Huevo",
-            "peso": "0",
-            "plata": "0"
+        "sopadecarne": {
+            "titulo": "Sopa de Carne",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "18"
         },
-        "aceitefreir": {
-            "titulo": "Aceite de freir",
+        "sopadegranos": {
+            "titulo": "Sopa de Granos",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "45"
+        },
+        "sopadepescado": {
+            "titulo": "Sopa de Pescado",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "33"
+        },
+        "tartadedelotia": {
+            "titulo": "Tarta de Delotia",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "18"
+        },
+        "teolor": {
+            "titulo": "T\u00e9 con Aroma Delicioso",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "21"
+        },
+        "teleche": {
+            "titulo": "T\u00e9 con Leche",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "18"
+        },
+        "tedelechededelotia": {
+            "titulo": "T\u00e9 de Leche de Delotia",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "21"
+        },
+        "tesute": {
+            "titulo": "T\u00e9 Sute",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "18"
+        },
+        "tortaostra": {
+            "titulo": "Torta de Ostra",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "18"
+        },
+        "verdurase": {
+            "titulo": "Verduras en Escabeche",
+            "peso": "0.1",
+            "plata": "4440",
+            "imperiales": "18",
+            "nomejorable": true
+        },
+        "verdurasfritas": {
+            "titulo": "Verduras Fritas",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "15"
+        },
+        "vinagre": {
+            "titulo": "Vinagre",
             "peso": "0.01",
-            "plata": "40"
-        },
-        "bistecpescadoahumado": {
-            "titulo": "Bistec de pescado Ahumado",
-            "peso": "0",
             "plata": "0"
         },
-        "pescado": {
-            "titulo": "Pescado",
-            "peso": "0",
+        "vinopalmera": {
+            "titulo": "Vino de D\u00e1tiles",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "60",
+            "nomejorable": true
+        },
+        "vinofruta": {
+            "titulo": "Vino de Frutas",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "45"
+        },
+        "vinodemiel": {
+            "titulo": "Vino de Miel",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "60"
+        },
+        "vinodemieldulce": {
+            "titulo": "Vino de Miel Dulce",
+            "peso": "0.1",
             "plata": "0"
+        },
+        "vinofermentadodekhalk": {
+            "titulo": "Vino Fermentado de Khalk",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "12"
+        },
+        "yogurtdealoe": {
+            "titulo": "Yogurt de Aloe",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "18"
         },
         "aceiteoliva": {
             "titulo": "Aceite de Oliva",
             "peso": "0.01",
             "plata": "40",
-            "nomejorable": true
+            "nomejorable": true,
+            "grupo": true,
+            "gid": 6407,
+            "miembros": [
+                {
+                    "t": "Aceite de Fre\u00edr",
+                    "v": 1,
+                    "vc": 4
+                },
+                {
+                    "t": "Aceite de Oliva",
+                    "v": 1,
+                    "vc": 4,
+                    "propio": true
+                },
+                {
+                    "t": "Aceite para Cocinar",
+                    "v": 1
+                }
+            ],
+            "obtencion": {
+                "metodos": [
+                    "npc"
+                ],
+                "detalle": "Se compra a un Vendedor de Alimentos o a un Posadero. Cualquier aceite de cocina de su grupo sirve igual.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/9015/",
+                    "https://bdocodex.com/sp/materialgroup/6407/"
+                ],
+                "verificado": "2026-09-05"
+            }
         },
-        "verdurasrevueltassofritas": {
-            "titulo": "Verduras Revueltas Sofritas",
-            "peso": "0",
-            "plata": "0"
+        "aguac": {
+            "titulo": "Agua Pura para Cocinar",
+            "peso": "0.01",
+            "plata": "30",
+            "nomejorable": true,
+            "obtencion": {
+                "metodos": [
+                    "npc"
+                ],
+                "detalle": "Se compra a un Vendedor de Alimentos o a un Posadero de cualquier ciudad.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/9059/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "huevo": {
+            "titulo": "Huevo",
+            "peso": "0.01",
+            "plata": "0",
+            "grupo": true,
+            "gid": 6204,
+            "miembros": [
+                {
+                    "t": "Huevos",
+                    "v": 1,
+                    "propio": true
+                },
+                {
+                    "t": "[Evento] Huevo",
+                    "v": 1,
+                    "vc": 2
+                }
+            ],
+            "obtencion": {
+                "metodos": [
+                    "cultivo",
+                    "nodos",
+                    "mercado"
+                ],
+                "detalle": "Sale de las misiones de granja y de los nodos de granja trabajados con obreros.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/9064/",
+                    "https://bdocodex.com/sp/materialgroup/6204/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "sal": {
+            "titulo": "Sal",
+            "peso": "0.01",
+            "plata": "20",
+            "nomejorable": true,
+            "grupo": true,
+            "gid": 6401,
+            "miembros": [
+                {
+                    "t": "Sal",
+                    "v": 1,
+                    "propio": true
+                },
+                {
+                    "t": "Sal de Mar",
+                    "v": 1,
+                    "vc": 16
+                }
+            ],
+            "obtencion": {
+                "metodos": [
+                    "npc"
+                ],
+                "detalle": "Se compra a un Vendedor de Alimentos o a un Posadero.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/9001/",
+                    "https://bdocodex.com/sp/materialgroup/6401/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "mariscosecos": {
+            "titulo": "Mariscos Secos",
+            "peso": "0.5",
+            "plata": "0",
+            "grupo": true,
+            "gid": 5754,
+            "miembros": [
+                {
+                    "t": "Almeja Seca",
+                    "v": 1
+                },
+                {
+                    "t": "Carne de Ostra Gigante de Trinada",
+                    "v": 1,
+                    "vc": 20
+                },
+                {
+                    "t": "Carne de Ostra de Perla Seca",
+                    "v": 1,
+                    "vc": 5,
+                    "propio": true
+                }
+            ],
+            "obtencion": {
+                "metodos": [
+                    "recoleccion",
+                    "procesamiento",
+                    "mercado"
+                ],
+                "detalle": "Recolecci\u00f3n submarina con azada y despu\u00e9s Procesamiento \u2192 Secar. Cualquier marisco seco del grupo sirve.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/6520/",
+                    "https://bdocodex.com/sp/materialgroup/5754/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "ajo": {
+            "titulo": "Ajo",
+            "peso": "0.1",
+            "plata": "0",
+            "grupo": true,
+            "gid": 6005,
+            "miembros": [
+                {
+                    "t": "Ajo",
+                    "v": 1,
+                    "propio": true
+                },
+                {
+                    "t": "Ajo de Calidad",
+                    "v": 6
+                },
+                {
+                    "t": "Ajo de Alta Calidad",
+                    "v": 36
+                }
+            ],
+            "obtencion": {
+                "metodos": [
+                    "cultivo",
+                    "mercado"
+                ],
+                "detalle": "Se cultiva en un huerto; tambi\u00e9n se consigue en el Mercado Central.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7302/",
+                    "https://bdocodex.com/sp/materialgroup/6005/"
+                ],
+                "verificado": "2026-09-05"
+            }
         },
         "chile": {
             "titulo": "Chile",
             "peso": "0.1",
-            "plata": "0"
+            "plata": "0",
+            "grupo": true,
+            "gid": 6008,
+            "miembros": [
+                {
+                    "t": "Chile",
+                    "v": 1,
+                    "propio": true
+                },
+                {
+                    "t": "Chile de Calidad",
+                    "v": 6
+                },
+                {
+                    "t": "Chile Picante de Alta Calidad",
+                    "v": 36
+                }
+            ],
+            "obtencion": {
+                "metodos": [
+                    "cultivo",
+                    "mercado"
+                ],
+                "detalle": "Se cultiva en un huerto; tambi\u00e9n se consigue en el Mercado Central.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7305/",
+                    "https://bdocodex.com/sp/materialgroup/6008/"
+                ],
+                "verificado": "2026-09-05"
+            }
         },
-        "arrozsofritopistacho": {
-            "titulo": "Arroz Sofrito de Pistacho",
-            "peso": "0",
-            "plata": "0"
+        "carne1": {
+            "titulo": "Carne (1)",
+            "peso": "0.03",
+            "plata": "0",
+            "grupo": true,
+            "gid": 6301,
+            "miembros": [
+                {
+                    "t": "Carne de Cabra",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Carne de Cerdo",
+                    "v": 1
+                },
+                {
+                    "t": "Carne de Ciervo",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Carne de Comadreja",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Carne de Gacela",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Carne de Lobo",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Carne de Mapache",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Carne de Oso",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Carne de Oveja",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Carne de Res",
+                    "v": 1,
+                    "vc": 2,
+                    "propio": true
+                },
+                {
+                    "t": "Carne de Rinoceronte",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Carne de Zorro",
+                    "v": 1,
+                    "vc": 2
+                }
+            ],
+            "obtencion": {
+                "metodos": [
+                    "caza",
+                    "botin",
+                    "mercado"
+                ],
+                "detalle": "Carnicer\u00eda de animales cazados (res, cerdo, ciervo, lobo, oveja...). Tambi\u00e9n cae de algunos monstruos.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7906/",
+                    "https://bdocodex.com/sp/materialgroup/6301/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "pescado": {
+            "titulo": "Pescado",
+            "peso": "1",
+            "plata": "0",
+            "grupo": true,
+            "gid": 5101,
+            "obtencion": {
+                "metodos": [
+                    "pesca",
+                    "nodos",
+                    "mercado"
+                ],
+                "detalle": "Pesca general o con arp\u00f3n, y nodos de pesca con obreros. Cualquier pescado del grupo sirve, fresco o seco.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/8210/",
+                    "https://bdocodex.com/sp/materialgroup/5101/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "harina": {
+            "titulo": "Harina",
+            "peso": "0.1",
+            "plata": "0",
+            "grupo": true,
+            "gid": 6002,
+            "miembros": [
+                {
+                    "t": "Harina de Camote",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Harina de Cebada",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Harina de Ma\u00edz",
+                    "v": 1,
+                    "vc": 2,
+                    "propio": true
+                },
+                {
+                    "t": "Harina de Papa",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Harina de Trigo",
+                    "v": 1
+                }
+            ],
+            "obtencion": {
+                "metodos": [
+                    "procesamiento",
+                    "mercado"
+                ],
+                "detalle": "Procesamiento \u2192 Moler sobre el cereal (trigo, ma\u00edz, papa, camote o cebada).",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7105/",
+                    "https://bdocodex.com/sp/materialgroup/6002/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "carneave": {
+            "titulo": "Carne de Ave",
+            "peso": "0.03",
+            "plata": "1980",
+            "grupo": true,
+            "gid": 6303,
+            "miembros": [
+                {
+                    "t": "Carne de Ave",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Carne de Flamenco",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Carne de Pollo",
+                    "v": 1,
+                    "propio": true
+                },
+                {
+                    "t": "Carne del P\u00e1jaro Cuc\u00fa",
+                    "v": 1,
+                    "vc": 2
+                }
+            ],
+            "obtencion": {
+                "metodos": [
+                    "cultivo",
+                    "nodos",
+                    "caza",
+                    "mercado"
+                ],
+                "detalle": "Misiones y nodos de granja de aves; tambi\u00e9n de la carnicer\u00eda de aves cazadas.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7921/",
+                    "https://bdocodex.com/sp/materialgroup/6303/"
+                ],
+                "verificado": "2026-09-05"
+            }
         },
         "pistacho": {
             "titulo": "Pistacho",
-            "peso": "0",
-            "plata": "0"
+            "peso": "0.1",
+            "plata": "0",
+            "obtencion": {
+                "metodos": [
+                    "recoleccion",
+                    "nodos",
+                    "mercado"
+                ],
+                "detalle": "Se recolecta de \u00c1rboles de Pistacho y se produce en nodos con obreros.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7017/"
+                ],
+                "verificado": "2026-09-05"
+            }
         },
         "teff": {
             "titulo": "Teff",
-            "peso": "0",
-            "plata": "0"
+            "peso": "0.1",
+            "plata": "0",
+            "obtencion": {
+                "metodos": [
+                    "recoleccion",
+                    "nodos",
+                    "mercado"
+                ],
+                "detalle": "Se produce en el Terreno Bazar, el Terreno Altas y el Rancho de Fohalam; tambi\u00e9n se recolecta.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7022/"
+                ],
+                "verificado": "2026-09-05"
+            }
         },
         "canela": {
             "titulo": "Canela",
-            "peso": "0",
-            "plata": "0"
-        },
-        "pansuave": {
-            "titulo": "Pan Suave",
-            "peso": "0",
-            "plata": "0"
-        },
-        "ensaladafiletepescado": {
-            "titulo": "Ensalada de filete de Pescado",
-            "peso": "0",
-            "plata": "0"
-        },
-        "aderezo": {
-            "titulo": "Aderezo",
-            "peso": "0",
-            "plata": "0"
-        },
-        "pastacarne": {
-            "titulo": "Pasta de Carne",
-            "peso": "0",
-            "plata": "0"
-        },
-        "ajo": {
-            "titulo": "Ajo",
-            "peso": "0",
-            "plata": "0"
-        },
-        "payqueso": {
-            "titulo": "Pay de queso",
-            "peso": "0",
-            "plata": "0"
-        },
-        "platillocalpheon": {
-            "titulo": "Platillo de Calpheon",
-            "peso": "0",
+            "peso": "0.1",
             "plata": "0",
-            "imperiales" : "18"
+            "obtencion": {
+                "metodos": [
+                    "recoleccion",
+                    "nodos",
+                    "mercado"
+                ],
+                "detalle": "Se recolecta a mano o con azada en Mediah; tambi\u00e9n se produce en el Rancho de Kasula.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7348/"
+                ],
+                "verificado": "2026-09-05"
+            }
         },
-        "platillobalenos": {
-            "titulo": "Platillo de Balenos",
-            "peso": "0",
+        "aceitefreir": {
+            "titulo": "Aceite de Fre\u00edr",
+            "peso": "0.01",
+            "plata": "40",
+            "nomejorable": true,
+            "obtencion": {
+                "metodos": [
+                    "npc"
+                ],
+                "detalle": "Se compra a un Vendedor de Alimentos o a un Posadero.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/9016/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "vinoc": {
+            "titulo": "Vino para Cocinar",
+            "peso": "0.01",
+            "plata": "40",
+            "nomejorable": true,
+            "obtencion": {
+                "metodos": [
+                    "npc"
+                ],
+                "detalle": "Se compra a un Vendedor de Alimentos o a un Posadero.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/9017/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "leche": {
+            "titulo": "Leche",
+            "peso": "0.01",
             "plata": "0",
-            "imperiales": "24"
+            "obtencion": {
+                "metodos": [
+                    "cultivo",
+                    "mercado"
+                ],
+                "detalle": "Sale de las misiones de granja de vacas (orde\u00f1ar).",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/9065/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "cebolla": {
+            "titulo": "Cebolla",
+            "peso": "0.1",
+            "plata": "0",
+            "grupo": true,
+            "gid": 6006,
+            "miembros": [
+                {
+                    "t": "Cebolla",
+                    "v": 1,
+                    "propio": true
+                },
+                {
+                    "t": "Cebolla de Calidad",
+                    "v": 6
+                },
+                {
+                    "t": "Cebolla de Alta Calidad",
+                    "v": 36
+                }
+            ],
+            "obtencion": {
+                "metodos": [
+                    "cultivo",
+                    "mercado"
+                ],
+                "detalle": "Se cultiva en un huerto; tambi\u00e9n se consigue en el Mercado Central.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7303/",
+                    "https://bdocodex.com/sp/materialgroup/6006/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "miel": {
+            "titulo": "Miel para Cocinar",
+            "peso": "0.1",
+            "plata": "0",
+            "grupo": true,
+            "gid": 6014,
+            "miembros": [
+                {
+                    "t": "Miel para Cocinar",
+                    "v": 1,
+                    "vc": 2,
+                    "propio": true
+                },
+                {
+                    "t": "Panal de Abeja Salvaje",
+                    "v": 1
+                },
+                {
+                    "t": "Miel de Cocina de Calidad",
+                    "v": 2,
+                    "vc": 5
+                },
+                {
+                    "t": "Miel de Calidad Superior de Cocina",
+                    "v": 6,
+                    "vc": 10
+                }
+            ],
+            "obtencion": {
+                "metodos": [
+                    "procesamiento",
+                    "nodos",
+                    "mercado"
+                ],
+                "detalle": "Moler el Panal de Abeja Salvaje que se consigue cazando colmenas con mosquete; tambi\u00e9n sale de nodos.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7702/",
+                    "https://bdocodex.com/sp/materialgroup/6014/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "carneleon": {
+            "titulo": "Carne de Le\u00f3n",
+            "peso": "0.03",
+            "plata": "14600",
+            "obtencion": {
+                "metodos": [
+                    "caza",
+                    "botin",
+                    "mercado"
+                ],
+                "detalle": "Carnicer\u00eda de un Le\u00f3n cazado.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7923/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "higo": {
+            "titulo": "Higo",
+            "peso": "0.1",
+            "plata": "3840",
+            "obtencion": {
+                "metodos": [
+                    "recoleccion",
+                    "nodos",
+                    "mercado"
+                ],
+                "detalle": "Se recolecta de los \u00c1rboles de Higo y se produce en nodos con obreros.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7018/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "pimienta": {
+            "titulo": "Pimienta",
+            "peso": "0.1",
+            "plata": "0",
+            "grupo": true,
+            "gid": 6004,
+            "miembros": [
+                {
+                    "t": "Pimienta",
+                    "v": 1,
+                    "propio": true
+                },
+                {
+                    "t": "Pimienta de Calidad",
+                    "v": 6
+                },
+                {
+                    "t": "Pimienta de Alta Calidad",
+                    "v": 36
+                }
+            ],
+            "obtencion": {
+                "metodos": [
+                    "cultivo",
+                    "mercado"
+                ],
+                "detalle": "Se cultiva en un huerto; tambi\u00e9n se consigue en el Mercado Central.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7301/",
+                    "https://bdocodex.com/sp/materialgroup/6004/"
+                ],
+                "verificado": "2026-09-05"
+            }
         },
         "mariscos": {
-            "titulo": "Mariscos 2",
-            "peso": "0",
-            "plata": "0"
+            "titulo": "Mariscos",
+            "peso": "1",
+            "plata": "0",
+            "grupo": true,
+            "gid": 5701,
+            "miembros": [
+                {
+                    "t": "Almeja",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Almeja Seca",
+                    "v": 1
+                },
+                {
+                    "t": "Caballo de Mar",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Caballo de Mar Seco",
+                    "v": 1
+                },
+                {
+                    "t": "Calamar",
+                    "v": 1,
+                    "propio": true
+                },
+                {
+                    "t": "Calamar Seco",
+                    "v": 1
+                },
+                {
+                    "t": "Cangrejo",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Cangrejo Rojo de las Nieves",
+                    "v": 1,
+                    "vc": 10
+                },
+                {
+                    "t": "Cangrejo Rojo de las Nieves Seco",
+                    "v": 1,
+                    "vc": 5
+                },
+                {
+                    "t": "Cangrejo Seco",
+                    "v": 1
+                },
+                {
+                    "t": "Cangrejo de R\u00edo",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Cangrejo de R\u00edo Seco",
+                    "v": 1
+                },
+                {
+                    "t": "Estrella de Mar",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Estrella de Mar Seca",
+                    "v": 1
+                },
+                {
+                    "t": "Medusa",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Medusa Seca",
+                    "v": 1
+                },
+                {
+                    "t": "Pulpo",
+                    "v": 1,
+                    "vc": 10
+                },
+                {
+                    "t": "Pulpo Seco",
+                    "v": 1,
+                    "vc": 5
+                },
+                {
+                    "t": "Sepia",
+                    "v": 1,
+                    "vc": 4
+                },
+                {
+                    "t": "Sepia Seca",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Tortuga de Agua Dulce",
+                    "v": 1,
+                    "vc": 4
+                },
+                {
+                    "t": "Tortuga de Agua Dulce Seca",
+                    "v": 1,
+                    "vc": 2
+                }
+            ],
+            "obtencion": {
+                "metodos": [
+                    "pesca",
+                    "mercado"
+                ],
+                "detalle": "Pesca general o con arp\u00f3n. Cualquier marisco del grupo sirve (calamar, cangrejo, pulpo...).",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/8211/",
+                    "https://bdocodex.com/sp/materialgroup/5701/"
+                ],
+                "verificado": "2026-09-05"
+            }
         },
-        "adobadoostra": {
-            "titulo": "Adobado de Ostra",
+        "queso": {
+            "titulo": "Queso",
+            "peso": "0.01",
+            "plata": "0",
+            "obtencion": {
+                "metodos": [
+                    "procesamiento",
+                    "mercado"
+                ],
+                "detalle": "Procesamiento \u2192 Secar la Leche de las misiones de granja.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/9062/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "frutas": {
+            "titulo": "Frutas",
+            "peso": "0.1",
+            "plata": "750",
+            "grupo": true,
+            "gid": 6007,
+            "miembros": [
+                {
+                    "t": "Cereza",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Fresa",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Manzana",
+                    "v": 1,
+                    "propio": true
+                },
+                {
+                    "t": "Pera",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Pi\u00f1a",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Pl\u00e1tano",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Uva",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Fresa de Calidad",
+                    "v": 6,
+                    "vc": 12
+                },
+                {
+                    "t": "Uva de Calidad",
+                    "v": 6,
+                    "vc": 12
+                },
+                {
+                    "t": "Fresa de Alta Calidad",
+                    "v": 36,
+                    "vc": 72
+                },
+                {
+                    "t": "Uva de Alta Calidad",
+                    "v": 36,
+                    "vc": 72
+                }
+            ],
+            "obtencion": {
+                "metodos": [
+                    "recoleccion",
+                    "cultivo",
+                    "npc",
+                    "mercado"
+                ],
+                "detalle": "Se recolecta de \u00e1rboles frutales y se cultiva en huerto; algunas frutas las venden los NPC.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7313/",
+                    "https://bdocodex.com/sp/materialgroup/6007/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "carnesecaconolorfuerte": {
+            "titulo": "Carne Seca con Olor Fuerte",
+            "peso": "0.3",
+            "plata": "0",
+            "grupo": true,
+            "gid": 6018,
+            "miembros": [
+                {
+                    "t": "Carne Seca Bien Seca",
+                    "v": 1,
+                    "vc": 5
+                },
+                {
+                    "t": "Carne Seca Rara",
+                    "v": 1,
+                    "vc": 10
+                },
+                {
+                    "t": "Carne Seca con Olor Fuerte",
+                    "v": 1,
+                    "propio": true
+                }
+            ],
+            "obtencion": {
+                "metodos": [
+                    "caza",
+                    "procesamiento",
+                    "mercado"
+                ],
+                "detalle": "Carnicer\u00eda de animales cazados y Procesamiento \u2192 Secar de la carne.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7918/",
+                    "https://bdocodex.com/sp/materialgroup/6018/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "carnedellama": {
+            "titulo": "Carne de Llama",
+            "peso": "0.03",
+            "plata": "0",
+            "obtencion": {
+                "metodos": [
+                    "caza",
+                    "mercado"
+                ],
+                "detalle": "Carnicer\u00eda de una Llama cazada.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7956/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "vegetales": {
+            "titulo": "Vegetales",
+            "peso": "0.1",
+            "plata": "850",
+            "grupo": true,
+            "gid": 6009,
+            "miembros": [
+                {
+                    "t": "Calabaza",
+                    "v": 1
+                },
+                {
+                    "t": "Jitomate",
+                    "v": 1
+                },
+                {
+                    "t": "Olivo",
+                    "v": 1
+                },
+                {
+                    "t": "Pimiento",
+                    "v": 1
+                },
+                {
+                    "t": "Repollo",
+                    "v": 1,
+                    "propio": true
+                },
+                {
+                    "t": "Calabaza de Calidad",
+                    "v": 6
+                },
+                {
+                    "t": "Jitomate de Calidad",
+                    "v": 6
+                },
+                {
+                    "t": "Olivo de Calidad",
+                    "v": 6
+                },
+                {
+                    "t": "Pimiento de Calidad",
+                    "v": 6
+                },
+                {
+                    "t": "Calabaza de Alta Calidad",
+                    "v": 36
+                },
+                {
+                    "t": "Jitomate de Alta Calidad",
+                    "v": 36
+                },
+                {
+                    "t": "Olivo de Alta Calidad",
+                    "v": 36
+                },
+                {
+                    "t": "Pimiento de Alta Calidad",
+                    "v": 36
+                }
+            ],
+            "obtencion": {
+                "metodos": [
+                    "recoleccion",
+                    "cultivo",
+                    "mercado",
+                    "npc"
+                ],
+                "detalle": "Se recolecta a mano y se cultiva en huerto: repollo, calabaza, jitomate, pimiento u olivo. También se puede obtener a través de NPCs (Pimiento).",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7318/",
+                    "https://bdocodex.com/sp/materialgroup/6009/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "carnedeballenaazul": {
+            "titulo": "Carne de Ballena Azul",
+            "peso": "0.5",
+            "plata": "0",
+            "obtencion": {
+                "metodos": [
+                    "caza",
+                    "mercado"
+                ],
+                "detalle": "Carnicer\u00eda de una Ballena Azul cazada con arp\u00f3n.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/9726/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "salsabase": {
+            "titulo": "Salsa de Base",
+            "peso": "0.01",
+            "plata": "40",
+            "nomejorable": true,
+            "obtencion": {
+                "metodos": [
+                    "npc"
+                ],
+                "detalle": "Se compra a un Vendedor de Alimentos o a un Posadero.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/9018/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "cereales": {
+            "titulo": "Cereales",
+            "peso": "0.1",
+            "plata": "1500",
+            "grupo": true,
+            "gid": 6001,
+            "miembros": [
+                {
+                    "t": "Camote",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Cebada",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Ma\u00edz",
+                    "v": 1,
+                    "vc": 2,
+                    "propio": true
+                },
+                {
+                    "t": "Papa",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Trigo",
+                    "v": 1
+                },
+                {
+                    "t": "Camote de Calidad",
+                    "v": 6
+                },
+                {
+                    "t": "Cebada de Calidad",
+                    "v": 6
+                },
+                {
+                    "t": "Elote de Calidad",
+                    "v": 6
+                },
+                {
+                    "t": "Papa de Calidad",
+                    "v": 6
+                },
+                {
+                    "t": "Trigo de Calidad",
+                    "v": 6
+                },
+                {
+                    "t": "Camote de Alta Calidad",
+                    "v": 36
+                },
+                {
+                    "t": "Cebada de Alta Calidad",
+                    "v": 36
+                },
+                {
+                    "t": "Ma\u00edz de Alta Calidad",
+                    "v": 36
+                },
+                {
+                    "t": "Papa de Alta Calidad",
+                    "v": 36
+                },
+                {
+                    "t": "Trigo de Alta Calidad",
+                    "v": 36
+                }
+            ],
+            "obtencion": {
+                "metodos": [
+                    "cultivo",
+                    "recoleccion",
+                    "nodos",
+                    "mercado"
+                ],
+                "detalle": "Se cultiva en huerto o se produce en nodos de grano: trigo, ma\u00edz, papa, camote o cebada.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7005/",
+                    "https://bdocodex.com/sp/materialgroup/6001/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "azucar": {
+            "titulo": "Az\u00facar",
+            "peso": "0.01",
+            "plata": "20",
+            "nomejorable": true,
+            "grupo": true,
+            "gid": 6402,
+            "miembros": [
+                {
+                    "t": "Az\u00facar",
+                    "v": 1,
+                    "propio": true
+                },
+                {
+                    "t": "Az\u00facar Morena",
+                    "v": 1,
+                    "vc": 16
+                }
+            ],
+            "obtencion": {
+                "metodos": [
+                    "npc"
+                ],
+                "detalle": "Se compra a un Vendedor de Alimentos o a un Posadero.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/9002/",
+                    "https://bdocodex.com/sp/materialgroup/6402/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "fermentacion": {
+            "titulo": "Levadura",
+            "peso": "0.01",
+            "plata": "20",
+            "nomejorable": true,
+            "obtencion": {
+                "metodos": [
+                    "npc"
+                ],
+                "detalle": "Se compra a un Vendedor de Alimentos o a un Posadero.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/9005/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "champinonarcoiris": {
+            "titulo": "Champi\u00f1\u00f3n Arco\u00edris",
+            "peso": "0.1",
+            "plata": "0",
+            "obtencion": {
+                "metodos": [
+                    "recoleccion",
+                    "mercado"
+                ],
+                "detalle": "Se recolecta a mano o con azada.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/5515/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "coco": {
+            "titulo": "Coco",
+            "peso": "0.1",
+            "plata": "0",
+            "obtencion": {
+                "metodos": [
+                    "nodos",
+                    "mercado"
+                ],
+                "detalle": "Producci\u00f3n del nodo Bosque de Palmeras de Areha con obreros.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7026/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "zanahoriadealtacalidad": {
+            "titulo": "Zanahoria de Alta Calidad",
+            "peso": "0.1",
+            "plata": "0",
+            "obtencion": {
+                "metodos": [
+                    "cultivo",
+                    "mercado"
+                ],
+                "detalle": "Sale de cosechar zanahorias en un huerto.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/54005/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "aguapurificada": {
+            "titulo": "Agua Purificada",
+            "peso": "0.1",
+            "plata": "0",
+            "nomejorable": true,
+            "grupo": true,
+            "gid": 1001,
+            "miembros": [
+                {
+                    "t": "Agua Destilada",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Agua Pura para Cocinar",
+                    "v": 1,
+                    "vc": 3
+                },
+                {
+                    "t": "Agua Purificada",
+                    "v": 1,
+                    "propio": true
+                }
+            ],
+            "obtencion": {
+                "metodos": [
+                    "procesamiento",
+                    "npc",
+                    "nodos",
+                    "mercado"
+                ],
+                "detalle": "Procesamiento \u2192 Filtrar una Botella de Agua de R\u00edo; tambi\u00e9n la venden algunos NPC.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/6656/",
+                    "https://bdocodex.com/sp/materialgroup/1001/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "granodeazucarmorena": {
+            "titulo": "Grano de Az\u00facar Morena",
+            "peso": "0.1",
+            "plata": "0",
+            "obtencion": {
+                "metodos": [
+                    "procesamiento",
+                    "mercado"
+                ],
+                "detalle": "Procesamiento \u2192 Calentar: Az\u00facar Morena x10 + Agua Pura para Cocinar x1.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/54003/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "masateff": {
+            "titulo": "Masa de Harina de Teff",
+            "peso": "0.1",
+            "plata": "2400",
+            "obtencion": {
+                "metodos": [
+                    "procesamiento",
+                    "mercado"
+                ],
+                "detalle": "Procesamiento: mezclar Harina de Teff con Agua Pura para Cocinar.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7206/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "nuezm": {
+            "titulo": "Nuez Moscada",
+            "peso": "0.1",
+            "plata": "4150",
+            "obtencion": {
+                "metodos": [
+                    "recoleccion",
+                    "nodos",
+                    "mercado"
+                ],
+                "detalle": "Se recolecta de un \u00c1rbol de Nuez Moscada; tambi\u00e9n se produce en nodos.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7020/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "carnedelagartija": {
+            "titulo": "Carne de Lagartija",
+            "peso": "0.03",
+            "plata": "0",
+            "grupo": true,
+            "gid": 6302,
+            "miembros": [
+                {
+                    "t": "Carne de Dinosaurio",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Carne de Drag\u00f3n Chita",
+                    "v": 1,
+                    "vc": 4
+                },
+                {
+                    "t": "Carne de Gusano",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Carne de Lagartija",
+                    "v": 1,
+                    "propio": true
+                },
+                {
+                    "t": "Carne de Waragon",
+                    "v": 1,
+                    "vc": 4
+                }
+            ],
+            "obtencion": {
+                "metodos": [
+                    "caza",
+                    "botin",
+                    "mercado"
+                ],
+                "detalle": "Carnicer\u00eda de lagartos y reptiles cazados; tambi\u00e9n cae de algunos monstruos.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7908/",
+                    "https://bdocodex.com/sp/materialgroup/6302/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "masa": {
+            "titulo": "Masa",
+            "peso": "0.1",
+            "plata": "2210",
+            "nomejorable": true,
+            "grupo": true,
+            "gid": 6003,
+            "miembros": [
+                {
+                    "t": "Masa de Harina",
+                    "v": 1
+                },
+                {
+                    "t": "Masa de Harina de Camote",
+                    "v": 1,
+                    "vc": 4
+                },
+                {
+                    "t": "Masa de Harina de Cebada",
+                    "v": 1,
+                    "vc": 4
+                },
+                {
+                    "t": "Masa de Harina de Ma\u00edz",
+                    "v": 1,
+                    "vc": 4,
+                    "propio": true
+                },
+                {
+                    "t": "Masa de Harina de Papa",
+                    "v": 1,
+                    "vc": 4
+                }
+            ],
+            "obtencion": {
+                "metodos": [
+                    "procesamiento",
+                    "mercado"
+                ],
+                "detalle": "Procesamiento: mezclar harina con Agua Pura para Cocinar. Sirve cualquier masa del grupo.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7205/",
+                    "https://bdocodex.com/sp/materialgroup/6003/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "carnedeballenasuave": {
+            "titulo": "Carne de Ballena Suave",
+            "peso": "0.2",
+            "plata": "0",
+            "obtencion": {
+                "metodos": [
+                    "caza",
+                    "mercado"
+                ],
+                "detalle": "Carnicer\u00eda de ballena cazada con arp\u00f3n.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/9731/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "camaron": {
+            "titulo": "Camar\u00f3n",
+            "peso": "0.1",
+            "plata": "0",
+            "obtencion": {
+                "metodos": [
+                    "recoleccion",
+                    "mercado"
+                ],
+                "detalle": "Recolecci\u00f3n submarina con azada.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/6516/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "hongoadivino": {
+            "titulo": "Hongo adivino",
+            "peso": "0.1",
+            "plata": "0",
+            "grupo": true,
+            "gid": 3007,
+            "miembros": [
+                {
+                    "t": "Hongo Adivino Grande",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Hongo adivino",
+                    "v": 1,
+                    "propio": true
+                },
+                {
+                    "t": "Hongo Adivino de Calidad",
+                    "v": 6,
+                    "vc": 12
+                },
+                {
+                    "t": "Hongo Adivino de Alta Calidad",
+                    "v": 36,
+                    "vc": 72
+                }
+            ],
+            "obtencion": {
+                "metodos": [
+                    "recoleccion",
+                    "cultivo",
+                    "nodos",
+                    "mercado"
+                ],
+                "detalle": "Se recolecta a mano o con azada y se produce en la Colina de Ehwaz y el Barranco de la Costa.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/5407/",
+                    "https://bdocodex.com/sp/materialgroup/3007/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "carneescorpion": {
+            "titulo": "Carne de Escorpi\u00f3n",
+            "peso": "0.03",
+            "plata": "9900",
+            "obtencion": {
+                "metodos": [
+                    "caza",
+                    "botin",
+                    "mercado"
+                ],
+                "detalle": "Carnicer\u00eda de un Escorpi\u00f3n cazado.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7924/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "mantequilla": {
+            "titulo": "Mantequilla",
+            "peso": "0.01",
+            "plata": "0",
+            "obtencion": {
+                "metodos": [
+                    "procesamiento",
+                    "mercado"
+                ],
+                "detalle": "Procesamiento: mecer la Leche para sacar Crema y procesarla con Sal.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/9063/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "freekeh": {
+            "titulo": "Frike",
+            "peso": "0.1",
+            "plata": "1800",
+            "obtencion": {
+                "metodos": [
+                    "recoleccion",
+                    "nodos",
+                    "mercado"
+                ],
+                "detalle": "Se recolecta y se produce en nodos con obreros.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7021/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "carnevibora": {
+            "titulo": "Carne de V\u00edbora",
+            "peso": "0.03",
+            "plata": "11500",
+            "obtencion": {
+                "metodos": [
+                    "caza",
+                    "botin",
+                    "mercado"
+                ],
+                "detalle": "Carnicer\u00eda de una Serpiente cazada.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7922/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "anis": {
+            "titulo": "An\u00eds Estrellado",
+            "peso": "0.1",
+            "plata": "1300",
+            "obtencion": {
+                "metodos": [
+                    "recoleccion",
+                    "nodos",
+                    "mercado"
+                ],
+                "detalle": "Se recolecta del \u00c1rbol de An\u00eds Estrella; tambi\u00e9n se produce en nodos.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7019/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "aloe": {
+            "titulo": "Aloe",
+            "peso": "0.1",
+            "plata": "0",
+            "obtencion": {
+                "metodos": [
+                    "recoleccion",
+                    "nodos",
+                    "mercado"
+                ],
+                "detalle": "Se recolecta a mano o con azada en Mediah; tambi\u00e9n se produce en el Rancho de Ahto.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7347/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "carnedeyak": {
+            "titulo": "Carne de Yak",
+            "peso": "0.03",
+            "plata": "0",
+            "obtencion": {
+                "metodos": [
+                    "caza",
+                    "mercado"
+                ],
+                "detalle": "Carnicer\u00eda de un Yak cazado.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7954/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "helecho": {
+            "titulo": "Helecho",
+            "peso": "0.1",
+            "plata": "0",
+            "obtencion": {
+                "metodos": [
+                    "recoleccion",
+                    "nodos",
+                    "mercado"
+                ],
+                "detalle": "Se recolecta a mano o con azada; tambi\u00e9n se produce en nodos.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/5532/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "delotia": {
+            "titulo": "Delotia",
+            "peso": "0.1",
+            "plata": "0",
+            "grupo": true,
+            "gid": 7357,
+            "miembros": [
+                {
+                    "t": "Delotia",
+                    "v": 1,
+                    "propio": true
+                },
+                {
+                    "t": "Delotia de Calidad",
+                    "v": 6
+                },
+                {
+                    "t": "Delotia de Alta Calidad",
+                    "v": 36
+                }
+            ],
+            "obtencion": {
+                "metodos": [
+                    "recoleccion",
+                    "cultivo",
+                    "mercado"
+                ],
+                "detalle": "Se recolecta a mano o con azada y tambi\u00e9n se cultiva en huerto.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/5538/",
+                    "https://bdocodex.com/sp/materialgroup/7357/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "zanahoriadecalidad": {
+            "titulo": "Zanahoria de Calidad",
+            "peso": "0.1",
+            "plata": "0",
+            "obtencion": {
+                "metodos": [
+                    "cultivo",
+                    "npc",
+                    "mercado"
+                ],
+                "detalle": "Sale de cosechar zanahorias en un huerto; tambi\u00e9n la venden algunos NPC de forraje.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/54004/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "langosta": {
+            "titulo": "Langosta",
+            "peso": "0.5",
+            "plata": "117000",
+            "grupo": true,
+            "gid": 5751,
+            "miembros": [
+                {
+                    "t": "Langosta",
+                    "v": 1,
+                    "propio": true
+                },
+                {
+                    "t": "Langosta Seca",
+                    "v": 1
+                }
+            ],
+            "obtencion": {
+                "metodos": [
+                    "recoleccion",
+                    "pesca"
+                ],
+                "detalle": "Recolecci\u00f3n submarina con azada; tambi\u00e9n aparece pescando.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/6511/",
+                    "https://bdocodex.com/sp/materialgroup/5751/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "carnedemarmota": {
+            "titulo": "Carne de Marmota",
+            "peso": "0.03",
+            "plata": "0",
+            "obtencion": {
+                "metodos": [
+                    "caza",
+                    "mercado"
+                ],
+                "detalle": "Carnicer\u00eda de una Marmota cazada.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7955/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "harinateff": {
+            "titulo": "Harina de Teff",
+            "peso": "0.1",
+            "plata": "2850",
+            "obtencion": {
+                "metodos": [
+                    "procesamiento",
+                    "mercado"
+                ],
+                "detalle": "Procesamiento \u2192 Moler Teff.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7106/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "crema": {
+            "titulo": "Crema",
+            "peso": "0.01",
+            "plata": "6100",
+            "obtencion": {
+                "metodos": [
+                    "procesamiento",
+                    "mercado"
+                ],
+                "detalle": "Procesamiento \u2192 Mecer: Leche con Az\u00facar.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/9061/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "sangredelobo": {
+            "titulo": "Sangre de Lobo",
+            "peso": "0.1",
+            "plata": "0",
+            "grupo": true,
+            "gid": 805,
+            "miembros": [
+                {
+                    "t": "Sangre de Drag\u00f3n Chita",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Sangre de Flamenco",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Sangre de Lobo",
+                    "v": 1,
+                    "propio": true
+                },
+                {
+                    "t": "Sangre de Rinoceronte",
+                    "v": 1
+                }
+            ],
+            "obtencion": {
+                "metodos": [
+                    "caza",
+                    "mercado"
+                ],
+                "detalle": "Recolector de Fluidos sobre un Lobo cazado.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/6214/",
+                    "https://bdocodex.com/sp/materialgroup/805/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "sangre2": {
+            "titulo": "Sangre (Ciervo, Res, etc)",
+            "peso": "0.1",
+            "plata": "7950",
+            "grupo": true,
+            "gid": 801,
+            "miembros": [
+                {
+                    "t": "Sangre de Cabra",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Sangre de Cerdo",
+                    "v": 1
+                },
+                {
+                    "t": "Sangre de Ciervo",
+                    "v": 1,
+                    "vc": 2,
+                    "propio": true
+                },
+                {
+                    "t": "Sangre de Llama",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Sangre de Oveja",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Sangre de Res",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Sangre de Waragon",
+                    "v": 1,
+                    "vc": 2
+                }
+            ],
+            "obtencion": {
+                "metodos": [
+                    "caza",
+                    "mercado"
+                ],
+                "detalle": "Recolector de Fluidos sobre ciervos, reses, ovejas, cabras y dem\u00e1s animales cazados.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/6201/",
+                    "https://bdocodex.com/sp/materialgroup/801/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "carnedeavemolida": {
+            "titulo": "Carne de Ave Molida",
+            "peso": "0.03",
+            "plata": "0",
+            "obtencion": {
+                "metodos": [
+                    "procesamiento",
+                    "mercado"
+                ],
+                "detalle": "Procesamiento \u2192 Moler 3 Carnes de Ave.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7958/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "plantas": {
+            "titulo": "Flores",
+            "peso": "0.1",
+            "plata": "0",
+            "grupo": true,
+            "gid": 6010,
+            "miembros": [
+                {
+                    "t": "Girasol",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Rosa",
+                    "v": 1,
+                    "propio": true
+                },
+                {
+                    "t": "Tulip\u00e1n",
+                    "v": 1,
+                    "vc": 2
+                },
+                {
+                    "t": "Girasol de Calidad",
+                    "v": 6,
+                    "vc": 12
+                },
+                {
+                    "t": "Girasol de Alta Calidad",
+                    "v": 36,
+                    "vc": 72
+                }
+            ],
+            "obtencion": {
+                "metodos": [
+                    "recoleccion",
+                    "cultivo",
+                    "mercado"
+                ],
+                "detalle": "Se recolectan las flores que crecen alrededor de los plant\u00edos; tambi\u00e9n se cultivan.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7319/",
+                    "https://bdocodex.com/sp/materialgroup/6010/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "ostra": {
+            "titulo": "Ostra",
+            "peso": "0.1",
+            "plata": "18500",
+            "obtencion": {
+                "metodos": [
+                    "recoleccion",
+                    "mercado"
+                ],
+                "detalle": "Recolecci\u00f3n submarina con azada.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/6515/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "palmeradatilera": {
+            "titulo": "D\u00e1til",
+            "peso": "0.1",
+            "plata": "3190",
+            "obtencion": {
+                "metodos": [
+                    "recoleccion",
+                    "nodos",
+                    "mercado"
+                ],
+                "detalle": "Se recolecta de una palmera datilera; tambi\u00e9n se produce en nodos.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7016/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "mieldecalidadsuperiordecoc": {
+            "titulo": "Miel de Calidad Superior de Cocina",
+            "peso": "0.1",
+            "plata": "0",
+            "obtencion": {
+                "metodos": [
+                    "procesamiento",
+                    "mercado"
+                ],
+                "detalle": "Sale de moler Panal de Abeja Salvaje, con suerte en el grado superior.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/7704/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "makgeollibienfermentado": {
+            "titulo": "Makgeolli Bien Fermentado",
+            "peso": "0.1",
+            "plata": "0",
+            "imperiales": "60",
+            "obtencion": {
+                "metodos": [
+                    "cocina",
+                    "mercado"
+                ],
+                "detalle": "Con Cocina H\u00e1bil 1 o m\u00e1s, baja probabilidad de obtenerlo al elaborar Makgeolli.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/9279/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "cuernodelkhalkfugitivo": {
+            "titulo": "Cuerno del Khalk Fugitivo",
+            "peso": "0.5",
+            "plata": "0",
+            "obtencion": {
+                "metodos": [
+                    "caza",
+                    "mercado"
+                ],
+                "detalle": "Carnicer\u00eda del Khalk Fugitivo.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/9735/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "especiaacron": {
+            "titulo": "Especia Ancestral de Cron",
+            "peso": "0.01",
+            "plata": "0",
+            "obtencion": {
+                "metodos": [
+                    "npc"
+                ],
+                "detalle": "Se compra al Vendedor de Comidas o a los Due\u00f1os de Posada.",
+                "fuentes": [
+                    "https://bdocodex.com/sp/item/9019/"
+                ],
+                "verificado": "2026-09-05"
+            }
+        },
+        "cantidad": {
+            "titulo": "Cantidad",
             "peso": "0",
             "plata": "0"
         }

@@ -1,40 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cocina BDO v1</title>
     <script src="bdococina.js"></script>
 </head>
-<link rel="stylesheet" href="cocina.css?d=7">
+<link rel="stylesheet" href="cocina.css?d=8">
 <body>
-    
+
 
     <div id="contenido">
-        <h3>BDO - Cocina  V 1.3</h3>
+        <h3>BDO - Cocina  V 1.4</h3>
         <img src="icono1.png" width="45px" height="45px" alt="" style="vertical-align: middle;">
         <input type="search" id="buscador" placeholder="Ingrese receta" style="vertical-align: middle;">
         <div id="resultbox">
             <ul id="lista_recetas" style="display: block;">
-            
+
             </ul>
         </div>
         <div class="seccion">
             <ul id="ingredientes">
-                
+
             </ul>
-            <br>
             <ul id="otros">
 
             </ul>
-            <h2>Lista de ingredientes base: </h2>
+            <h2>Lista de ingredientes: </h2>
+            <div id="tabs_base">
+                <button type="button" class="tab_btn activo" id="tab_arbol">Árbol de ingredientes</button>
+                <button type="button" class="tab_btn" id="tab_puros">Ingredientes puros</button>
+            </div>
             <input type="search" id="buscador_ingredientes" placeholder="Buscar ingrediente base..." style="display: none;">
             <ul id="ingredientes_base">
                 <li>Sin calcular aún</li>
             </ul>
+            <ul id="ingredientes_puros" class="oculto">
+                <li>Sin calcular aún</li>
+            </ul>
         </div>
         <span style="font-size: 11px;">Creado por: KlausD (WhiteDraco) - BDO SA</span>
-        
+
     </div>
 </body>
 </html>

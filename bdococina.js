@@ -1,9 +1,11 @@
 /*
-    TODO: 
-    - Agregar Mis max imperiales.
-    - Agregar días según max imperiales.
-    - Agregar opción de guardar usando cookies.
+    BDO - Calculadora de Cocina
+    Hermana de bdoalquimia. La lista de ingredientes tiene dos vistas
+    (árbol e ingredientes puros), los materiales sustituibles muestran su
+    grupo con la marca ↻ y cada ingrediente puro trae de dónde sale.
 
+    TODO:
+    - Guardar recetas favoritas.
 */
 
 console.log("v 1.0.0");
@@ -28,8 +30,237 @@ let calidades = {
     "azul": 2
 }
 
+function esReceta(id) {
+    return rdata["recetas"][id] != undefined;
+}
+
+/* -----------------------------------------------------------------
+   Grupos de materiales
+   -----------------------------------------------------------------
+   Un ingrediente con `grupo` acepta cualquier ítem de su grupo del
+   juego. Acá los grupos se guardan con una etiqueta genérica
+   ("Vegetales", "Carne (1)"), así que `miembros` lista los ítems
+   concretos que sirven con su equivalencia:
+
+       v = cuántas unidades comunes cubre ese ítem
+
+   Los comunes van 1 a 1 entre sí; los "de Calidad" cubren 6 y los
+   "de Alta Calidad" 36. `vc` guarda el "Valor" crudo de bdocodex
+   cuando no coincide, para poder contrastarlo.
+   ----------------------------------------------------------------- */
+
+function tieneMiembros(clave) {
+    const d = rdata["datos"][clave];
+    return d["miembros"] != undefined && d["miembros"].length > 0;
+}
+
+function crearMarcaGrupo(clave) {
+    const m = document.createElement("span");
+    m.className = "marca_grupo";
+    m.innerText = "↻";
+    if (clave != undefined && tieneMiembros(clave)) {
+        m.classList.add("desplegable");
+        m.title = "Ver los " + rdata["datos"][clave]["miembros"].length + " ítems de su grupo";
+    } else {
+        m.title = "Sustituible por cualquier ítem de su grupo";
+    }
+    return m;
+}
+
+/* Cuántas unidades de un sustituto hacen falta en total.
+   La sustitución se resuelve POR ELABORACIÓN: en el juego cada plato
+   consume sus propios ingredientes y lo que sobra de un ítem que cubre
+   varias unidades se pierde, no queda para el siguiente. Si la receta
+   pide 5 cereales, un Trigo de Calidad (cubre 6) alcanza para esa
+   cocinada y nada más: para 100 cocinadas hacen falta 100, no 84. */
+function unidadesSustituto(usos, v) {
+    let total = 0;
+    for (let u of usos) {
+        total += u["veces"] * Math.ceil(u["q"] / v);
+    }
+    return Math.ceil(total);
+}
+
+function llenarPanelGrupo(panel) {
+    const clave = panel.bdoclave;
+    const datos = rdata["datos"][clave];
+    const miembros = datos["miembros"];
+    const usos = panel.bdousos() || [];
+
+    panel.innerHTML = "";
+
+    const tit = document.createElement("div");
+    tit.className = "panel_grupo_tit";
+    tit.innerText = "Grupo #" + datos["gid"] + " · sirve cualquiera de estos";
+    panel.append(tit);
+
+    const ul = document.createElement("ul");
+    for (let m of miembros) {
+        const li = document.createElement("li");
+        if (m["propio"])
+            li.className = "propio";
+
+        const nom = document.createElement("span");
+        nom.className = "mg_nombre";
+        nom.innerText = m["t"];
+
+        const cant = document.createElement("span");
+        cant.className = "mg_cant";
+        cant.innerText = "x" + formatearMilesAR(unidadesSustituto(usos, m["v"]));
+        cant.title = m["v"] > 1
+            ? "1 cubre " + m["v"] + " unidades comunes; lo que sobra en una cocinada se pierde"
+            : "Se cambia 1 a 1 con el resto de los comunes";
+        if (m["vc"] != undefined)
+            cant.title += " · bdocodex le pone Valor " + m["vc"];
+
+        li.append(nom);
+        li.append(cant);
+        ul.append(li);
+    }
+    panel.append(ul);
+
+    const nota = document.createElement("div");
+    nota.className = "panel_grupo_nota";
+    nota.innerText = "Los comunes se cambian 1 a 1. Se gasta por cocinada: lo que sobra de un ítem que cubre varias unidades no pasa a la siguiente.";
+    panel.append(nota);
+}
+
+/* Cuelga la marca ↻ de `dondeMarca` y, si hay miembros, el panel
+   desplegable de `dondePanel`. `obtenerUsos` devuelve [{q, veces}, ...]
+   y se evalúa cada vez que se refresca el panel. */
+function montarGrupo(dondeMarca, dondePanel, clave, obtenerUsos) {
+    if (!rdata["datos"][clave]["grupo"])
+        return;
+
+    const marca = crearMarcaGrupo(clave);
+    dondeMarca.append(marca);
+
+    if (!tieneMiembros(clave))
+        return;
+
+    const panel = document.createElement("div");
+    panel.className = "panel_grupo oculto";
+    panel.bdoclave = clave;
+    panel.bdousos = obtenerUsos;
+    dondePanel.append(panel);
+
+    marca.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const abierto = !panel.classList.contains("oculto");
+        if (abierto) {
+            panel.classList.add("oculto");
+            marca.classList.remove("abierta");
+        } else {
+            llenarPanelGrupo(panel);
+            panel.classList.remove("oculto");
+            marca.classList.add("abierta");
+        }
+    });
+}
+
+/* Los paneles abiertos de la lista principal siguen a los inputs de cantidad. */
+function refrescarPanelesGrupo() {
+    document.querySelectorAll("#ingredientes .panel_grupo").forEach(function (p) {
+        if (!p.classList.contains("oculto"))
+            llenarPanelGrupo(p);
+    });
+}
+
+/* Métodos verificados por ingrediente; el precio del Codex no implica venta NPC. */
+const OBTENCION = {
+    recoleccion: { icono: "⛏", label: "Recolección" },
+    cultivo: { icono: "🌱", label: "Cultivo" },
+    pesca: { icono: "🎣", label: "Pesca" },
+    caza: { icono: "🏹", label: "Caza" },
+    botin: { icono: "⚔", label: "Botín" },
+    nodos: { icono: "⚒", label: "Nodos" },
+    npc: { icono: "🏪", label: "Tienda NPC" },
+    procesamiento: { icono: "⚙", label: "Procesamiento" },
+    cocina: { icono: "🍳", label: "Subproducto" },
+    mercado: { icono: "⚖", label: "Mercado" }
+};
+
+function crearIconoObtencion(tipo) {
+    const metodo = OBTENCION[tipo];
+    const badge = document.createElement("span");
+    badge.className = "badge_obtencion obtencion_" + tipo;
+    badge.title = metodo.label;
+    const icono = document.createElement("span");
+    icono.setAttribute("aria-hidden", "true");
+    icono.textContent = metodo.icono;
+    badge.append(icono, document.createTextNode(metodo.label));
+    return badge;
+}
+
+function crearObtencion(clave) {
+    const dato = rdata["datos"][clave];
+    const info = dato.obtencion;
+    const detalles = document.createElement("details");
+    detalles.className = "obtencion";
+    const resumen = document.createElement("summary");
+    resumen.setAttribute("aria-label", "Cómo obtener " + dato.titulo);
+    resumen.title = "Ver métodos de obtención y fuentes de " + dato.titulo;
+    if (info && info.metodos.length) {
+        for (const tipo of info.metodos) {
+            if (OBTENCION[tipo] != undefined)
+                resumen.append(crearIconoObtencion(tipo));
+        }
+    } else {
+        resumen.textContent = "ⓘ Obtención sin verificar";
+    }
+    const texto = document.createElement("p");
+    texto.textContent = info ? info.detalle : "Todavía no hay métodos verificados para este ingrediente.";
+    detalles.append(resumen, texto);
+    if (info) {
+        for (const fuente of info.fuentes) {
+            const enlace = document.createElement("a");
+            enlace.href = fuente;
+            enlace.target = "_blank";
+            enlace.rel = "noopener noreferrer";
+            enlace.textContent = fuente.includes("materialgroup") ? "Grupo en BDO Codex ↗" : "BDO Codex ↗";
+            detalles.append(enlace);
+        }
+    }
+    return detalles;
+}
+
+/* La lista de ingredientes tiene dos vistas: el árbol anidado y la lista
+   plana de ingredientes puros (los que no salen de ninguna receta: se
+   compran, se recolectan, se cultivan...). */
+let vistaBaseActual = "arbol";
+
+function cambiarVistaBase(vista) {
+    vistaBaseActual = vista;
+
+    const btnArbol = document.getElementById("tab_arbol");
+    const btnPuros = document.getElementById("tab_puros");
+    btnArbol.classList.toggle("activo", vista == "arbol");
+    btnPuros.classList.toggle("activo", vista == "puros");
+
+    document.getElementById("ingredientes_base").classList.toggle("oculto", vista != "arbol");
+    document.getElementById("ingredientes_puros").classList.toggle("oculto", vista != "puros");
+
+    filtrarIngredientesBase();
+}
+
+function filtrarIngredientesPuros(texto) {
+    document.querySelectorAll("#ingredientes_puros .ingrediente_puro").forEach(item => {
+        const spanTitulo = item.querySelector(".titing");
+        const coincide = texto.trim() === "" ||
+            (spanTitulo && spanTitulo.textContent.toLowerCase().includes(texto));
+        item.style.display = coincide ? "" : "none";
+    });
+}
+
 function filtrarIngredientesBase() {
     const texto = document.getElementById("buscador_ingredientes").value.toLowerCase();
+
+    if (vistaBaseActual == "puros") {
+        filtrarIngredientesPuros(texto);
+        return;
+    }
+
     const items = document.querySelectorAll("#ingredientes_base .ingrediente_item");
     
     // First, reset all
@@ -83,26 +314,337 @@ function filtrarIngredientesBase() {
     });
 }
 
+/* Barra de avance encima de la lista de puros. */
+function crearCabeceraProgreso() {
+    const li = document.createElement("li");
+    li.className = "progreso_puros";
+
+    const txt = document.createElement("span");
+    txt.id = "progreso_puros_txt";
+    txt.className = "progreso_puros_txt";
+
+    const barra = document.createElement("span");
+    barra.className = "b_base b_contenedor progreso_puros_cont";
+    const relleno = document.createElement("span");
+    relleno.id = "progreso_puros_barra";
+    relleno.className = "b_base b_usado";
+    relleno.style = "width: 0%;";
+    barra.append(relleno);
+
+    const btn = document.createElement("button");
+    btn.className = "btn_limpiar_tildes";
+    btn.innerText = "Vaciar todo";
+    btn.title = "Pone en cero lo juntado de todos los ingredientes";
+    btn.addEventListener("click", function () {
+        tenidos = {};
+        document.querySelectorAll("#ingredientes_puros .ingrediente_puro").forEach(function (el) {
+            el.querySelector(".chk_puro").checked = false;
+            el.querySelector(".inp_tengo").value = 0;
+            el.classList.remove("completado");
+            el.classList.remove("parcial");
+        });
+        actualizarProgresoPuros();
+    });
+
+    li.append(txt);
+    li.append(barra);
+    li.append(btn);
+    return li;
+}
+
+function actualizarProgresoPuros() {
+    const items = document.querySelectorAll("#ingredientes_puros .ingrediente_puro");
+    const total = items.length;
+    let hechos = 0;
+    let avance = 0;
+
+    items.forEach(function (el) {
+        const nec = el.bdonecesario || 0;
+        const tengo = cantidadTenida(el.bdoclave, nec);
+        if (nec > 0 && tengo >= nec) hechos++;
+        /* cada ingrediente pesa igual: si no, los que se piden de a 60
+           taparían por completo a los que se piden de a 1 */
+        if (nec > 0) avance += Math.min(tengo, nec) / nec;
+    });
+
+    const pct = total > 0 ? Math.round(avance * 100 / total) : 0;
+
+    const tab = document.getElementById("tab_puros");
+    if (tab != null)
+        tab.innerText = total > 0
+            ? "Ingredientes puros (" + hechos + "/" + total + ")"
+            : "Ingredientes puros";
+
+    const barra = document.getElementById("progreso_puros_barra");
+    const txt = document.getElementById("progreso_puros_txt");
+    if (barra != null) barra.style = "width: " + pct + "%;";
+    if (txt != null) txt.innerText = hechos + " de " + total + " completos · " + pct + "%";
+}
+
+/* ¿`clave` cuelga en algún lado del árbol de `recetaId`? No sirve mirar
+   cuánto se consume con 1 cocinada: el árbol divide por el ratio con
+   Math.floor, así que con cantidades chicas las ramas hondas dan 0. */
+function perteneceAlArbol(recetaId, clave, visitados) {
+    if (visitados == undefined) visitados = {};
+    if (visitados[recetaId]) return false;
+    visitados[recetaId] = true;
+    const ingredientes = rdata["recetas"][recetaId];
+    for (let ingId of Object.keys(ingredientes)) {
+        if (ingId === clave) return true;
+        if (esReceta(ingId) && perteneceAlArbol(ingId, clave, visitados)) return true;
+    }
+    return false;
+}
+
+/* Invertir el mismo árbol que se muestra, incluidos sus redondeos por
+   rama. Una proporción directa falla cuando un material aparece en
+   varias subrecetas. */
+function cocinadasConIngrediente(recetaId, clave, disponible) {
+    if (!Number.isSafeInteger(disponible) || disponible < 0)
+        throw new RangeError("Ingresá una cantidad entera, positiva o cero.");
+    if (esReceta(clave) || !perteneceAlArbol(recetaId, clave))
+        throw new Error("El ingrediente no pertenece a esta receta.");
+    const consumo = function (cantidad) {
+        const totales = {};
+        acumularTotalesArbol(recetaId, cantidad, 0, totales);
+        return totales[clave] || 0;
+    };
+    if (disponible === 0) return 0;
+    let minimo = 0;
+    let maximo = 1;
+    while (consumo(maximo) <= disponible) {
+        minimo = maximo;
+        if (maximo === Number.MAX_SAFE_INTEGER) return maximo;
+        maximo = Math.min(maximo * 2, Number.MAX_SAFE_INTEGER);
+    }
+    while (maximo - minimo > 1) {
+        const medio = minimo + Math.floor((maximo - minimo) / 2);
+        if (consumo(medio) <= disponible) minimo = medio;
+        else maximo = medio;
+    }
+    return minimo;
+}
+
+function crearCantidadPuro(clave, necesario) {
+    const contenedor = document.createElement("span");
+    contenedor.className = "cantcing";
+    const boton = document.createElement("button");
+    boton.type = "button";
+    boton.className = "cantcing_local cantidad_puro_editable";
+    boton.textContent = "x" + formatearMilesAR(necesario);
+    boton.title = "Doble clic para ajustar toda la receta usando esta cantidad";
+    boton.setAttribute("aria-label", "Ajustar receta según " + rdata["datos"][clave].titulo + ": " + necesario);
+    contenedor.append(boton);
+    const editar = function () {
+        if (contenedor.querySelector("input")) return;
+        const input = document.createElement("input");
+        input.type = "text";
+        input.inputMode = "numeric";
+        input.className = "editar_cantidad_puro";
+        input.value = necesario;
+        input.setAttribute("aria-label", "Cantidad para recalcular con " + rdata["datos"][clave].titulo);
+        input.title = "Enter o salir del campo: aplicar. Escape: cancelar. Se usan cocinadas completas.";
+        boton.hidden = true;
+        contenedor.append(input);
+        input.focus();
+        input.select();
+        let terminado = false;
+        const cancelar = function () {
+            terminado = true;
+            input.remove();
+            boton.hidden = false;
+            boton.focus({ preventScroll: true });
+        };
+        const confirmar = function () {
+            if (terminado) return;
+            const texto = input.value.trim();
+            const valor = Number(texto.replace(/\./g, ""));
+            if (!/^(\d+|\d{1,3}(\.\d{3})+)$/.test(texto) || !Number.isSafeInteger(valor)) {
+                input.setCustomValidity("Ingresá un entero positivo o cero, por ejemplo 1000 o 1.000.");
+                input.reportValidity();
+                return;
+            }
+            if (valor === necesario) { cancelar(); return; }
+            const cantidad = cocinadasConIngrediente(currentingrediente, clave, valor);
+            terminado = true;
+            const abiertos = Array.from(document.querySelectorAll(".ingrediente_puro .obtencion[open]"))
+                .map(el => el.closest(".ingrediente_puro").bdoclave);
+            const inpCantidad = document.getElementById("cantidad");
+            inpCantidad.value = cantidad;
+            inpCantidad.dispatchEvent(new Event("input"));
+            generarListaIngredientes();
+            document.querySelectorAll(".ingrediente_puro").forEach(el => {
+                if (abiertos.includes(el.bdoclave)) el.querySelector(".obtencion").open = true;
+                if (el.bdoclave === clave) {
+                    el.querySelector(".cantidad_puro_editable").focus({ preventScroll: true });
+                    const aviso = document.getElementById("aviso_recalculo_puro");
+                    aviso.textContent = formatearMilesAR(cantidad) + " cocinadas: se necesitan " +
+                        formatearMilesAR(el.bdonecesario) + " de " + rdata["datos"][clave].titulo +
+                        " de las " + formatearMilesAR(valor) + " indicadas.";
+                }
+            });
+        };
+        input.addEventListener("input", () => input.setCustomValidity(""));
+        input.addEventListener("blur", confirmar);
+        input.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" || e.key === "Escape") {
+                e.preventDefault();
+                e.stopPropagation();
+                if (e.key === "Escape") cancelar();
+                else confirmar();
+            }
+        });
+    };
+    boton.addEventListener("dblclick", editar);
+    boton.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); editar(); }
+    });
+    return contenedor;
+}
+
+/* Lista plana con lo que hay que conseguir de verdad: las hojas del
+   árbol, es decir todo lo que NO es una receta. Las cantidades son los
+   totales ya acumulados de todas las ramas. */
+function crearListaPuros(totalesGlobales, usosGlobales) {
+    const ul = document.createElement("ul");
+    ul.className = "lista_puros";
+
+    const puros = Object.keys(totalesGlobales)
+        .filter(k => !esReceta(k))
+        .sort((a, b) => rdata["datos"][a]["titulo"].localeCompare(rdata["datos"][b]["titulo"], "es"));
+
+    for (let k of puros) {
+        const li = document.createElement("li");
+        li.className = "ingrediente_puro";
+        const necesario = Math.ceil(totalesGlobales[k]);
+        li.bdoclave = k;
+        li.bdonecesario = necesario;
+
+        /* el tilde es el atajo de "ya lo tengo todo"; el input de al lado
+           es para ir anotando lo que juntás. Los dos escriben en
+           `tenidos`, que es lo único que se guarda. */
+        const chk = document.createElement("input");
+        chk.type = "checkbox";
+        chk.className = "chk_puro";
+        chk.id = "chk_" + k;
+        chk.title = "Marcar como conseguido del todo";
+        chk.setAttribute("aria-label", "Marcar " + rdata["datos"][k].titulo + " como conseguido");
+        li.append(chk);
+
+        const span_contenedor = document.createElement("span");
+        span_contenedor.className = "ing_contenedor";
+
+        const span_titulo = document.createElement("span");
+        span_titulo.className = "ing_titulo_ingrediente";
+        span_titulo.innerHTML = `<span class="titing">${rdata["datos"][k]["titulo"]}</span>`;
+
+        span_contenedor.append(span_titulo);
+        span_contenedor.append(crearCantidadPuro(k, necesario));
+        li.append(span_contenedor);
+
+        const tengoWrap = document.createElement("span");
+        tengoWrap.className = "tengo_wrap";
+
+        const inpTengo = document.createElement("input");
+        inpTengo.type = "number";
+        inpTengo.className = "inp_tengo";
+        inpTengo.min = 0;
+        inpTengo.value = cantidadTenida(k, necesario);
+        inpTengo.setAttribute("aria-label", "Cantidad conseguida de " + rdata["datos"][k].titulo);
+
+        const nec = document.createElement("span");
+        nec.className = "nec_txt";
+        nec.innerText = "/ " + formatearMilesAR(necesario);
+
+        tengoWrap.append(inpTengo);
+        tengoWrap.append(nec);
+        li.append(tengoWrap);
+        li.append(crearObtencion(k));
+
+        /* después del contador, para que el panel de sustitutos quede
+           último y ocupe su propio renglón debajo de toda la fila. Acá el
+           ingrediente puede venir de varias ramas, así que van todos sus usos. */
+        montarGrupo(span_contenedor, li, k, function () { return usosGlobales[k] || []; });
+
+        const sincronizar = function () {
+            const tengo = cantidadTenida(k, necesario);
+            const completo = necesario > 0 && tengo >= necesario;
+            chk.checked = completo;
+            li.classList.toggle("completado", completo);
+            li.classList.toggle("parcial", !completo && tengo > 0);
+            const falta = Math.max(0, necesario - tengo);
+            inpTengo.title = falta > 0 ? "Faltan " + formatearMilesAR(falta) : "Completo";
+        };
+
+        inpTengo.addEventListener("input", function () {
+            let n = parseInt(this.value, 10);
+            if (!isFinite(n) || n < 0) n = 0;
+            tenidos[k] = n;
+            sincronizar();
+            actualizarProgresoPuros();
+        });
+
+        chk.addEventListener("change", function () {
+            tenidos[k] = this.checked ? necesario : 0;
+            inpTengo.value = tenidos[k];
+            sincronizar();
+            actualizarProgresoPuros();
+        });
+
+        sincronizar();
+        ul.append(li);
+    }
+
+    return { ul: ul, cantidad: puros.length };
+}
+
 function generarListaIngredientes() {
     const ulingredientes = document.getElementById("ingredientes_base");
+    const ulpuros = document.getElementById("ingredientes_puros");
     ulingredientes.innerHTML = "";
-    
+    ulpuros.innerHTML = "";
+
     const buscadorIngredientes = document.getElementById("buscador_ingredientes");
     if (buscadorIngredientes) {
         buscadorIngredientes.style.display = "";
         buscadorIngredientes.removeEventListener("input", filtrarIngredientesBase);
         buscadorIngredientes.addEventListener("input", filtrarIngredientesBase);
     }
-    
+
     const cantidad = parseFloat(document.getElementById("cantidad").value) || 0;
     const totalesGlobales = {};
-    acumularTotalesArbol(currentingrediente, cantidad, 0, totalesGlobales);
+    const usosGlobales = {};
+    acumularTotalesArbol(currentingrediente, cantidad, 0, totalesGlobales, usosGlobales);
+
     const ul = crearArbolIngredientes(currentingrediente, cantidad, 0, totalesGlobales);
     ulingredientes.append(ul);
-    
+
+    /* las dos vistas se arman juntas y se muestra la que esté activa */
+    const puros = crearListaPuros(totalesGlobales, usosGlobales);
+    ulpuros.append(crearCabeceraProgreso());
+    const ayudaEdicion = document.createElement("li");
+    ayudaEdicion.className = "ayuda_obtencion";
+    ayudaEdicion.textContent = "Doble clic en una cantidad amarilla para recalcular toda la receta con ese ingrediente. Enter aplica y Escape cancela. Lo que ya conseguiste se conserva.";
+    const avisoRecalculo = document.createElement("li");
+    avisoRecalculo.id = "aviso_recalculo_puro";
+    avisoRecalculo.className = "aviso_recalculo_puro";
+    avisoRecalculo.setAttribute("role", "status");
+    ulpuros.append(ayudaEdicion, avisoRecalculo);
+    const ayudaObtencion = document.createElement("li");
+    ayudaObtencion.className = "ayuda_obtencion";
+    ayudaObtencion.textContent = "Cómo conseguirlos · Tocá los íconos para ver detalles y fuentes. Pueden tener varios métodos. Mercado = compra a otros jugadores, según disponibilidad. Los métodos corresponden al ítem indicado; los sustitutos pueden variar.";
+    ulpuros.append(ayudaObtencion);
+    ulpuros.append(puros.ul);
+    actualizarProgresoPuros();
+
     if (buscadorIngredientes && buscadorIngredientes.value.trim() !== "") {
         filtrarIngredientesBase();
     }
+}
+
+function generarListaIngredientesSiHay() {
+    if (document.querySelector("#ingredientes_base .ingrediente_item") != null)
+        generarListaIngredientes();
 }
 
 function obtenerRatioSeguro() {
@@ -137,7 +679,11 @@ function crearSpanCantidad(cantidadLocal, cantidadTotalGlobal) {
     return spanCant;
 }
 
-function acumularTotalesArbol(recetaId, cantidad, nivel, totalesGlobales) {
+/* Además del total, anota cada "uso": cuántas unidades pide la receta por
+   cocinada y cuántas veces se cocina. Un mismo ingrediente puede entrar
+   por varias ramas con cantidades distintas, y los sustitutos de grupo se
+   calculan por cocinada, no sobre el total. */
+function acumularTotalesArbol(recetaId, cantidad, nivel, totalesGlobales, usosGlobales) {
     const ingredientes = rdata["recetas"][recetaId];
     const keysLista = Object.keys(ingredientes).sort();
 
@@ -150,14 +696,20 @@ function acumularTotalesArbol(recetaId, cantidad, nivel, totalesGlobales) {
     }
 
     for (let ingId of keysLista) {
-        const cantidad_ing = Math.floor(cantidad_cocinadas * ingredientes[ingId]);
+        const porCocinada = Number(ingredientes[ingId]);
+        const cantidad_ing = Math.floor(cantidad_cocinadas * porCocinada);
         if (!totalesGlobales[ingId]) {
             totalesGlobales[ingId] = 0;
         }
         totalesGlobales[ingId] += cantidad_ing;
 
+        if (usosGlobales != undefined) {
+            if (!usosGlobales[ingId]) usosGlobales[ingId] = [];
+            usosGlobales[ingId].push({ "q": porCocinada, "veces": cantidad_cocinadas });
+        }
+
         if (ingId in rdata["recetas"]) {
-            acumularTotalesArbol(ingId, cantidad_ing, nivel + 1, totalesGlobales);
+            acumularTotalesArbol(ingId, cantidad_ing, nivel + 1, totalesGlobales, usosGlobales);
         }
     }
 }
@@ -245,12 +797,15 @@ function crearArbolIngredientes(recetaId, cantidad, nivel, totalesGlobales) {
             span_titulo.innerHTML = `<span class="titing">${rdata["datos"][ingId]["titulo"]}</span>`;
             
             const span_cant = crearSpanCantidad(cantidad_ing, cantidad_total_global);
-            
+
             span_contenedor.append(span_titulo);
             span_contenedor.append(span_cant);
             li.append(span_contenedor);
+            montarGrupo(span_contenedor, li, ingId, function () {
+                return [{ "q": Number(ingredientes[ingId]), "veces": cantidad_cocinadas }];
+            });
         }
-        
+
         ul.append(li);
     }
     
@@ -275,8 +830,24 @@ function rAgregarABase(cingrediente, cantidad) {
     }
 }
 
+/* El enlace lleva la cantidad pedida y el ratio, así la pestaña nueva
+   abre la sub-receta con el mismo contexto. */
+function enlaceReceta(id, total) {
+    const ratio = document.getElementById("ratio");
+    let url = "?id=" + id;
+    if (total != undefined)
+        url += "&t=" + total;
+    if (ratio != null)
+        url += "&r=" + ratio.value;
+    return url;
+}
+
+function recalcularTodo() {
+    const cantidad = document.getElementById("cantidad");
+    cantidad.dispatchEvent(new Event("input"));
+}
+
 function actualizarIngredientes(valor) {
-    const ratiog = document.getElementById("ratio");
     let platatotal = 0;
     let pesototal = 0;
 
@@ -286,23 +857,25 @@ function actualizarIngredientes(valor) {
         inputcocic.value = valor * Math.ceil(inputcocic.bdocant / calidad_ing[calidades[inputcocic.bdogrado]]); // Math.ceil(this.bdocant / calidad_ing[calidades[this.bdogrado]])
         let titletag = document.getElementById("titulo_" + ingx);
         let platainp = document.getElementById("inpplata_" + ingx);
-        let costo = platainp.value.replace(".", "");
+        let costo = platainp.value.replace(/\./g, "");
         if(gastoIngCalculados[ingx])
             platatotal += costo * inputcocic.value;
         if (titletag.localName == "a")
-            titletag.href = "?id=" + ingx + "&t=" + inputcocic.value + "&r=" + ratiog.value;
-        
+            titletag.href = enlaceReceta(ingx, inputcocic.value);
+
         pesototal += parseFloat(rdata["datos"][ingx]["peso"]) * inputcocic.value;
-    
+
     }
     document.getElementById("gasto").innerText = "$ " + platatotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     setPeso(pesototal);
+    refrescarPanelesGrupo();
 }
 
 function modificarSegunRatio() {
     let total = document.getElementById("total");
     total.value = Math.floor(this.value * document.getElementById("cantidad").value);
-
+    /* el ratio manda en cuántas veces hay que cocinar cada sub-receta */
+    generarListaIngredientesSiHay();
 }
 
 function modificarSegunRatioEspecial() {
@@ -319,13 +892,12 @@ function setPeso(p)
 
 function modificadorIngrediente(e) {
     const cantidadr = Math.floor(this.value / Math.ceil(this.bdocant / calidad_ing[calidades[this.bdogrado]]));
-    const ratiog = document.getElementById("ratio");
     let platatotal = 0;
     let pesototal = 0;
     for (let ingx of inglist) {
         const inputcocic = document.getElementById(ingx + "_cant");
         const platainp = document.getElementById("inpplata_" + ingx);
-        const costo = platainp.value.replace(".", "");
+        const costo = platainp.value.replace(/\./g, "");
 
         if (this.bdoing != ingx) {
 
@@ -336,11 +908,12 @@ function modificadorIngrediente(e) {
             platatotal += costo * inputcocic.value;
         const titletag = document.getElementById("titulo_" + ingx);
         if (titletag.localName == "a")
-            titletag.href = "?id=" + ingx + "&t=" + inputcocic.value + "&r=" + ratiog.value;
+            titletag.href = enlaceReceta(ingx, inputcocic.value);
         pesototal += parseFloat(rdata["datos"][ingx]["peso"]) * inputcocic.value;
     }
     document.getElementById("gasto").innerText = "$ " + platatotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     setPeso(pesototal);
+    refrescarPanelesGrupo();
 
     const cantidadinp = document.getElementById("cantidad");
     const total = document.getElementById("total");
@@ -499,14 +1072,21 @@ function crearCaja(cname, idname) {
     return box;
 }
 
+/* Los campos de peso pueden estar vacíos: sin esto parseFloat("") = NaN y
+   el NaN se propaga al texto y al ancho de las barras. */
+function numeroSeguro(valor) {
+    const n = parseFloat(valor);
+    return isFinite(n) ? n : 0;
+}
+
 function calcPrct(total, usado)
 {
-    if(total != 0 || total != undefined)
-    {
-        return (usado * 100) / total > 100 ? 100 : (usado * 100) / total;
-    }
-        
-    return 0;
+    total = numeroSeguro(total);
+    usado = numeroSeguro(usado);
+    if (total <= 0)
+        return 0;
+    const p = (usado * 100) / total;
+    return p > 100 ? 100 : p;
 }
 
 function seleccionarCaja() {
@@ -537,23 +1117,26 @@ let gastoIngCalculados = {};
 
 function updatePeso()
 {
-    const pmax = document.getElementById("pesomax").value;
-    const pmio = document.getElementById("mipeso").value;
-    
+    const pmax = numeroSeguro(document.getElementById("pesomax").value);
+    const pmio = numeroSeguro(document.getElementById("mipeso").value);
 
-    const bocupado = document.getElementById("bocupado"); 
+
+    const bocupado = document.getElementById("bocupado");
     const busado = document.getElementById("busado");
 
     let pocupado = calcPrct(pmax, pmio);
     let pusado = calcPrct(pmax, gpeso);
-    const resultado = Math.round(((parseFloat(pmio) + parseFloat(gpeso)) + Number.EPSILON) * 100) / 100;
+    const resultado = Math.round(((pmio + numeroSeguro(gpeso)) + Number.EPSILON) * 100) / 100;
 
     const pocup = document.getElementById("pesoocu")
     const pomax = document.getElementById("pesotot");
-    pocup.innerText = "" + resultado ;
-    pomax.innerText = "/ " + pmax + " LT";
+    pocup.innerText = resultado.toFixed(2);
+    pomax.innerText = "/ " + pmax.toFixed(2) + " LT";
 
-    if((pmax - resultado) < 50)
+    /* sin peso máximo cargado no hay nada que avisar */
+    if(pmax <= 0)
+        pocup.style = "none";
+    else if((pmax - resultado) < 50)
         if((pmax - resultado) < 0)
             pocup.style = "color: red;";
         else
@@ -570,43 +1153,233 @@ function updatePeso()
     }
     busado.style = "width: " + pusado + "%;";
 }
+function valorDe(id) {
+    const e = document.getElementById(id);
+    return e == null ? undefined : e.value;
+}
+
+function ponerValor(id, valor) {
+    const e = document.getElementById(id);
+    if (e != null && valor != undefined) e.value = valor;
+}
+
 function guardarPreferencias()
 {
-    const ratio = document.getElementById("ratio").value;
-    const ratio_especial = document.getElementById("ratio_especial").value;
-    const pesomax = document.getElementById("pesomax").value;
-    const mipeso = document.getElementById("mipeso").value;
-    const maximperiales = document.getElementById("imperiales_max").value;
+    const anterior = leerPreferencias();
     this.disabled = true;
     this.style = "opacity: 0.5;"
     //  "Guardar preferencias"
     //  "        Ok          "
     this.innerText = "Guardando...";
-    const dictSave = 
+    const dictSave =
     {
-        "ratio": ratio,
-        "ratio_especial": ratio_especial,
-        "pesomax": pesomax,
-        "mipeso": mipeso,
-        "maximperiales": maximperiales
+        "ratio": valorDe("ratio"),
+        "ratio_especial": valorDe("ratio_especial"),
+        "pesomax": valorDe("pesomax"),
+        "mipeso": valorDe("mipeso"),
+        /* las recetas sin caja imperial no dibujan el campo: se conserva
+           lo que ya estaba guardado en vez de borrarlo */
+        "maximperiales": valorDe("imperiales_max") != undefined
+            ? valorDe("imperiales_max") : anterior["maximperiales"]
     }
     localStorage.setItem("preferencias", JSON.stringify(dictSave));
     setTimeout(function(){this.disabled = false; this.style = ""; this.innerText = "Guardar preferencias"}.bind(this), 300);
 
 }
+
+function leerPreferencias() {
+    const p = localStorage.getItem("preferencias");
+    if (p == null || p == "") return {};
+    try { return JSON.parse(p) || {}; } catch (e) { return {}; }
+}
+
+/* -----------------------------------------------------------------
+   Estado de progreso
+   -----------------------------------------------------------------
+   Distinto de las preferencias: las preferencias son los ajustes que
+   valen para toda la calculadora (ratios, peso de la mula, máx
+   imperiales), mientras que el estado es el avance concreto de UNA
+   receta — cuánto vas a cocinar, a qué precio, con qué calidades y qué
+   ingredientes ya conseguiste. Se guarda uno por receta y se restaura
+   solo al abrirla.
+   ----------------------------------------------------------------- */
+const CLAVE_ESTADO = "estado_cocina";
+
+/* Cuánto llevás juntado de cada ingrediente puro de la receta abierta:
+   { clave: cantidad }. El tilde no se guarda aparte — un ingrediente
+   está completo cuando lo que tenés llega a lo que hace falta. */
+let tenidos = {};
+
+function cantidadTenida(clave, necesario) {
+    const t = tenidos[clave];
+    return t > 0 ? t : 0;
+}
+
+function leerEstados() {
+    const p = localStorage.getItem(CLAVE_ESTADO);
+    if (p == null || p == "") return {};
+    try { return JSON.parse(p) || {}; } catch (e) { return {}; }
+}
+
+function guardarEstado() {
+    const est = {
+        "v": 1,
+        "fecha": Date.now(),
+        "cantidad": valorDe("cantidad"),
+        "ratio": valorDe("ratio"),
+        "ratio_especial": valorDe("ratio_especial"),
+        "imperiales_max": valorDe("imperiales_max"),
+        "dias_imperiales": valorDe("dias_imperiales"),
+        "pesomax": valorDe("pesomax"),
+        "mipeso": valorDe("mipeso"),
+        "vista": vistaBaseActual,
+        "calidades": {},
+        "precios": {},
+        "gastos": [],
+        "tenidos": {}
+    };
+
+    /* sólo lo que tiene algo juntado, para no engordar el localStorage */
+    for (let k in tenidos) {
+        if (tenidos[k] > 0)
+            est["tenidos"][k] = tenidos[k];
+    }
+
+    for (let ing of inglist) {
+        const inp = document.getElementById(ing + "_cant");
+        if (inp != null && inp.bdogrado != "normal")
+            est["calidades"][ing] = inp.bdogrado;
+        const pl = document.getElementById("inpplata_" + ing);
+        if (pl != null && pl.value != rdata["datos"][ing]["plata"])
+            est["precios"][ing] = pl.value;
+        if (gastoIngCalculados[ing])
+            est["gastos"].push(ing);
+    }
+
+    const todos = leerEstados();
+    todos[currentingrediente] = est;
+    localStorage.setItem(CLAVE_ESTADO, JSON.stringify(todos));
+
+    this.disabled = true;
+    this.style = "opacity: 0.5;";
+    this.innerText = "Guardando...";
+    setTimeout(function () {
+        this.disabled = false; this.style = ""; this.innerText = "Guardar estado";
+    }.bind(this), 300);
+}
+
+function borrarEstado(recetaId) {
+    const todos = leerEstados();
+    delete todos[recetaId];
+    localStorage.setItem(CLAVE_ESTADO, JSON.stringify(todos));
+}
+
+function fechaCorta(ms) {
+    const d = new Date(ms);
+    const p = function (n) { return (n < 10 ? "0" : "") + n; };
+    return p(d.getDate()) + "/" + p(d.getMonth() + 1) + " " + p(d.getHours()) + ":" + p(d.getMinutes());
+}
+
+function mostrarAvisoEstado(est) {
+    const seccion = document.querySelector(".seccion");
+    const aviso = document.createElement("div");
+    aviso.id = "aviso_estado";
+    aviso.className = "aviso_estado";
+
+    const txt = document.createElement("span");
+    txt.innerText = "Estado restaurado" + (est["fecha"] ? " · guardado el " + fechaCorta(est["fecha"]) : "");
+    aviso.append(txt);
+
+    const btn = document.createElement("button");
+    btn.className = "btn_descartar";
+    btn.innerText = "Descartar";
+    btn.title = "Borra el estado guardado de esta receta y empieza de cero";
+    btn.addEventListener("click", function () {
+        borrarEstado(currentingrediente);
+        const o = { "id": currentingrediente };
+        o.setAndLoad = setAndLoad;
+        o.setAndLoad();
+    });
+    aviso.append(btn);
+
+    seccion.parentNode.insertBefore(aviso, seccion);
+}
+
+/* Aplica el estado sobre una receta recién montada. El orden importa: las
+   calidades cambian cuánto rinde cada ingrediente, así que van antes de
+   fijar la cantidad, que es lo que dispara el recálculo general. */
+function aplicarEstado(est) {
+    ponerValor("ratio", est["ratio"]);
+    ponerValor("ratio_especial", est["ratio_especial"]);
+    ponerValor("imperiales_max", est["imperiales_max"]);
+
+    const cal = est["calidades"] || {};
+    for (let ing in cal) {
+        const caja = document.getElementById("box_" + ing + "_" + cal[ing]);
+        if (caja != null) caja.click();
+    }
+
+    const pre = est["precios"] || {};
+    for (let ing in pre) ponerValor("inpplata_" + ing, pre[ing]);
+
+    for (let ing of (est["gastos"] || [])) {
+        const b = document.getElementById("actplata_" + ing);
+        if (b != null && !gastoIngCalculados[ing]) b.click();
+    }
+
+    ponerValor("pesomax", est["pesomax"]);
+    ponerValor("mipeso", est["mipeso"]);
+
+    tenidos = {};
+    const guardados = est["tenidos"] || {};
+    for (let k in guardados) tenidos[k] = guardados[k];
+
+    const c = document.getElementById("cantidad");
+    c.value = est["cantidad"] || 0;
+    c.dispatchEvent(new Event("input"));
+    ponerValor("dias_imperiales", est["dias_imperiales"]);
+    updatePeso();
+
+    generarListaIngredientes();
+    if (est["vista"]) cambiarVistaBase(est["vista"]);
+
+    mostrarAvisoEstado(est);
+}
 function setAndLoad() {
     gastoIngCalculados = {};
     modoseleccion = false;
-    const t = this.innerText;
-    document.title = t + " - Cocina BDO v2";
+
+    /* al cambiar de receta se limpia el avance y las listas calculadas: si
+       quedaran las de la receta anterior, "Guardar estado" grabaría datos
+       que no son de esta receta */
+    tenidos = {};
+    const avisoViejo = document.getElementById("aviso_estado");
+    if (avisoViejo != null) avisoViejo.remove();
+    for (let idLista of ["ingredientes_base", "ingredientes_puros"]) {
+        const ul = document.getElementById(idLista);
+        if (ul != null) ul.innerHTML = "<li>Sin calcular aún</li>";
+    }
+    const tabPuros = document.getElementById("tab_puros");
+    if (tabPuros != null) tabPuros.innerText = "Ingredientes puros";
+    const buscadorIng = document.getElementById("buscador_ingredientes");
+    if (buscadorIng != null) { buscadorIng.value = ""; buscadorIng.style.display = "none"; }
+
+    const t = rdata["datos"][this.id]["titulo"];
+    document.title = t + " - Cocina BDO";
     inglist = [];
     const buscador = document.getElementById("buscador");
+    const lista_recetas = document.getElementById("lista_recetas");
     buscador.value = t;
     setTimeout(function () { lista_recetas.style = "display: none"; }, 50)
     const ilista = document.getElementById("ingredientes");
     ilista.innerHTML = "";
     if (secondLoad)
         window.history.pushState(this.id, "Titulo", "?id=" + this.id);
+    else {
+        const url = new URL(window.location.href);
+        url.searchParams.set("id", this.id);
+        window.history.replaceState(this.id, "Titulo", url);
+    }
     ingredientes = rdata["recetas"][this.id];
     currentingrediente = this.id;
     const otros = document.getElementById("otros");
@@ -634,6 +1407,7 @@ function setAndLoad() {
                 gastoIngCalculados[this.bdoing] = false;
                 this.className = "valx";
             }
+            recalcularTodo();
         });
 
         let spanmas = document.createElement("span");
@@ -648,8 +1422,9 @@ function setAndLoad() {
         inputplata.id = "inpplata_" + ird;
         inputplata.value = rdata["datos"][ird]["plata"];
         inputplata.addEventListener("input", function(){
-            const original = this.value.replace(".", "");
+            const original = this.value.replace(/\./g, "");
             this.value =  original.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            recalcularTodo();
         });
 
         spanplatainput.append(inputplata);
@@ -687,7 +1462,7 @@ function setAndLoad() {
         spantitle.className = "titulo";
         spantitle.id = "titulo_" + ird;
         if (isLink) {
-            spantitle.href = "?id=" + ird;
+            spantitle.href = enlaceReceta(ird);
             spantitle.target = "_blank";
 
         }
@@ -709,7 +1484,19 @@ function setAndLoad() {
 
 
         lix.append(spanmoney);
-        lix.append(spantitle);
+
+        /* Título y marca ↻ van juntos dentro de .ing_cabeza: como el <li>
+           es flex-wrap, sin este contenedor un título largo hace que las
+           cajas de calidad se vayan a una línea nueva. El panel
+           desplegable se cuelga del <li> entero para que caiga en su
+           propio renglón, debajo de las cajitas. */
+        let cabeza = document.createElement("span");
+        cabeza.className = "ing_cabeza";
+        cabeza.append(spantitle);
+        let contMarca = document.createElement("span");
+        contMarca.className = "cont_marca";
+        cabeza.append(contMarca);
+        lix.append(cabeza);
 
         spansector.append(inputcant)
 		if(rdata["datos"][ird]["nomejorable"] == undefined)
@@ -724,13 +1511,36 @@ function setAndLoad() {
 		}
 		
 		lix.append(spansector)
+        montarGrupo(contMarca, lix, ird, function () {
+            const inp = document.getElementById(ird + "_cant");
+            const cant = document.getElementById("cantidad");
+            if (inp == null || cant == null) return [];
+            /* lo que pide la receta por cocinada, ya con la calidad elegida */
+            const q = Math.ceil(inp.bdocant / calidad_ing[calidades[inp.bdogrado]]);
+            return [{ "q": q, "veces": Number(cant.value) || 0 }];
+        });
         ilista.append(lix);
 
     }
+
+    const prefs = leerPreferencias();
+
+    /* Los ratios y el peso valen para todas las recetas, así que viven en
+       un panel de preferencias aparte del cálculo de esta receta. */
+    const ajustes = document.createElement("details");
+    ajustes.id = "ajustes_generales";
+    const resumenAjustes = document.createElement("summary");
+    resumenAjustes.textContent = "⚙ Preferencias de la calculadora";
+    const ayudaAjustes = document.createElement("p");
+    ayudaAjustes.className = "ayuda_guardado";
+    ayudaAjustes.textContent = "Ratios y peso predeterminados para todas las recetas.";
+    const listaAjustes = document.createElement("ul");
+    ajustes.append(resumenAjustes, ayudaAjustes, listaAjustes);
+
     let cant = crearElementoLi(otros, "Cantidad cocinada: ", "cantidad");
-    let ratio = crearElementoLi(otros, "Ratio: ", "ratio");
-    let ratio_especial = crearElementoLi(otros, "Ratio Especial: ", "ratio_especial");
-    
+    let ratio = crearElementoLi(listaAjustes, "Ratio: ", "ratio");
+    let ratio_especial = crearElementoLi(listaAjustes, "Ratio Especial: ", "ratio_especial");
+
     ratio_especial.classList.add("especiales_txt")
 
     let nli = document.createElement("li");
@@ -739,12 +1549,38 @@ function setAndLoad() {
     let botonsave = document.createElement("button");
     botonsave.innerText = "Guardar preferencias";
     botonsave.classList.add("savebtn");
+    botonsave.title = "Ratios, peso y máx imperiales, para todas las recetas";
     botonsave.onclick = guardarPreferencias;
+
+    /* el avance de ESTA receta, aparte de las preferencias generales */
+    let botonestado = document.createElement("button");
+    botonestado.innerText = "Guardar estado";
+    botonestado.classList.add("estadobtn");
+    botonestado.title = "Cantidad, precios, calidades y lo ya conseguido de esta receta";
+    botonestado.onclick = guardarEstado;
 
     boton.innerText = "Calcular Ingredientes";
     boton.addEventListener("click", generarListaIngredientes);
     nli.append(boton);
-    nli.append(botonsave);
+    ajustes.append(botonsave);
+
+    let avance = document.getElementById("acciones_estado");
+    if (!avance) {
+        avance = document.createElement("div");
+        avance.id = "acciones_estado";
+        const tabs = document.getElementById("tabs_base");
+        tabs.parentNode.insertBefore(avance, tabs);
+    }
+    avance.replaceChildren();
+    const ayudaEstado = document.createElement("div");
+    const tituloEstado = document.createElement("strong");
+    tituloEstado.textContent = "Avance de esta receta";
+    const detalleEstado = document.createElement("p");
+    detalleEstado.className = "ayuda_guardado";
+    detalleEstado.textContent = "Guardá cantidades, precios, calidades e ingredientes conseguidos. Se restaura al volver a abrirla.";
+    ayudaEstado.append(tituloEstado, detalleEstado);
+    avance.append(ayudaEstado, botonestado);
+
     cant.children[1].addEventListener("input", modificarSegunCantidad);
     ratio.children[1].value = 2.4;
     ratio.children[1].step = 0.1;
@@ -756,12 +1592,14 @@ function setAndLoad() {
     let total = crearElementoLi(otros, "Total obtenidos: ", "total");
     let total_especiales = crearElementoLi(otros, "Total (especiales) obtenidos: ", "total_especiales");
     total_especiales.classList.add("especiales_txt");
+    /* fuera del if: hace falta más abajo para restaurar la preferencia */
+    let imperiales_max = null;
     if(rdata["datos"][currentingrediente]["imperiales"] != undefined)
     {
         let imperiales = crearElementoLi(otros, "Imperiales: (x" + rdata["datos"][currentingrediente]["imperiales"] + "): ", "imperiales");
         let imperiales_especiales = crearElementoLi(otros, "Imperiales (especiales) : (x" + rdata["datos"][currentingrediente]["imperiales"] / 3 + "): ", "imperiales_especiales");
         let imperiales_total = crearElementoLi(otros, "Imperiales total (±1):  ", "imperiales_total");
-        let imperiales_max = crearElementoLi(otros, "Máx imperiales", "imperiales_max");
+        imperiales_max = crearElementoLi(otros, "Máx imperiales", "imperiales_max");
         imperiales_max.children[1].value = 186;
         imperiales_max.classList.add("maximperiales");
         imperiales_max.children[1].classList.add("maximperiales");
@@ -820,8 +1658,8 @@ function setAndLoad() {
     divpeso.append(dinputpeso);
 
 
-    otros.append(divpeso);
-    
+    ajustes.insertBefore(divpeso, botonsave);
+
 
     let pesomax = crearElementoLi(dinputpeso, "Peso máx", "pesomax");
     pesomax.children[1].step = 0.01;
@@ -862,11 +1700,8 @@ function setAndLoad() {
     fbutton.onclick = function()
     {
         // calcular cantidad para llenar el peso actual.
-        let pmax = document.getElementById("pesomax").value;
-        let pmio = document.getElementById("mipeso").value;
-
-        if(pmax == "") pmax = 0;
-        if(pmio == "") pmio = 0;
+        const pmax = numeroSeguro(document.getElementById("pesomax").value);
+        const pmio = numeroSeguro(document.getElementById("mipeso").value);
 
         const disponible = pmax - pmio;
 
@@ -876,8 +1711,12 @@ function setAndLoad() {
             let inputcocic = document.getElementById(ingx + "_cant");
             const ddato = 1 * Math.ceil(inputcocic.bdocant / calidad_ing[calidades[inputcocic.bdogrado]]); // Math.ceil(this.bdocant / calidad_ing[calidades[this.bdogrado]])
             pesodata += parseFloat(rdata["datos"][ingx]["peso"]) * ddato;
-        
+
         }
+        /* sin peso máximo cargado, o con ingredientes sin peso, no hay nada que llenar */
+        if (disponible <= 0 || pesodata <= 0)
+            return;
+
         const resultado = Math.floor((disponible / pesodata) * 0.95);
 
         const tinput = document.getElementById("cantidad");
@@ -894,25 +1733,23 @@ function setAndLoad() {
     // fin peso
     ppeso.children[1].innerText = "LT 0.00";
     otros.append(nli);
+    const filaAjustes = document.createElement("li");
+    filaAjustes.className = "fila_ajustes";
+    filaAjustes.append(ajustes);
+    otros.append(filaAjustes);
 
     dinputpeso.append(infopesox);
     total.children[1].addEventListener("input", modificarSegunTotal);
     total_especiales.children[1].addEventListener("input", modificarSegunTotalEspeciales);
-    
 
-    const preferencias = localStorage.getItem("preferencias");
-    if(preferencias != null && preferencias != "")
-    {
-        const dictPreferencias = JSON.parse(preferencias);
-        ratio.children[1].value = dictPreferencias["ratio"];
-        ratio_especial.children[1].value = dictPreferencias["ratio_especial"];
-        pesomax.children[1].value = dictPreferencias["pesomax"];
-        mipeso.children[1].value = dictPreferencias["mipeso"];
-        const isDefined = typeof imperiales_max;
 
-        if(isDefined == undefined)
-            imperiales_max.value = dictPreferencias["maximperiales"];
-    }
+    if (prefs["ratio"] != undefined) ratio.children[1].value = prefs["ratio"];
+    if (prefs["ratio_especial"] != undefined) ratio_especial.children[1].value = prefs["ratio_especial"];
+    if (prefs["pesomax"] != undefined) pesomax.children[1].value = prefs["pesomax"];
+    if (prefs["mipeso"] != undefined) mipeso.children[1].value = prefs["mipeso"];
+    if (imperiales_max != null && prefs["maximperiales"] != undefined)
+        imperiales_max.children[1].value = prefs["maximperiales"];
+
     if (!secondLoad && totalget != null) {
         total.children[1].value = totalget;
         if(ratioget != undefined)
@@ -921,6 +1758,11 @@ function setAndLoad() {
         total.children[1].dispatchEvent(e);
 
     }
+
+    /* si esta receta tiene avance guardado, se restaura encima de todo lo anterior */
+    const estadoGuardado = leerEstados()[this.id];
+    if (estadoGuardado != undefined)
+        aplicarEstado(estadoGuardado);
 
     secondLoad = true;
 }
@@ -1011,6 +1853,8 @@ window.addEventListener("load", function () {
     ratioget = findGetParameter("r");
     lista_recetas_ul = document.getElementById("lista_recetas");
 
+    document.getElementById("tab_arbol").addEventListener("click", function () { cambiarVistaBase("arbol"); });
+    document.getElementById("tab_puros").addEventListener("click", function () { cambiarVistaBase("puros"); });
 
     fetch("datosv1.json")
         .then(function (rep) {
@@ -1033,8 +1877,8 @@ window.addEventListener("load", function () {
                 }
 
             }
-            if (idresget != null) {
-                tempObj = { "id": idresget, "innerText": rdata["datos"][idresget]["titulo"] };
+            if (idresget != null && rdata["datos"][idresget] != undefined) {
+                tempObj = { "id": idresget };
                 tempObj.setAndLoad = setAndLoad;
                 tempObj.setAndLoad();
             }
@@ -1097,7 +1941,8 @@ window.addEventListener("load", function () {
 
 window.onpopstate = function (event) {
     let idresget = findGetParameter("id");
-    tempObj = { "id": idresget, "innerText": rdata["datos"][idresget]["titulo"] };
+    if (idresget == null || rdata["datos"][idresget] == undefined) return;
+    tempObj = { "id": idresget };
     tempObj.setAndLoad = setAndLoad;
     tempObj.setAndLoad();
 }
