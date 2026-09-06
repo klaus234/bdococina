@@ -6,7 +6,7 @@
     <title>Cocina BDO v1</title>
     <script src="bdococina.js"></script>
 </head>
-<link rel="stylesheet" href="cocina.css?d=9">
+<link rel="stylesheet" href="cocina.css?d=11">
 <body>
 
 
@@ -32,6 +32,23 @@
                 <button type="button" class="tab_btn" id="tab_puros">Ingredientes puros</button>
             </div>
             <input type="search" id="buscador_ingredientes" placeholder="Buscar ingrediente base..." style="display: none;">
+            <div id="filtros_puros" class="oculto">
+                <details id="filtro_obtencion">
+                    <summary>Filtro <span id="filtro_cantidad"></span></summary>
+                    <div class="filtro_panel">
+                        <fieldset>
+                            <legend>Forma de obtención</legend>
+                            <p id="filtro_ayuda">Clic: incluir (✓). Clic derecho: excluir (−). Repetí el mismo clic para quitarlo. También podés excluir con Mayús + clic o Mayús + Enter.</p>
+                            <p>Coincide con cualquiera de los métodos incluidos y con ninguno de los excluidos. Sin seleccionar métodos, se muestran todos.</p>
+                            <div id="filtro_metodos" aria-describedby="filtro_ayuda"></div>
+                        </fieldset>
+                        <label class="filtro_ocultar"><input type="checkbox" id="filtro_ocultar"> Ocultar ingredientes que no coincidan</label>
+                        <p>Si está desmarcado, los ingredientes que no coincidan quedan atenuados.</p>
+                        <button type="button" id="filtro_limpiar">Limpiar filtro</button>
+                    </div>
+                </details>
+                <p id="filtro_resultado" role="status" aria-live="polite"></p>
+            </div>
             <ul id="ingredientes_base">
                 <li>Sin calcular aún</li>
             </ul>

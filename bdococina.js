@@ -255,6 +255,79 @@ function crearObtencion(clave) {
    plana de ingredientes puros (los que no salen de ninguna receta: se
    compran, se recolectan, se cultivan...). */
 let vistaBaseActual = "arbol";
+const filtroMetodosPuros = new Set();
+const filtroMetodosExcluidosPuros = new Set();
+
+function actualizarBotonesFiltroPuros() {
+    document.querySelectorAll(".filtro_metodo").forEach(function (boton) {
+        const tipo = boton.dataset.metodo;
+        const incluido = filtroMetodosPuros.has(tipo);
+        const excluido = filtroMetodosExcluidosPuros.has(tipo);
+        const estado = excluido ? "Excluir" : incluido ? "Incluir" : "Sin filtro";
+        boton.dataset.estado = excluido ? "excluir" : incluido ? "incluir" : "neutro";
+        boton.querySelector(".filtro_marca").textContent = excluido ? "−" : incluido ? "✓" : "";
+        boton.setAttribute("aria-label", boton.dataset.nombre + ": " + estado);
+        boton.setAttribute("aria-pressed", String(incluido || excluido));
+    });
+}
+
+function alternarMetodoPuro(tipo, excluir) {
+    const seleccion = excluir ? filtroMetodosExcluidosPuros : filtroMetodosPuros;
+    const opuesta = excluir ? filtroMetodosPuros : filtroMetodosExcluidosPuros;
+    opuesta.delete(tipo);
+    if (seleccion.has(tipo)) seleccion.delete(tipo);
+    else seleccion.add(tipo);
+    actualizarBotonesFiltroPuros();
+    filtrarIngredientesBase();
+}
+
+function iniciarFiltroPuros() {
+    const opciones = document.getElementById("filtro_metodos");
+    const metodos = Object.entries(OBTENCION).map(([tipo, metodo]) => [tipo, metodo.label]);
+    metodos.push(["sin_verificar", "Obtención sin verificar"]);
+    metodos.forEach(function ([tipo, nombre]) {
+        const boton = document.createElement("button");
+        boton.type = "button";
+        boton.className = "filtro_metodo";
+        boton.dataset.metodo = tipo;
+        boton.dataset.nombre = nombre;
+        boton.title = "Clic: incluir · Clic derecho o Mayús + clic: excluir · Repetir para quitar";
+        boton.setAttribute("aria-describedby", "filtro_ayuda");
+        const marca = document.createElement("span");
+        marca.className = "filtro_marca";
+        marca.setAttribute("aria-hidden", "true");
+        boton.append(marca, document.createTextNode(nombre));
+        boton.addEventListener("click", function (event) {
+            alternarMetodoPuro(tipo, event.shiftKey);
+        });
+        boton.addEventListener("contextmenu", function (event) {
+            event.preventDefault();
+            alternarMetodoPuro(tipo, true);
+        });
+        boton.addEventListener("keydown", function (event) {
+            if (event.shiftKey && (event.key === "Enter" || event.key === " ")) {
+                event.preventDefault();
+                if (!event.repeat) alternarMetodoPuro(tipo, true);
+            }
+        });
+        opciones.append(boton);
+    });
+    actualizarBotonesFiltroPuros();
+    document.getElementById("filtro_ocultar").addEventListener("change", filtrarIngredientesBase);
+    document.getElementById("filtro_limpiar").addEventListener("click", function () {
+        filtroMetodosPuros.clear();
+        filtroMetodosExcluidosPuros.clear();
+        actualizarBotonesFiltroPuros();
+        filtrarIngredientesBase();
+    });
+    const desplegable = document.getElementById("filtro_obtencion");
+    desplegable.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+            desplegable.open = false;
+            desplegable.querySelector("summary").focus();
+        }
+    });
+}
 
 function cambiarVistaBase(vista) {
     vistaBaseActual = vista;
@@ -266,17 +339,38 @@ function cambiarVistaBase(vista) {
 
     document.getElementById("ingredientes_base").classList.toggle("oculto", vista != "arbol");
     document.getElementById("ingredientes_puros").classList.toggle("oculto", vista != "puros");
+    document.getElementById("filtros_puros").classList.toggle("oculto", vista != "puros");
 
     filtrarIngredientesBase();
 }
 
 function filtrarIngredientesPuros(texto) {
+    texto = texto.trim();
+    const ocultar = document.getElementById("filtro_ocultar").checked;
+    let encontrados = 0;
+    let totalBusqueda = 0;
     document.querySelectorAll("#ingredientes_puros .ingrediente_puro").forEach(item => {
         const spanTitulo = item.querySelector(".titing");
         const coincide = texto.trim() === "" ||
             (spanTitulo && spanTitulo.textContent.toLowerCase().includes(texto));
-        item.style.display = coincide ? "" : "none";
+        const info = rdata.datos[item.bdoclave].obtencion;
+        const metodos = info ? info.metodos.filter(tipo => OBTENCION[tipo]) : [];
+        if (!metodos.length) metodos.push("sin_verificar");
+        const cumpleFiltro = (filtroMetodosPuros.size === 0 || metodos.some(tipo => filtroMetodosPuros.has(tipo))) &&
+            !metodos.some(tipo => filtroMetodosExcluidosPuros.has(tipo));
+        item.classList.toggle("fuera_filtro", !cumpleFiltro);
+        item.style.display = coincide && (cumpleFiltro || !ocultar) ? "" : "none";
+        if (coincide) {
+            totalBusqueda++;
+            if (cumpleFiltro) encontrados++;
+        }
     });
+    const cantidadFiltros = filtroMetodosPuros.size + filtroMetodosExcluidosPuros.size;
+    document.getElementById("filtro_cantidad").textContent = cantidadFiltros ? "(" + cantidadFiltros + ")" : "";
+    const estado = document.getElementById("filtro_resultado");
+    estado.textContent = totalBusqueda === 0 ? "No hay ingredientes para mostrar." :
+        cantidadFiltros ? encontrados + " de " + totalBusqueda + " ingredientes coinciden. Los demás quedan " + (ocultar ? "ocultos." : "atenuados.") :
+        "Todos los métodos · " + totalBusqueda + (totalBusqueda === 1 ? " ingrediente" : " ingredientes");
 }
 
 function filtrarIngredientesBase() {
@@ -664,9 +758,7 @@ function generarListaIngredientes() {
     ulpuros.append(puros.ul);
     actualizarProgresoPuros();
 
-    if (buscadorIngredientes && buscadorIngredientes.value.trim() !== "") {
-        filtrarIngredientesBase();
-    }
+    filtrarIngredientesBase();
 }
 
 function generarListaIngredientesSiHay() {
@@ -1390,6 +1482,7 @@ function setAndLoad() {
     if (tabPuros != null) tabPuros.innerText = "Ingredientes puros";
     const buscadorIng = document.getElementById("buscador_ingredientes");
     if (buscadorIng != null) { buscadorIng.value = ""; buscadorIng.style.display = "none"; }
+    document.getElementById("filtro_resultado").textContent = "Calculá la receta para filtrar sus ingredientes.";
 
     const t = rdata["datos"][this.id]["titulo"];
     document.title = t + " - Cocina BDO";
@@ -1887,6 +1980,7 @@ window.addEventListener("load", function () {
 
     document.getElementById("tab_arbol").addEventListener("click", function () { cambiarVistaBase("arbol"); });
     document.getElementById("tab_puros").addEventListener("click", function () { cambiarVistaBase("puros"); });
+    iniciarFiltroPuros();
 
     fetch("datosv1.json")
         .then(function (rep) {

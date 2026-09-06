@@ -825,6 +825,152 @@ button:active {
     box-shadow: 0 8px 18px rgba(255, 111, 60, 0.24);
 }
 
+#filtros_puros {
+    grid-column: 1 / -1;
+    margin: 0 0 12px;
+}
+
+#filtro_obtencion {
+    max-width: 540px;
+}
+
+#filtro_obtencion > summary {
+    width: fit-content;
+    padding: 8px 16px;
+    border: 1px solid var(--accent);
+    border-radius: var(--radius-sm);
+    background: rgba(255, 111, 60, 0.12);
+    color: var(--accent);
+    cursor: pointer;
+    font-weight: 700;
+}
+
+#filtro_obtencion > summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.filtro_panel {
+    margin-top: 8px;
+    padding: 16px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--bg-1);
+}
+
+.filtro_panel fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+}
+
+.filtro_panel legend {
+    padding: 0;
+    font-weight: 700;
+}
+
+.filtro_panel p,
+#filtro_resultado {
+    margin: 8px 0;
+    font-size: 13px;
+    color: var(--text-1);
+}
+
+#filtro_metodos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 4px 12px;
+}
+
+.filtro_panel label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 0;
+    cursor: pointer;
+}
+
+#filtro_metodos .filtro_metodo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 4px;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text-1);
+    box-shadow: none;
+    text-align: left;
+    font: inherit;
+    letter-spacing: normal;
+    transform: none;
+}
+
+.filtro_marca {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 19px;
+    height: 19px;
+    border: 1px solid var(--muted);
+    border-radius: 4px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+#filtro_metodos .filtro_metodo[data-estado="incluir"] {
+    color: var(--accent);
+}
+
+#filtro_metodos .filtro_metodo[data-estado="excluir"] {
+    color: var(--danger);
+}
+
+.filtro_metodo[data-estado="incluir"] .filtro_marca,
+.filtro_metodo[data-estado="excluir"] .filtro_marca {
+    border-color: currentColor;
+    background: rgba(255, 111, 60, 0.12);
+}
+
+#filtro_metodos .filtro_metodo:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.filtro_metodo:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.filtro_panel input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+    margin: 0;
+    accent-color: var(--accent);
+}
+
+.filtro_ocultar {
+    margin-top: 12px;
+    border-top: 1px solid var(--line);
+}
+
+#filtro_limpiar {
+    margin-top: 6px;
+    padding: 8px 12px;
+    box-shadow: none;
+}
+
+.ingrediente_puro.fuera_filtro {
+    opacity: 0.45;
+    filter: grayscale(0.8);
+    border-style: dashed;
+}
+
+.ingrediente_puro.fuera_filtro:focus-within,
+.ingrediente_puro.fuera_filtro:hover {
+    opacity: 0.75;
+}
+
 .lista_puros {
     list-style: none;
     padding: 0;
